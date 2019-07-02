@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.view.GravityCompat
+import androidx.core.view.get
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 
@@ -55,11 +56,6 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
                 }
                 return@OnNavigationItemSelectedListener true
             })
-        if (!viewModel.isOpened) {
-            //set initial view as sub home fragment in side home fragment
-            selectSubHomeFragment()
-            viewModel.isOpened = true
-        }
 
         drawerToggleImgBtn.setOnClickListener {
             rootViewDl.openDrawer(GravityCompat.START)
@@ -77,6 +73,42 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
 
         viewClicked.findViewById<ImageView>(R.id.twitter).setOnClickListener {
             activity?.toast("Twitter")
+        }
+
+        searchTv.setOnClickListener {
+            viewModel.selectedBottomItemId = bottom_navigation.selectedItemId
+            findNavController().navigate(R.id.action_mainHomeFragment_to_searchFragment)
+        }
+
+        if (!viewModel.isOpened) {
+            //set initial view as sub home fragment in side home fragment
+            selectSubHomeFragment()
+            viewModel.isOpened = true
+        } else {
+            showHomeHeader(viewModel.selectedBottomItemId)
+        }
+    }
+
+    private fun showHomeHeader(selectedBottomItem: Int) {
+        when (selectedBottomItem) {
+            R.id.action_Home -> {
+                searchTv.visibility = View.VISIBLE
+                homeFragmentTitleTv.visibility = View.GONE
+            }
+            R.id.action_Messages-> {
+                homeFragmentTitleTv.text = getString(R.string.messages)
+                homeFragmentTitleTv.visibility = View.VISIBLE
+                searchTv.visibility = View.GONE
+            }
+            R.id.action_Notifications -> {
+                homeFragmentTitleTv.text = getString(R.string.notifications)
+                searchTv.visibility = View.GONE
+                homeFragmentTitleTv.visibility = View.VISIBLE
+            }
+            else ->{
+                searchTv.visibility = View.VISIBLE
+                homeFragmentTitleTv.visibility = View.GONE
+            }
         }
     }
 
@@ -146,7 +178,7 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
             }
 
         }
-
+        viewModel.selectedBottomItemId = bottom_navigation.selectedItemId
         rootViewDl.closeDrawer(GravityCompat.START)
         return true
     }

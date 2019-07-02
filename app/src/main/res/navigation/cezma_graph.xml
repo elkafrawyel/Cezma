@@ -51,6 +51,9 @@
         <action
             android:id="@+id/action_mainHomeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
 
     <fragment
@@ -83,9 +86,6 @@
         android:name="com.cezma.store.views.mainActivity.home.sub_home_fragment.SubHomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/sub_home_fragment" >
-        <action
-            android:id="@+id/action_subHomeFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
         <action
             android:id="@+id/action_subHomeFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
@@ -170,8 +170,11 @@
         android:label="sub_category_fragment"
         tools:layout="@layout/sub_category_fragment" >
         <action
-            android:id="@+id/action_subCategoryFragment_to_productDetailsFragment"
-            app:destination="@id/productDetailsFragment" />
+            android:id="@+id/action_subCategoryFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
+        <action
+            android:id="@+id/action_subCategoryFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/tremsAndConditionsFragment"
@@ -214,5 +217,17 @@
         android:name="com.cezma.store.views.mainActivity.auth.verifyMobile.VerifyMobileFragment"
         android:label="verify_mobile_fragment"
         tools:layout="@layout/verify_mobile_fragment" />
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.cezma.store.views.mainActivity.products.ProductsFragment"
+        android:label="products_fragment"
+        tools:layout="@layout/products_fragment" >
+        <action
+            android:id="@+id/action_productsFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_productsFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
 
 </navigation>

@@ -69,6 +69,14 @@ class SubCategoryFragment : Fragment() {
         subCategoryBackImgv.setOnClickListener {
             findNavController().navigateUp()
         }
+
+        categoryTitle.setOnClickListener {
+            findNavController().navigate(R.id.action_subCategoryFragment_to_productsFragment)
+        }
+
+        searchTv.setOnClickListener {
+            findNavController().navigate(R.id.action_subCategoryFragment_to_searchFragment)
+        }
     }
 
 }
