@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Cezma</string>
+    <string name="notifications">Notifications</string>
+    <string name="messages">Messages</string>
+    <string name="categories">Categories</string>
+    <string name="see_all">See all</string>
+</resources>

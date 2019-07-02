@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cezma_graph"
+    app:startDestination="@id/mainHomeFragment">
+    <fragment
+        android:id="@+id/mainHomeFragment"
+        android:name="com.cezma.store.views.mainActivity.home.MainHomeFragment"
+        android:label="main_home_fragment"
+        tools:layout="@layout/main_home_fragment" >
+        <action
+            android:id="@+id/action_mainHomeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_addProductFragment"
+            app:destination="@id/addProductFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_addShopFragment"
+            app:destination="@id/addShopFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_followingFragment"
+            app:destination="@id/followingFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_howToOpenShopFragment"
+            app:destination="@id/howToOpenShopFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_contactUsFragment"
+            app:destination="@id/contactUsFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_privacyPolicyFragment"
+            app:destination="@id/privacyPolicyFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_tremsAndConditionsFragment"
+            app:destination="@id/tremsAndConditionsFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_upgradeAccountFragment"
+            app:destination="@id/upgradeAccountFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_followingShopsFragment"
+            app:destination="@id/followingShopsFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.cezma.store.views.mainActivity.home.messages_fragment.MessagesFragment"
+        android:label="messages_fragment"
+        tools:layout="@layout/messages_fragment" >
+        <action
+            android:id="@+id/action_messagesFragment_to_chatRoomFragment"
+            app:destination="@id/chatRoomFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.cezma.store.views.mainActivity.home.notifications_fragment.NotificationsFragment"
+        android:label="notifications_fragment"
+        tools:layout="@layout/notifications_fragment" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.cezma.store.views.mainActivity.profile.ProfileFragment"
+        android:label="profile_fragment"
+        tools:layout="@layout/profile_fragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/subHomeFragment"
+        android:name="com.cezma.store.views.mainActivity.home.sub_home_fragment.SubHomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/sub_home_fragment" >
+        <action
+            android:id="@+id/action_subHomeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_subHomeFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.cezma.store.views.mainActivity.aboutUs.AboutUsFragment"
+        android:label="about_us_fragment"
+        tools:layout="@layout/about_us_fragment" />
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.cezma.store.views.mainActivity.addProduct.AddProductFragment"
+        android:label="add_product_fragment"
+        tools:layout="@layout/add_product_fragment" />
+    <fragment
+        android:id="@+id/addShopFragment"
+        android:name="com.cezma.store.views.mainActivity.addShop.AddShopFragment"
+        android:label="add_shop_fragment"
+        tools:layout="@layout/add_shop_fragment" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.cezma.store.views.mainActivity.category.CategoryFragment"
+        android:label="category_fragment"
+        tools:layout="@layout/category_fragment" >
+        <action
+            android:id="@+id/action_categoryFragment_to_subCategoryFragment"
+            app:destination="@id/subCategoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatRoomFragment"
+        android:name="com.cezma.store.views.mainActivity.chatRoom.ChatRoomFragment"
+        android:label="chat_room_fragment"
+        tools:layout="@layout/chat_room_fragment" />
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="com.cezma.store.views.mainActivity.contactUs.ContactUsFragment"
+        android:label="contact_us_fragment"
+        tools:layout="@layout/contact_us_fragment" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.cezma.store.views.mainActivity.profile.editProfile.EditProfileFragment"
+        android:label="edit_profile_fragment"
+        tools:layout="@layout/edit_profile_fragment" />
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.cezma.store.views.mainActivity.favourites.FavouritesFragment"
+        android:label="favourites_fragment"
+        tools:layout="@layout/favourites_fragment" />
+    <fragment
+        android:id="@+id/followingFragment"
+        android:name="com.cezma.store.views.mainActivity.following.FollowingFragment"
+        android:label="following_fragment"
+        tools:layout="@layout/following_fragment" />
+    <fragment
+        android:id="@+id/followingShopsFragment"
+        android:name="com.cezma.store.views.mainActivity.followingShops.FollowingShopsFragment"
+        android:label="following_shops_fragment"
+        tools:layout="@layout/following_shops_fragment" />
+    <fragment
+        android:id="@+id/howToOpenShopFragment"
+        android:name="com.cezma.store.views.mainActivity.how_to_open_shop.HowToOpenShopFragment"
+        android:label="how_to_open_shop_fragment"
+        tools:layout="@layout/how_to_open_shop_fragment" />
+    <fragment
+        android:id="@+id/privacyPolicyFragment"
+        android:name="com.cezma.store.views.mainActivity.privacyPolicy.PrivacyPolicyFragment"
+        android:label="privacy_policy_fragment"
+        tools:layout="@layout/privacy_policy_fragment" />
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.cezma.store.views.mainActivity.productDetails.ProductDetailsFragment"
+        android:label="product_details_fragment"
+        tools:layout="@layout/product_details_fragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.cezma.store.views.mainActivity.search.SearchFragment"
+        android:label="search_fragment"
+        tools:layout="@layout/search_fragment" />
+    <fragment
+        android:id="@+id/subCategoryFragment"
+        android:name="com.cezma.store.views.mainActivity.subCategory.SubCategoryFragment"
+        android:label="sub_category_fragment"
+        tools:layout="@layout/sub_category_fragment" >
+        <action
+            android:id="@+id/action_subCategoryFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tremsAndConditionsFragment"
+        android:name="com.cezma.store.views.mainActivity.terms.TremsAndConditionsFragment"
+        android:label="trems_and_conditions_fragment"
+        tools:layout="@layout/trems_and_conditions_fragment" />
+    <fragment
+        android:id="@+id/upgradeAccountFragment"
+        android:name="com.cezma.store.views.mainActivity.upgradeAccount.UpgradeAccountFragment"
+        android:label="upgrade_account_fragment"
+        tools:layout="@layout/upgrade_account_fragment" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.cezma.store.views.mainActivity.auth.login.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.cezma.store.views.mainActivity.auth.signUp.SignUpFragment"
+        android:label="sign_up_fragment"
+        tools:layout="@layout/sign_up_fragment" >
+        <action
+            android:id="@+id/action_signUpFragment_to_verifyMobileFragment"
+            app:destination="@id/verifyMobileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.cezma.store.views.mainActivity.auth.forgetPassword.ForgetPasswordFragment"
+        android:label="forget_password_fragment"
+        tools:layout="@layout/forget_password_fragment" />
+    <fragment
+        android:id="@+id/verifyMobileFragment"
+        android:name="com.cezma.store.views.mainActivity.auth.verifyMobile.VerifyMobileFragment"
+        android:label="verify_mobile_fragment"
+        tools:layout="@layout/verify_mobile_fragment" />
+
+</navigation>
