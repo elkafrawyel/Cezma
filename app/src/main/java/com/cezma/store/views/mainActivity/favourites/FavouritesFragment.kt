@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 
 import com.cezma.store.R
+import com.cezma.store.views.mainActivity.home.sub_home_fragment.AdapterProducts
+import kotlinx.android.synthetic.main.favourites_fragment.*
 
 class FavouritesFragment : Fragment() {
 
@@ -16,6 +19,7 @@ class FavouritesFragment : Fragment() {
     }
 
     private lateinit var viewModel: FavouritesViewModel
+    private val productAdapter = AdapterProducts()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +31,32 @@ class FavouritesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(FavouritesViewModel::class.java)
-        // TODO: Use the ViewModel
+        val products = ArrayList<String>()
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        productsRv.setHasFixedSize(true)
+        productAdapter.replaceData(products)
+        productsRv.adapter = productAdapter
+
+        favouritesBackImgv.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
 }

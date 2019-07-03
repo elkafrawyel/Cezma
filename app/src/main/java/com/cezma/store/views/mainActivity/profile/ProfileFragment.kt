@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 
 import com.cezma.store.R
+import com.cezma.store.views.mainActivity.home.sub_home_fragment.AdapterProducts
+import kotlinx.android.synthetic.main.profile_fragment.*
 
 class ProfileFragment : Fragment() {
 
@@ -16,6 +19,7 @@ class ProfileFragment : Fragment() {
     }
 
     private lateinit var viewModel: ProfileViewModel
+    private val productAdapter = AdapterProducts()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +31,37 @@ class ProfileFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ProfileViewModel::class.java)
-        // TODO: Use the ViewModel
+        val products = ArrayList<String>()
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        products.add("A")
+        productsRv.setHasFixedSize(true)
+        productAdapter.replaceData(products)
+        productsRv.adapter = productAdapter
+
+
+        profileEditImgv.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment)
+        }
+
+        profileBackImgv.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
 }

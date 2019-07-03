@@ -4,4 +4,10 @@
     <string name="messages">Messages</string>
     <string name="categories">Categories</string>
     <string name="see_all">See all</string>
+    <string name="profile">Profile</string>
+    <string name="favourites">Favourites</string>
+    <string name="following">Following</string>
+    <string name="profile_page">profile Page</string>
+    <string name="upgradeAccount">Upgrade Account</string>
+    <string name="payment">Payment</string>
 </resources>

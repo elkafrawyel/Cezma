@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 
 import com.cezma.store.R
+import kotlinx.android.synthetic.main.upgrade_account_fragment.*
 
 class UpgradeAccountFragment : Fragment() {
 
@@ -27,7 +29,9 @@ class UpgradeAccountFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(UpgradeAccountViewModel::class.java)
-        // TODO: Use the ViewModel
+        upgradeAccountBackImgv.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
 }

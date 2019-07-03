@@ -133,53 +133,53 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.nav_Profile -> {
-                findNavController().navigate(R.id.action_mainHomeFragment_to_profileFragment)
-            }
-            R.id.nav_AddProduct -> {
-                findNavController().navigate(R.id.action_mainHomeFragment_to_addProductFragment)
-            }
-            R.id.nav_AddShop -> {
-                findNavController().navigate(R.id.action_mainHomeFragment_to_addShopFragment)
-            }
-            R.id.nav_Upgrade -> {
-                findNavController().navigate(R.id.action_mainHomeFragment_to_upgradeAccountFragment)
-            }
-            R.id.nav_Favourites -> {
-                findNavController().navigate(R.id.action_mainHomeFragment_to_favouritesFragment)
-            }
-            R.id.nav_Following -> {
-                findNavController().navigate(R.id.action_mainHomeFragment_to_followingFragment)
-            }
-            R.id.nav_FollowingShopes -> {
-                findNavController().navigate(R.id.action_mainHomeFragment_to_followingShopsFragment)
-            }
-            R.id.nav_Categories -> {
-                findNavController().navigate(R.id.action_mainHomeFragment_to_categoryFragment)
-            }
-            R.id.nav_HowToOpenShop -> {
-                findNavController().navigate(R.id.action_mainHomeFragment_to_howToOpenShopFragment)
-            }
-            R.id.nav_PrivacyPolicy -> {
-                findNavController().navigate(R.id.action_mainHomeFragment_to_privacyPolicyFragment)
-            }
-            R.id.nav_Terms -> {
-                findNavController().navigate(R.id.action_mainHomeFragment_to_tremsAndConditionsFragment)
-            }
-            R.id.nav_ContactUs -> {
-                findNavController().navigate(R.id.action_mainHomeFragment_to_contactUsFragment)
-            }
-            R.id.nav_AboutUs -> {
-                findNavController().navigate(R.id.action_mainHomeFragment_to_aboutUsFragment)
-            }
-            R.id.nav_LogOut -> {
-
-            }
-
-        }
-        viewModel.selectedBottomItemId = bottom_navigation.selectedItemId
-        rootViewDl.closeDrawer(GravityCompat.START)
+//        when (item.itemId) {
+//            R.id.nav_Profile -> {
+//                findNavController().navigate(R.id.action_mainHomeFragment_to_profileFragment)
+//            }
+//            R.id.nav_AddProduct -> {
+//                findNavController().navigate(R.id.action_mainHomeFragment_to_addProductFragment)
+//            }
+//            R.id.nav_AddShop -> {
+//                findNavController().navigate(R.id.action_mainHomeFragment_to_addShopFragment)
+//            }
+//            R.id.nav_Upgrade -> {
+//                findNavController().navigate(R.id.action_mainHomeFragment_to_upgradeAccountFragment)
+//            }
+//            R.id.nav_Favourites -> {
+//                findNavController().navigate(R.id.action_mainHomeFragment_to_favouritesFragment)
+//            }
+//            R.id.nav_Following -> {
+//                findNavController().navigate(R.id.action_mainHomeFragment_to_followingFragment)
+//            }
+//            R.id.nav_FollowingShopes -> {
+//                findNavController().navigate(R.id.action_mainHomeFragment_to_followingShopsFragment)
+//            }
+//            R.id.nav_Categories -> {
+//                findNavController().navigate(R.id.action_mainHomeFragment_to_categoryFragment)
+//            }
+//            R.id.nav_HowToOpenShop -> {
+//                findNavController().navigate(R.id.action_mainHomeFragment_to_howToOpenShopFragment)
+//            }
+//            R.id.nav_PrivacyPolicy -> {
+//                findNavController().navigate(R.id.action_mainHomeFragment_to_privacyPolicyFragment)
+//            }
+//            R.id.nav_Terms -> {
+//                findNavController().navigate(R.id.action_mainHomeFragment_to_tremsAndConditionsFragment)
+//            }
+//            R.id.nav_ContactUs -> {
+//                findNavController().navigate(R.id.action_mainHomeFragment_to_contactUsFragment)
+//            }
+//            R.id.nav_AboutUs -> {
+//                findNavController().navigate(R.id.action_mainHomeFragment_to_aboutUsFragment)
+//            }
+//            R.id.nav_LogOut -> {
+//
+//            }
+//
+//        }
+//        viewModel.selectedBottomItemId = bottom_navigation.selectedItemId
+//        rootViewDl.closeDrawer(GravityCompat.START)
         return true
     }
 

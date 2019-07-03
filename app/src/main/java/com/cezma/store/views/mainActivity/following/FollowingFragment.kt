@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 
 import com.cezma.store.R
+import kotlinx.android.synthetic.main.following_fragment.*
 
 class FollowingFragment : Fragment() {
 
@@ -16,6 +18,7 @@ class FollowingFragment : Fragment() {
     }
 
     private lateinit var viewModel: FollowingViewModel
+    private val adapterFollowing = AdapterFollowing()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +30,44 @@ class FollowingFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(FollowingViewModel::class.java)
-        // TODO: Use the ViewModel
+        val following = ArrayList<String>()
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+        following.add("a")
+
+        adapterFollowing.replaceData(following)
+
+        followingRv.adapter = adapterFollowing
+        followingRv.setHasFixedSize(true)
+
+        followingBackImgv.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
     }
 
 }
