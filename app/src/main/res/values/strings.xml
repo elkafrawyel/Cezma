@@ -10,4 +10,10 @@
     <string name="profile_page">profile Page</string>
     <string name="upgradeAccount">Upgrade Account</string>
     <string name="payment">Payment</string>
+    <string name="contactUs">Contact Us</string>
+    <string name="subject">Subject</string>
+    <string name="email">Email</string>
+    <string name="send_message">send Message</string>
+    <string name="typeMessage">Type your message</string>
+    <string name="followingShop">Following Shops</string>
 </resources>

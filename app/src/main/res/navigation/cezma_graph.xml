@@ -143,7 +143,11 @@
         android:id="@+id/followingShopsFragment"
         android:name="com.cezma.store.views.mainActivity.followingShops.FollowingShopsFragment"
         android:label="following_shops_fragment"
-        tools:layout="@layout/following_shops_fragment" />
+        tools:layout="@layout/following_shops_fragment" >
+        <action
+            android:id="@+id/action_followingShopsFragment_to_shopDetailsFragment"
+            app:destination="@id/shopDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/howToOpenShopFragment"
         android:name="com.cezma.store.views.mainActivity.how_to_open_shop.HowToOpenShopFragment"
@@ -229,5 +233,10 @@
             android:id="@+id/action_productsFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/shopDetailsFragment"
+        android:name="com.cezma.store.views.mainActivity.shopDetails.ShopDetailsFragment"
+        android:label="shop_details_fragment"
+        tools:layout="@layout/shop_details_fragment" />
 
 </navigation>
