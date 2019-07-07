@@ -1,13 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.mainActivity.auth.signUp.SignUpFragment">
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:scaleType="fitXY"
+        android:src="@drawable/auth_bg" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="54dp"
+                android:src="@drawable/logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/FirstNameEt"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/auth_bg_rounded"
+                android:drawableStart="@drawable/ic_perm_identity_black_24dp"
+                android:drawablePadding="12dp"
+                android:hint="@string/signUpFirstName"
+                android:inputType="text"
+                android:paddingStart="18dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/logo" />
+
+            <EditText
+                android:id="@+id/LastNameEt"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/auth_bg_rounded"
+                android:drawableStart="@drawable/ic_perm_identity_black_24dp"
+                android:drawablePadding="12dp"
+                android:hint="@string/signUpLastName"
+                android:inputType="text"
+                android:paddingStart="18dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
+                app:layout_constraintStart_toStartOf="@id/FirstNameEt"
+                app:layout_constraintTop_toBottomOf="@id/FirstNameEt" />
+
+
+            <EditText
+                android:id="@+id/EmailEt"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/auth_bg_rounded"
+                android:drawableStart="@drawable/email"
+                android:drawablePadding="12dp"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="18dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
+                app:layout_constraintStart_toStartOf="@id/FirstNameEt"
+                app:layout_constraintTop_toBottomOf="@id/LastNameEt" />
+
+
+            <EditText
+                android:id="@+id/PhoneNumberEt"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/auth_bg_rounded"
+                android:drawableStart="@drawable/ic_call_black_24dp"
+                android:drawablePadding="12dp"
+                android:hint="@string/phone"
+                android:inputType="phone"
+                android:paddingStart="18dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
+                app:layout_constraintStart_toStartOf="@id/FirstNameEt"
+                app:layout_constraintTop_toBottomOf="@id/LastNameEt" />
+
+            <Spinner
+                android:id="@+id/signUpCountrySpinner"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/spinner_bg"
+                android:spinnerMode="dialog"
+                app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
+                app:layout_constraintStart_toStartOf="@id/FirstNameEt"
+                app:layout_constraintTop_toBottomOf="@id/PhoneNumberEt" />
+
+            <Spinner
+                android:id="@+id/signUpGovernorateSpinner"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/spinner_bg"
+                android:spinnerMode="dialog"
+                app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
+                app:layout_constraintStart_toStartOf="@id/FirstNameEt"
+                app:layout_constraintTop_toBottomOf="@id/signUpCountrySpinner" />
+
+            <EditText
+                android:id="@+id/passwordEt"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/auth_bg_rounded"
+                android:drawableStart="@drawable/ic_lock_black_24dp"
+                android:drawablePadding="12dp"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:paddingStart="18dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
+                app:layout_constraintStart_toStartOf="@id/FirstNameEt"
+                app:layout_constraintTop_toBottomOf="@id/signUpGovernorateSpinner" />
+
+            <EditText
+                android:id="@+id/confirmPasswordEt"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/auth_bg_rounded"
+                android:drawableStart="@drawable/ic_lock_black_24dp"
+                android:drawablePadding="12dp"
+                android:hint="@string/confirm_password"
+                android:inputType="textPassword"
+                android:paddingStart="18dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
+                app:layout_constraintStart_toStartOf="@id/FirstNameEt"
+                app:layout_constraintTop_toBottomOf="@id/passwordEt" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/signUpMbtn"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/sign_up"
+                android:textAllCaps="true"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                app:cornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
+                app:layout_constraintStart_toStartOf="@id/FirstNameEt"
+                app:layout_constraintTop_toBottomOf="@id/confirmPasswordEt" />
+
+            <TextView
+                android:id="@+id/signUpHaveAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:text="@string/signUpHaveAccount"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/signUpSignInTv"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="@id/FirstNameEt"
+                app:layout_constraintTop_toBottomOf="@id/signUpMbtn" />
+
+            <TextView
+                android:id="@+id/signUpSignInTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_in"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/signUpHaveAccount"
+                app:layout_constraintTop_toTopOf="@id/signUpHaveAccount" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </FrameLayout>

@@ -7,4 +7,5 @@
     <color name="colorTextOnViewBlue">#007DFF</color>
     <color name="colorTextOnViewWhite">#FFFFFF</color>
     <color name="colorSideMenuBgColor">#545454</color>
+    <color name="colorFacebook">#4266B2</color>
 </resources>

@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 
 import com.cezma.store.R
+import kotlinx.android.synthetic.main.forget_password_fragment.*
 
 class ForgetPasswordFragment : Fragment() {
 
@@ -27,7 +29,9 @@ class ForgetPasswordFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ForgetPasswordViewModel::class.java)
-        // TODO: Use the ViewModel
+        backForgotPassword.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
 }
