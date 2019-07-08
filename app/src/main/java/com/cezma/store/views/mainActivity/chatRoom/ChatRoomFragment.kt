@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 
 import com.cezma.store.R
 
@@ -27,7 +28,10 @@ class ChatRoomFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ChatRoomViewModel::class.java)
-        // TODO: Use the ViewModel
+        arguments?.let {
+            val userId = ChatRoomFragmentArgs.fromBundle(it).userId
+            Toast.makeText(context, userId, Toast.LENGTH_LONG).show()
+        }
     }
 
 }

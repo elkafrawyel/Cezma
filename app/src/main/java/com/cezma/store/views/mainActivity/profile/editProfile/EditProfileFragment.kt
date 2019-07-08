@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import androidx.navigation.fragment.findNavController
 
 import com.cezma.store.R
+import kotlinx.android.synthetic.main.edit_profile_fragment.*
 
 class EditProfileFragment : Fragment() {
 
@@ -27,7 +30,15 @@ class EditProfileFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(EditProfileViewModel::class.java)
-        // TODO: Use the ViewModel
+        ArrayAdapter.createFromResource(requireContext(), R.array.gover_array, android.R.layout.simple_spinner_item)
+            .also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                signUpGovernorateSpinner.adapter = adapter
+            }
+
+        editProfileBackImgv.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
 }

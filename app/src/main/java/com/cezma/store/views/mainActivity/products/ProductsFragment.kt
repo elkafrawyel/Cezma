@@ -6,13 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 
 import com.cezma.store.R
 import com.cezma.store.views.mainActivity.home.sub_home_fragment.AdapterProducts
+import com.chad.library.adapter.base.BaseQuickAdapter
 import kotlinx.android.synthetic.main.products_fragment.*
 
-class ProductsFragment : Fragment() {
+class ProductsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
+
 
     companion object {
         fun newInstance() = ProductsFragment()
@@ -54,6 +57,7 @@ class ProductsFragment : Fragment() {
         products.add("a")
 
         adapterProducts.replaceData(products)
+        adapterProducts.onItemChildClickListener = this
         productsRv.adapter = adapterProducts
         productsRv.setHasFixedSize(true)
 
@@ -65,6 +69,10 @@ class ProductsFragment : Fragment() {
         searchTv.setOnClickListener {
             findNavController().navigate(R.id.action_productsFragment_to_searchFragment)
         }
+    }
+
+    override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
+        findNavController().navigate(R.id.action_productsFragment_to_productDetailsFragment)
     }
 
 }

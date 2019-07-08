@@ -20,8 +20,8 @@
     <string name="password">Password</string>
     <string name="forgot_your_password">Forgot your password ?</string>
     <string name="or">OR</string>
-    <string name="signUpFirstName">First Name</string>
-    <string name="signUpLastName">Last Name</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
     <string name="phone">Phone Number</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="signUpHaveAccount">Already have account, </string>
@@ -31,6 +31,12 @@
     <string name="we_just_need_your_registered_email_to_send_your_reset_password">We just need your registered email to send your reset password</string>
     <string name="rest_password">Rest Password</string>
     <string name="back">Back</string>
+    <string name="Governorate">Governorate</string>
+    <string name="editProfile">Edit Profile</string>
+    <string name="attributes">Attributes</string>
+    <string name="production_date">Production Date</string>
+    <string name="model">Model</string>
+    <string name="description">Description</string>
 
     <string-array name="country_array">
         <item>Egypt</item>

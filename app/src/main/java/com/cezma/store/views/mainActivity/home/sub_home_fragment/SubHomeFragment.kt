@@ -6,11 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.RecyclerView
 import com.cezma.store.R
+import com.cezma.store.views.mainActivity.MainActivity
+import com.cezma.store.views.mainActivity.home.MainHomeFragmentDirections
+import com.chad.library.adapter.base.BaseQuickAdapter
 import kotlinx.android.synthetic.main.sub_home_fragment.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -39,10 +45,11 @@ class SubHomeFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(SubHomeFragmentViewModel::class.java)
         bannerSliderVp.adapter = imageSliderAdapter
         val images = ArrayList<String>()
-        images.add("https://public-v2links.adobecc.com/1968c231-767d-4049-7540-7fb9f5a1e33d/component?params=component_id:82183b58-1f89-4a23-b141-3f7274937b67&params=version:0&token=1562063168_da39a3ee_22367b3f1f36885d0bcd9caca7114ffa871a2fbc&api_key=CometServer1")
-        images.add("https://public-v2links.adobecc.com/1968c231-767d-4049-7540-7fb9f5a1e33d/component?params=component_id:82183b58-1f89-4a23-b141-3f7274937b67&params=version:0&token=1562063168_da39a3ee_22367b3f1f36885d0bcd9caca7114ffa871a2fbc&api_key=CometServer1")
-        images.add("https://public-v2links.adobecc.com/1968c231-767d-4049-7540-7fb9f5a1e33d/component?params=component_id:82183b58-1f89-4a23-b141-3f7274937b67&params=version:0&token=1562063168_da39a3ee_22367b3f1f36885d0bcd9caca7114ffa871a2fbc&api_key=CometServer1")
-        images.add("https://public-v2links.adobecc.com/1968c231-767d-4049-7540-7fb9f5a1e33d/component?params=component_id:82183b58-1f89-4a23-b141-3f7274937b67&params=version:0&token=1562063168_da39a3ee_22367b3f1f36885d0bcd9caca7114ffa871a2fbc&api_key=CometServer1")
+        images.add("https://www.lenovo.com/medias/lenovo-laptop-thinkpad-x1-extreme-hero.png?context=bWFzdGVyfHJvb3R8NzkyMDF8aW1hZ2UvcG5nfGg2NC9oZDUvOTk4NjE1MTg0MTgyMi5wbmd8NDNhZGJlZTg2MjAwMmYyYTcyMDQ0NzIxNDIwODRiOWIxODliODY5ZWQ5NmZiOWQ0MTQ5MzM0YjIxMDJhZTFlMQ")
+        images.add("https://www.lenovo.com/medias/lenovo-laptop-thinkpad-x1-extreme-hero.png?context=bWFzdGVyfHJvb3R8NzkyMDF8aW1hZ2UvcG5nfGg2NC9oZDUvOTk4NjE1MTg0MTgyMi5wbmd8NDNhZGJlZTg2MjAwMmYyYTcyMDQ0NzIxNDIwODRiOWIxODliODY5ZWQ5NmZiOWQ0MTQ5MzM0YjIxMDJhZTFlMQ")
+        images.add("https://www.lenovo.com/medias/lenovo-laptop-thinkpad-x1-extreme-hero.png?context=bWFzdGVyfHJvb3R8NzkyMDF8aW1hZ2UvcG5nfGg2NC9oZDUvOTk4NjE1MTg0MTgyMi5wbmd8NDNhZGJlZTg2MjAwMmYyYTcyMDQ0NzIxNDIwODRiOWIxODliODY5ZWQ5NmZiOWQ0MTQ5MzM0YjIxMDJhZTFlMQ")
+        images.add("https://www.lenovo.com/medias/lenovo-laptop-thinkpad-x1-extreme-hero.png?context=bWFzdGVyfHJvb3R8NzkyMDF8aW1hZ2UvcG5nfGg2NC9oZDUvOTk4NjE1MTg0MTgyMi5wbmd8NDNhZGJlZTg2MjAwMmYyYTcyMDQ0NzIxNDIwODRiOWIxODliODY5ZWQ5NmZiOWQ0MTQ5MzM0YjIxMDJhZTFlMQ")
+        images.add("https://www.lenovo.com/medias/lenovo-laptop-thinkpad-x1-extreme-hero.png?context=bWFzdGVyfHJvb3R8NzkyMDF8aW1hZ2UvcG5nfGg2NC9oZDUvOTk4NjE1MTg0MTgyMi5wbmd8NDNhZGJlZTg2MjAwMmYyYTcyMDQ0NzIxNDIwODRiOWIxODliODY5ZWQ5NmZiOWQ0MTQ5MzM0YjIxMDJhZTFlMQ")
         imageSliderAdapter.submitList(images)
 
         val categories = ArrayList<String>()
@@ -85,7 +92,13 @@ class SubHomeFragment : Fragment() {
         products.add("A")
         productsRv.setHasFixedSize(true)
         productAdapter.replaceData(products)
+        productAdapter.setOnItemChildClickListener { adapter, view, position ->
+            val action =
+                MainHomeFragmentDirections.actionMainHomeFragmentToProductDetailsFragment("test")
+            Navigation.findNavController(activity as MainActivity,R.id.fragment).navigate(action)
+        }
         productsRv.adapter = productAdapter
+
     }
 
     override fun onResume() {

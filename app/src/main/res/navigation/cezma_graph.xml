@@ -54,17 +54,19 @@
         <action
             android:id="@+id/action_mainHomeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_chatRoomFragment"
+            app:destination="@id/chatRoomFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/messagesFragment"
         android:name="com.cezma.store.views.mainActivity.home.messages_fragment.MessagesFragment"
         android:label="messages_fragment"
-        tools:layout="@layout/messages_fragment" >
-        <action
-            android:id="@+id/action_messagesFragment_to_chatRoomFragment"
-            app:destination="@id/chatRoomFragment" />
-    </fragment>
+        tools:layout="@layout/messages_fragment" />
 
     <fragment
         android:id="@+id/notificationsFragment"
@@ -85,11 +87,7 @@
         android:id="@+id/subHomeFragment"
         android:name="com.cezma.store.views.mainActivity.home.sub_home_fragment.SubHomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/sub_home_fragment" >
-        <action
-            android:id="@+id/action_subHomeFragment_to_productDetailsFragment"
-            app:destination="@id/productDetailsFragment" />
-    </fragment>
+        tools:layout="@layout/sub_home_fragment" />
     <fragment
         android:id="@+id/aboutUsFragment"
         android:name="com.cezma.store.views.mainActivity.aboutUs.AboutUsFragment"
@@ -118,7 +116,11 @@
         android:id="@+id/chatRoomFragment"
         android:name="com.cezma.store.views.mainActivity.chatRoom.ChatRoomFragment"
         android:label="chat_room_fragment"
-        tools:layout="@layout/chat_room_fragment" />
+        tools:layout="@layout/chat_room_fragment" >
+        <argument
+            android:name="userId"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/contactUsFragment"
         android:name="com.cezma.store.views.mainActivity.contactUs.ContactUsFragment"
@@ -162,7 +164,11 @@
         android:id="@+id/productDetailsFragment"
         android:name="com.cezma.store.views.mainActivity.productDetails.ProductDetailsFragment"
         android:label="product_details_fragment"
-        tools:layout="@layout/product_details_fragment" />
+        tools:layout="@layout/product_details_fragment" >
+        <argument
+            android:name="productId"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.cezma.store.views.mainActivity.search.SearchFragment"

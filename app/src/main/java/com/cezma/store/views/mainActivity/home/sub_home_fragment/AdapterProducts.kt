@@ -8,7 +8,7 @@ class AdapterProducts : BaseQuickAdapter<String, BaseViewHolder>(R.layout.produc
 
     override fun convert(helper: BaseViewHolder, item: String) {
 
-
+        helper.addOnClickListener(R.id.productImgv)
     }
 
 }
