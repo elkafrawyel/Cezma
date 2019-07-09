@@ -59,9 +59,9 @@ class ShopDetailsFragment : Fragment() {
         productsRv.setHasFixedSize(true)
 
 
-//        shopDetailsBackImgv.setOnClickListener {
-//            findNavController().navigateUp()
-//        }
+        backImgv.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
 }

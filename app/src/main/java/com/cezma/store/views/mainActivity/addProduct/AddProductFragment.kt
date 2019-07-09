@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 
 import com.cezma.store.R
+import kotlinx.android.synthetic.main.add_product_fragment.*
 
 class AddProductFragment : Fragment() {
 
@@ -27,7 +29,36 @@ class AddProductFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(AddProductViewModel::class.java)
-        // TODO: Use the ViewModel
+        ArrayAdapter.createFromResource(requireContext(), R.array.gover_array, android.R.layout.simple_spinner_item)
+            .also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                modelSpinner.adapter = adapter
+            }
+
+        ArrayAdapter.createFromResource(requireContext(), R.array.gover_array, android.R.layout.simple_spinner_item)
+            .also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                governorateSpinner.adapter = adapter
+            }
+
+        ArrayAdapter.createFromResource(requireContext(), R.array.gover_array, android.R.layout.simple_spinner_item)
+            .also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                citySpinner.adapter = adapter
+            }
+
+
+        ArrayAdapter.createFromResource(requireContext(), R.array.gover_array, android.R.layout.simple_spinner_item)
+            .also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                categorySpinner.adapter = adapter
+            }
+
+        ArrayAdapter.createFromResource(requireContext(), R.array.gover_array, android.R.layout.simple_spinner_item)
+            .also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                subCategorySpinner.adapter = adapter
+            }
     }
 
 }

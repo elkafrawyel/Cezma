@@ -37,6 +37,27 @@
     <string name="production_date">Production Date</string>
     <string name="model">Model</string>
     <string name="description">Description</string>
+    <string name="addShop">Add Shop</string>
+    <string name="shopName">Shop Name</string>
+    <string name="addShopDescription">Type 3000 character</string>
+    <string name="addCover">Add Cover</string>
+    <string name="addProfile">Add Profile</string>
+    <string name="documentingTheShop">Documenting The Shop</string>
+    <string name="you_can_upload_documents_to_your_shop">You can upload documents your shop.</string>
+    <string name="add_shop">Add Shop</string>
+    <string name="addProduct">Add Product</string>
+    <string name="productName">Product Name</string>
+    <string name="addProductDescription">Type 3000 character</string>
+    <string name="City">City</string>
+    <string name="Category">Category</string>
+    <string name="SubCategory">SubCategory</string>
+    <string name="addVideo">Add Video</string>
+    <string name="addImage">Add Image</string>
+    <string name="add_Product">Add Product</string>
+    <string name="verify_mobile_number">Verify Mobile Number</string>
+    <string name="verification_code_has_been_sent_to_you_on_your_mobile_number_please_enter_it_below">verification code has been sent to you on your mobile number. please enter it below</string>
+    <string name="enter_the_code_you_received">Enter the code you received</string>
+    <string name="didn_t_receive_verification_code">Didn\'t receive verification code?</string>
 
     <string-array name="country_array">
         <item>Egypt</item>
