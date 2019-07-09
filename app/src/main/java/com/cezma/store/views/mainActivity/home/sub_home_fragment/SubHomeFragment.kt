@@ -93,12 +93,15 @@ class SubHomeFragment : Fragment() {
         productsRv.setHasFixedSize(true)
         productAdapter.replaceData(products)
         productAdapter.setOnItemChildClickListener { adapter, view, position ->
-            val action =
-                MainHomeFragmentDirections.actionMainHomeFragmentToProductDetailsFragment("test")
-            Navigation.findNavController(activity as MainActivity,R.id.fragment).navigate(action)
+//            val action =
+//                MainHomeFragmentDirections.actionMainHomeFragmentToProductDetailsFragment("test")
+//            Navigation.findNavController(activity as MainActivity,R.id.fragment).navigate(action)
         }
         productsRv.adapter = productAdapter
 
+        addProductFab.setOnClickListener {
+            Navigation.findNavController(activity as MainActivity,R.id.fragment).navigate(R.id.action_mainHomeFragment_to_addProductFragment)
+        }
     }
 
     override fun onResume() {
