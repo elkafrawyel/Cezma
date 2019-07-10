@@ -1,4 +1,4 @@
-package com.cezma.store.views.mainActivity.aboutUs
+package com.cezma.store.views.mainActivity.terms
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -12,27 +12,28 @@ import android.webkit.WebViewClient
 import androidx.navigation.fragment.findNavController
 
 import com.cezma.store.R
-import kotlinx.android.synthetic.main.about_us_fragment.*
+import kotlinx.android.synthetic.main.trems_and_conditions_fragment.*
 
-class AboutUsFragment : Fragment() {
+class TermsAndConditionsFragment : Fragment() {
 
     companion object {
-        fun newInstance() = AboutUsFragment()
+        fun newInstance() = TermsAndConditionsFragment()
     }
 
-    private lateinit var viewModel: AboutUsViewModel
-    private val aboutUsUrl = "http://r-z.store/privacyar.php"
-
+    private lateinit var viewModel: TremsAndConditionsViewModel
+    private val TermsUrl = "http://r-z.store/privacyar.php"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.about_us_fragment, container, false)
+        return inflater.inflate(R.layout.trems_and_conditions_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(AboutUsViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(TremsAndConditionsViewModel::class.java)
+
+
         //secure the screen prevent Screen Shots
         requireActivity().window.setFlags(
             WindowManager.LayoutParams.FLAG_SECURE,
@@ -40,14 +41,14 @@ class AboutUsFragment : Fragment() {
 
         backImgv.setOnClickListener { findNavController().navigateUp() }
 
-        aboutUsWv.loadUrl(aboutUsUrl)
+        termsWv.loadUrl(TermsUrl)
 
-        aboutUsWv.setOnLongClickListener(View.OnLongClickListener {
+        termsWv.setOnLongClickListener(View.OnLongClickListener {
             // For final release of your app, comment the toast notification
             true
         })
 
-        aboutUsWv.webViewClient = object : WebViewClient() {
+        termsWv.webViewClient = object : WebViewClient() {
 
             override fun onPageFinished(view: WebView, url: String) {
                 loading.visibility = View.GONE

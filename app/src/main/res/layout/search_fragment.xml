@@ -1,13 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.mainActivity.search.SearchFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
 
-</FrameLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/backImgv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/searchTv" />
+
+            <TextView
+                android:id="@+id/searchTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/search"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+        android:id="@+id/searchEt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/auth_bg_rounded"
+        android:gravity="center"
+        android:hint="@string/search_your_product"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <Spinner
+        android:id="@+id/searchCategorySpinner"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/spinner_bg"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="@id/searchEt"
+        app:layout_constraintStart_toStartOf="@id/searchEt"
+        app:layout_constraintTop_toBottomOf="@id/searchEt" />
+
+    <Spinner
+        android:id="@+id/searchSubCategorySpinner"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/spinner_bg"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="@id/searchEt"
+        app:layout_constraintStart_toStartOf="@id/searchEt"
+        app:layout_constraintTop_toBottomOf="@id/searchCategorySpinner" />
+
+    <Spinner
+        android:id="@+id/searchCountrySpinner"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/spinner_bg"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="@id/searchEt"
+        app:layout_constraintStart_toStartOf="@id/searchEt"
+        app:layout_constraintTop_toBottomOf="@id/searchSubCategorySpinner" />
+
+    <Spinner
+        android:id="@+id/searchGovernorateSpinner"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/spinner_bg"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="@id/searchEt"
+        app:layout_constraintStart_toStartOf="@id/searchEt"
+        app:layout_constraintTop_toBottomOf="@id/searchCountrySpinner" />
+
+    <TextView
+        android:id="@+id/priceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/price"
+        android:textAppearance="?attr/textAppearanceBody2"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintStart_toStartOf="@id/searchEt"
+        app:layout_constraintTop_toBottomOf="@id/searchGovernorateSpinner" />
+
+
+    <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+        android:id="@+id/seekbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:bar_color="@android:color/darker_gray"
+        app:bar_highlight_color="@color/colorPrimary"
+        app:corner_radius="10"
+        app:data_type="_integer"
+        app:gap="0"
+        app:layout_constraintEnd_toEndOf="@id/searchEt"
+        app:layout_constraintStart_toStartOf="@id/searchEt"
+        app:layout_constraintTop_toBottomOf="@id/minTv"
+        app:left_thumb_color="@color/colorPrimary"
+        app:left_thumb_color_pressed="@color/colorAccent"
+        app:right_thumb_color="@color/colorPrimary"
+        app:right_thumb_color_pressed="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/startTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textAppearance="?attr/textAppearanceCaption"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/seekbar"
+        app:layout_constraintTop_toBottomOf="@id/seekbar" />
+
+    <TextView
+        android:id="@+id/endTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textAppearance="?attr/textAppearanceCaption"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="@id/seekbar"
+        app:layout_constraintTop_toBottomOf="@id/seekbar" />
+
+    <TextView
+        android:id="@+id/minTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginEnd="18dp"
+        android:text=""
+        android:textAppearance="?attr/textAppearanceBody2"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@id/priceTv"
+        app:layout_constraintStart_toStartOf="@id/seekbar"
+        app:layout_constraintEnd_toStartOf="@id/maxTv"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        />
+
+    <TextView
+        android:id="@+id/maxTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text=""
+        android:textAppearance="?attr/textAppearanceBody2"
+        android:textColor="@android:color/holo_green_dark"
+        app:layout_constraintStart_toEndOf="@id/minTv"
+        app:layout_constraintEnd_toEndOf="@id/seekbar"
+        app:layout_constraintBottom_toBottomOf="@id/minTv" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/searchMbtn"
+        style="@style/MaterialAlertDialog.MaterialComponents.Title.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/search"
+        android:textAllCaps="true"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        app:cornerRadius="20dp"
+        app:icon="@drawable/ic_search_white_24dp"
+        app:layout_constraintEnd_toEndOf="@id/searchEt"
+        app:layout_constraintStart_toStartOf="@id/searchEt"
+        app:layout_constraintTop_toBottomOf="@id/seekbar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

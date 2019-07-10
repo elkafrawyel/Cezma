@@ -384,6 +384,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:id="@+id/messageFL"
             android:background="@drawable/product_details_message_rounded">
 
             <ImageView

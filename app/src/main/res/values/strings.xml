@@ -58,6 +58,12 @@
     <string name="verification_code_has_been_sent_to_you_on_your_mobile_number_please_enter_it_below">verification code has been sent to you on your mobile number. please enter it below</string>
     <string name="enter_the_code_you_received">Enter the code you received</string>
     <string name="didn_t_receive_verification_code">Didn\'t receive verification code?</string>
+    <string name="search_your_product">Search your product</string>
+    <string name="price">Price</string>
+    <string name="search">Search</string>
+    <string name="terms">Terms of service</string>
+    <string name="privacy">Privacy Policy</string>
+    <string name="aboutUs">About us</string>
 
     <string-array name="country_array">
         <item>Egypt</item>
@@ -70,4 +76,9 @@
         <item>Alex</item>
         <item>Cairo</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="say_something">Say something...</string>
+    <string name="send">Send</string>
 </resources>

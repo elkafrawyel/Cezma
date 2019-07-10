@@ -15,22 +15,22 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
-
+        <activity
+            android:name=".views.mainActivity.player.PlayerActivity"
+            android:screenOrientation="sensorLandscape"/>
         <activity
             android:name=".views.splashActivity.SplashActivity"
-            android:theme="@style/splash"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".views.mainActivity.MainActivity"
             android:screenOrientation="portrait" />
-
     </application>
 
 </manifest>

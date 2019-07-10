@@ -1,5 +1,6 @@
 package com.cezma.store.views.mainActivity.productDetails
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 
 import com.cezma.store.R
 import com.cezma.store.views.mainActivity.home.sub_home_fragment.ImageSliderAdapter
+import com.cezma.store.views.mainActivity.player.PlayerActivity
 import kotlinx.android.synthetic.main.product_details_fragment.*
 
 class ProductDetailsFragment : Fragment() {
@@ -49,6 +51,13 @@ class ProductDetailsFragment : Fragment() {
         imageSliderAdapter.submitList(images)
 
         productDetailsBackImgv.setOnClickListener { findNavController().navigateUp() }
+
+//        productPlayVideoImgv.setOnClickListener { startActivity(Intent(context, PlayerActivity::class.java)) }
+
+        messageFL.setOnClickListener {
+            val action = ProductDetailsFragmentDirections.actionProductDetailsFragmentToChatRoomFragment("test")
+            findNavController().navigate(action)
+        }
     }
 
 }

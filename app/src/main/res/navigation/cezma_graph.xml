@@ -168,6 +168,9 @@
         <argument
             android:name="productId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_chatRoomFragment"
+            app:destination="@id/chatRoomFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -188,7 +191,7 @@
     </fragment>
     <fragment
         android:id="@+id/tremsAndConditionsFragment"
-        android:name="com.cezma.store.views.mainActivity.terms.TremsAndConditionsFragment"
+        android:name="com.cezma.store.views.mainActivity.terms.TermsAndConditionsFragment"
         android:label="trems_and_conditions_fragment"
         tools:layout="@layout/trems_and_conditions_fragment" />
     <fragment
