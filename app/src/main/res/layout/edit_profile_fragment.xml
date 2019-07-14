@@ -90,100 +90,106 @@
     </androidx.appcompat.widget.Toolbar>
 
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:padding="16dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/firstName"
-            android:textColor="@android:color/darker_gray" />
-
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/auth_bg_rounded"
-            android:drawableStart="@drawable/ic_perm_identity_black_24dp"
-            android:drawablePadding="12dp"
-            android:inputType="text"
-            android:text="Mahmoud"
-            android:textAppearance="?attr/textAppearanceBody1"
-            android:textColor="@android:color/black" />
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/lastName"
-            android:textColor="@android:color/darker_gray" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/auth_bg_rounded"
-            android:drawableStart="@drawable/ic_perm_identity_black_24dp"
-            android:drawablePadding="12dp"
-            android:inputType="text"
-            android:text="Ashraf"
-            android:textAppearance="?attr/textAppearanceBody1"
-            android:textColor="@android:color/black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/firstName"
+                android:textColor="@android:color/darker_gray" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/phone"
-            android:textColor="@android:color/darker_gray" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/auth_bg_rounded"
+                android:drawableStart="@drawable/ic_perm_identity_black_24dp"
+                android:drawablePadding="12dp"
+                android:inputType="text"
+                android:text="Mahmoud"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@android:color/black" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/auth_bg_rounded"
-            android:drawableStart="@drawable/ic_call_black_24dp"
-            android:drawablePadding="12dp"
-            android:inputType="phone"
-            android:text="01019744661"
-            android:textAppearance="?attr/textAppearanceBody1"
-            android:textColor="@android:color/black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/lastName"
+                android:textColor="@android:color/darker_gray" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/email"
-            android:textColor="@android:color/darker_gray" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/auth_bg_rounded"
+                android:drawableStart="@drawable/ic_perm_identity_black_24dp"
+                android:drawablePadding="12dp"
+                android:inputType="text"
+                android:text="Ashraf"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@android:color/black" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/auth_bg_rounded"
-            android:drawableStart="@drawable/email"
-            android:drawablePadding="12dp"
-            android:inputType="textEmailAddress"
-            android:text="mahmoud@gmail.com"
-            android:textAppearance="?attr/textAppearanceBody1"
-            android:textColor="@android:color/black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/phone"
+                android:textColor="@android:color/darker_gray" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/Governorate"
-            android:textColor="@android:color/darker_gray" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/auth_bg_rounded"
+                android:drawableStart="@drawable/ic_call_black_24dp"
+                android:drawablePadding="12dp"
+                android:inputType="phone"
+                android:text="01019744661"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@android:color/black" />
 
-        <Spinner
-            android:id="@+id/signUpGovernorateSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/spinner_bg"
-            android:spinnerMode="dialog" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/email"
+                android:textColor="@android:color/darker_gray" />
 
-    </LinearLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/auth_bg_rounded"
+                android:drawableStart="@drawable/email"
+                android:drawablePadding="12dp"
+                android:inputType="textEmailAddress"
+                android:text="mahmoud@gmail.com"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/Governorate"
+                android:textColor="@android:color/darker_gray" />
+
+            <Spinner
+                android:id="@+id/signUpGovernorateSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/spinner_bg"
+                android:spinnerMode="dialog" />
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

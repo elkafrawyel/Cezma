@@ -88,7 +88,7 @@
                 android:layout_marginTop="8dp"
                 android:drawableStart="@drawable/filter"
                 android:drawablePadding="8dp"
-                android:text="Last added"
+                android:text="@string/last_added"
                 app:layout_constraintStart_toStartOf="@id/categoriesTv"
                 app:layout_constraintTop_toBottomOf="@id/categoriesRv" />
 
@@ -106,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:src="@drawable/arrangeicon"
+                android:src="@drawable/arrange_icon"
                 app:layout_constraintEnd_toStartOf="@id/listImgv"
                 app:layout_constraintTop_toTopOf="@id/filterTv" />
 

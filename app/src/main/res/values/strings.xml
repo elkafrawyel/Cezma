@@ -64,6 +64,16 @@
     <string name="terms">Terms of service</string>
     <string name="privacy">Privacy Policy</string>
     <string name="aboutUs">About us</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="say_something">Say something</string>
+    <string name="send">Send</string>
+    <string name="home">Home</string>
+    <string name="how_to_open_your_shop">How to open your shop</string>
+    <string name="logout">Logout</string>
+    <string name="last_added">Last added</string>
+    <string name="submit">Submit</string>
+    <string name="resend_in_60_sec">Resend in 60 sec</string>
+
 
     <string-array name="country_array">
         <item>Egypt</item>
@@ -77,8 +87,4 @@
         <item>Cairo</item>
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="say_something">Say something...</string>
-    <string name="send">Send</string>
 </resources>

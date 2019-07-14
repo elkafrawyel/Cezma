@@ -174,7 +174,7 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
                 findNavController().navigate(R.id.action_mainHomeFragment_to_aboutUsFragment)
             }
             R.id.nav_LogOut -> {
-//                findNavController().navigate(R.id.action_mainHomeFragment_to_loginFragment)
+                findNavController().navigate(R.id.action_mainHomeFragment_to_loginFragment)
             }
 
         }
