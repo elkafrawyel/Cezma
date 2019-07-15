@@ -52,7 +52,10 @@ class ProductDetailsFragment : Fragment() {
 
         productDetailsBackImgv.setOnClickListener { findNavController().navigateUp() }
 
-//        productPlayVideoImgv.setOnClickListener { startActivity(Intent(context, PlayerActivity::class.java)) }
+        productPlayVideoImgv.setOnClickListener {
+            val url = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+            PlayerActivity.start(context!!, url)
+        }
 
         messageFL.setOnClickListener {
             val action = ProductDetailsFragmentDirections.actionProductDetailsFragmentToChatRoomFragment("test")

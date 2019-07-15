@@ -1,6 +1,8 @@
 package com.cezma.store.views.mainActivity.player
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.Bundle
@@ -31,6 +33,20 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener, VideoListener 
     private var BANDWIDTH = DefaultBandwidthMeter()
     var player: SimpleExoPlayer? = null
 
+    companion object {
+
+        const val videoUrlExtra = "videoUrl"
+
+        fun start(context: Context, videoUrl: String) {
+            val intent = Intent(context, PlayerActivity::class.java)
+            intent.putExtra(
+                videoUrlExtra,
+                videoUrl
+            )
+            context.startActivity(intent)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
@@ -41,14 +57,29 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener, VideoListener 
         initiatePlayer()
 
 
-        val mUrl = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-        play(mUrl)
+        val mUrl = intent?.extras?.getString(videoUrlExtra,"")
+
+        play(mUrl!!)
 
         backImgv.setOnClickListener {
+            release()
             finish()
         }
     }
 
+
+    override fun onDestroy() {
+        super.onDestroy()
+        release()
+    }
+    private fun release() {
+        if (player != null) {
+            player?.removeListener(this)
+            player?.removeVideoListener(this)
+            player?.release()
+            player = null
+        }
+    }
     override fun onStart() {
         hideSystemUI()
         super.onStart()
