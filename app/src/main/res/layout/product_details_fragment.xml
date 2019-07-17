@@ -21,7 +21,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/productDetailsBackImgv"
+                android:id="@+id/backImgv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/back"
@@ -44,7 +44,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/productDetailsFavImgv"
                 app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintStart_toEndOf="@id/productDetailsBackImgv"
+                app:layout_constraintStart_toEndOf="@id/backImgv"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -108,7 +108,6 @@
                 app:piv_selectedColor="@color/colorTextOnViewBlue"
                 app:piv_unselectedColor="@android:color/darker_gray"
                 app:piv_viewPager="@id/bannerSliderVp" />
-
 
             <ImageView
                 android:id="@+id/productPlayVideoImgv"

@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
         <activity
-            android:name=".views.mainActivity.player.PlayerActivity"
+            android:name=".views.playerActivity.PlayerActivity"
             android:screenOrientation="sensorLandscape"/>
         <activity
             android:name=".views.splashActivity.SplashActivity"

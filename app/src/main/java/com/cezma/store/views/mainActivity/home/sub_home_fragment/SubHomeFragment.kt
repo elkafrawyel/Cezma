@@ -8,15 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
-import androidx.recyclerview.widget.RecyclerView
 import com.cezma.store.R
 import com.cezma.store.views.mainActivity.MainActivity
 import com.cezma.store.views.mainActivity.home.MainHomeFragmentDirections
-import com.chad.library.adapter.base.BaseQuickAdapter
 import kotlinx.android.synthetic.main.sub_home_fragment.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -30,7 +26,7 @@ class SubHomeFragment : Fragment() {
 
     private lateinit var viewModel: SubHomeFragmentViewModel
     private var timer: Timer? = null
-    private val imageSliderAdapter = ImageSliderAdapter()
+    private val imageSliderAdapter = HomeImageSliderAdapter()
     private val productAdapter = AdapterProducts()
     private val categoriesAdapter = AdapterCategories()
     override fun onCreateView(

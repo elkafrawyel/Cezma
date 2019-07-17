@@ -171,6 +171,9 @@
         <action
             android:id="@+id/action_productDetailsFragment_to_chatRoomFragment"
             app:destination="@id/chatRoomFragment" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_fullScreenSliderFragment"
+            app:destination="@id/fullScreenSliderFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -247,5 +250,10 @@
         android:name="com.cezma.store.views.mainActivity.shopDetails.ShopDetailsFragment"
         android:label="shop_details_fragment"
         tools:layout="@layout/shop_details_fragment" />
+    <fragment
+        android:id="@+id/fullScreenSliderFragment"
+        android:name="com.cezma.store.views.mainActivity.fullScreenSlider.FullScreenSliderFragment"
+        android:label="fragment_full_screen_slider"
+        tools:layout="@layout/fragment_full_screen_slider" />
 
 </navigation>

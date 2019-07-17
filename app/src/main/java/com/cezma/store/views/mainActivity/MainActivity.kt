@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.cezma.store.R
 import com.cezma.store.utiles.Constants
+import com.cezma.store.utiles.Injector
 import com.cezma.store.utiles.changeLanguage
+import com.cezma.store.utiles.saveLanguage
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +22,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        changeLanguage(Constants.Language.ARABIC)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        changeLanguage()
     }
 }

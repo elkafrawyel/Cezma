@@ -1,4 +1,4 @@
-package com.cezma.store.views.mainActivity.player
+package com.cezma.store.views.playerActivity
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,14 +6,11 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.findNavController
 
 import com.cezma.store.R
+import com.cezma.store.utiles.changeLanguage
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
 import com.google.android.exoplayer2.extractor.ts.DefaultTsPayloadReaderFactory
@@ -52,6 +49,8 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener, VideoListener 
         setContentView(R.layout.activity_player)
 
 
+        changeLanguage()
+
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
 
         initiatePlayer()
@@ -68,10 +67,17 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener, VideoListener 
     }
 
 
+    override fun onResume() {
+        super.onResume()
+        if (player != null) {
+            player?.playWhenReady = true
+        }
+    }
     override fun onDestroy() {
         super.onDestroy()
         release()
     }
+
     private fun release() {
         if (player != null) {
             player?.removeListener(this)
@@ -83,6 +89,13 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener, VideoListener 
     override fun onStart() {
         hideSystemUI()
         super.onStart()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (player != null) {
+            player?.playWhenReady = false
+        }
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {

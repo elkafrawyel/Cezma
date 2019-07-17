@@ -8,7 +8,7 @@ import androidx.viewpager.widget.PagerAdapter
 import com.bumptech.glide.Glide
 import com.cezma.store.R
 
-class ImageSliderAdapter : PagerAdapter() {
+class HomeImageSliderAdapter() : PagerAdapter() {
 
     private val images = ArrayList<String>()
 

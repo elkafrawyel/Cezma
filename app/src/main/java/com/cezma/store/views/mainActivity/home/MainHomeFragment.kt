@@ -14,8 +14,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 
 import com.cezma.store.R
-import com.cezma.store.utiles.toast
+import com.cezma.store.utiles.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.main_home_fragment.*
 
@@ -87,6 +88,39 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
         } else {
             showHomeHeader(viewModel.selectedBottomItemId)
         }
+
+
+        val languageItemId = 16
+        val viewClicked2 = navigationView.menu.getItem(languageItemId).actionView
+
+        when (Injector.getPreferenceHelper().language){
+            Constants.Language.ENGLISH.value -> {
+                viewClicked2.findViewById<MaterialButton>(R.id.arabic).visibility = View.VISIBLE
+                viewClicked2.findViewById<MaterialButton>(R.id.english).visibility = View.GONE
+            }
+
+            Constants.Language.ARABIC.value -> {
+                viewClicked2.findViewById<MaterialButton>(R.id.arabic).visibility = View.GONE
+                viewClicked2.findViewById<MaterialButton>(R.id.english).visibility = View.VISIBLE
+            }
+        }
+
+
+
+        viewClicked2.findViewById<MaterialButton>(R.id.arabic).setOnClickListener {
+            activity?.saveLanguage(Constants.Language.ARABIC)
+            activity?.changeLanguage()
+            activity?.finish()
+            activity?.restartApplication()
+        }
+
+        viewClicked2.findViewById<MaterialButton>(R.id.english).setOnClickListener {
+            activity?.saveLanguage(Constants.Language.ENGLISH)
+            activity?.changeLanguage()
+            activity?.finish()
+            activity?.restartApplication()
+        }
+
     }
 
     private fun showHomeHeader(selectedBottomItem: Int) {

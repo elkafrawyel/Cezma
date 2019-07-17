@@ -12,6 +12,7 @@ import android.webkit.WebViewClient
 import androidx.navigation.fragment.findNavController
 
 import com.cezma.store.R
+import com.cezma.store.utiles.Constants.TermsUrl
 import kotlinx.android.synthetic.main.trems_and_conditions_fragment.*
 
 class TermsAndConditionsFragment : Fragment() {
@@ -21,7 +22,6 @@ class TermsAndConditionsFragment : Fragment() {
     }
 
     private lateinit var viewModel: TremsAndConditionsViewModel
-    private val TermsUrl = "http://r-z.store/privacyar.php"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

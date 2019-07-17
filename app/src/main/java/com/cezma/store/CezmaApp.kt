@@ -2,6 +2,7 @@ package com.cezma.store
 
 import android.app.Application
 import com.blankj.utilcode.util.Utils
+import com.cezma.store.utiles.changeLanguage
 import timber.log.Timber
 
 class CezmaApp : Application() {
@@ -9,10 +10,6 @@ class CezmaApp : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-
-        if (BuildConfig.DEBUG) {
-            Timber.plant(Timber.DebugTree())
-        }
 
         Utils.init(this)
 

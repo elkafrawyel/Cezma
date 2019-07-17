@@ -36,7 +36,7 @@
     <string name="editProfile">تعديل الملف الشخصي</string>
     <string name="attributes">الخصائص</string>
     <string name="production_date">تاريخ الانتاج</string>
-    <string name="model">النوع</string>
+    <string name="model">الموديل</string>
     <string name="description">الوصف</string>
     <string name="addShop">اضافة محل</string>
     <string name="shopName">اسم المحل</string>

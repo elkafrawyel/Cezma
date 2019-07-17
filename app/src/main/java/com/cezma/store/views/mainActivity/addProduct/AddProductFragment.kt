@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.navigation.fragment.findNavController
 
 import com.cezma.store.R
 import kotlinx.android.synthetic.main.add_product_fragment.*
@@ -59,6 +60,10 @@ class AddProductFragment : Fragment() {
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 subCategorySpinner.adapter = adapter
             }
+
+        backImgv.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
 }

@@ -12,6 +12,7 @@ import android.webkit.WebViewClient
 import androidx.navigation.fragment.findNavController
 
 import com.cezma.store.R
+import com.cezma.store.utiles.Constants.privacyUrl
 import kotlinx.android.synthetic.main.privacy_policy_fragment.*
 import kotlinx.android.synthetic.main.privacy_policy_fragment.backImgv
 import kotlinx.android.synthetic.main.privacy_policy_fragment.loading
@@ -23,7 +24,6 @@ class PrivacyPolicyFragment : Fragment() {
     }
 
     private lateinit var viewModel: PrivacyPolicyViewModel
-    private val privacyUrl = "http://r-z.store/privacyar.php"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

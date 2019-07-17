@@ -12,6 +12,7 @@ import android.webkit.WebViewClient
 import androidx.navigation.fragment.findNavController
 
 import com.cezma.store.R
+import com.cezma.store.utiles.Constants.aboutUsUrl
 import kotlinx.android.synthetic.main.about_us_fragment.*
 
 class AboutUsFragment : Fragment() {
@@ -21,7 +22,6 @@ class AboutUsFragment : Fragment() {
     }
 
     private lateinit var viewModel: AboutUsViewModel
-    private val aboutUsUrl = "http://r-z.store/privacyar.php"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

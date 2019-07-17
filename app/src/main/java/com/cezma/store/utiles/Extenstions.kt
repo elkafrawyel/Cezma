@@ -9,13 +9,33 @@ import com.google.android.material.snackbar.Snackbar
 import timber.log.Timber
 import java.util.*
 
-fun Context.changeLanguage(lang: Constants.Language) {
-    val locale = Locale(lang.value)
+fun Context.changeLanguage() {
+    var locale: Locale? = null
+    when (Injector.getPreferenceHelper().language) {
+        Constants.Language.ARABIC.value -> {
+            locale = Locale("ar")
+        }
+        Constants.Language.ENGLISH.value -> {
+            locale = Locale("en")
+        }
+    }
     Locale.setDefault(locale)
     val config = this.resources.configuration
     config.setLocale(locale)
     this.createConfigurationContext(config)
     this.resources.updateConfiguration(config, this.resources.displayMetrics)
+}
+
+fun Context.restartApplication() {
+    val intent = Injector.getApplicationContext().packageManager.getLaunchIntentForPackage(
+        Injector.getApplicationContext().packageName
+    )
+    intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+    startActivity(intent)
+}
+
+fun Context.saveLanguage(language: Constants.Language) {
+    Injector.getPreferenceHelper().language = language.value
 }
 
 fun Context.toast(message: String) {
@@ -29,4 +49,6 @@ fun Context.snackBar(message: String, rootView: View) {
     textView.textAlignment = View.TEXT_ALIGNMENT_CENTER
     snackBar.show()
 }
+
+
 

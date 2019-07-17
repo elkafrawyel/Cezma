@@ -96,6 +96,7 @@
                 android:drawableStart="@drawable/ic_call_black_24dp"
                 android:drawablePadding="12dp"
                 android:hint="@string/phone"
+                android:gravity="end|center_vertical"
                 android:inputType="phone"
                 android:paddingStart="18dp"
                 android:textAppearance="?attr/textAppearanceBody1"

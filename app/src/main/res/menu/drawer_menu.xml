@@ -81,4 +81,10 @@
         android:title=""
         app:actionLayout="@layout/social_layout"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/nav_language"
+        android:title=""
+        app:actionLayout="@layout/language_view"
+        app:showAsAction="always" />
 </menu>
