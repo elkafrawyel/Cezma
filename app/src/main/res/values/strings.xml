@@ -15,7 +15,7 @@
     <string name="email">Email</string>
     <string name="send_message">send Message</string>
     <string name="typeMessage">Type your message</string>
-    <string name="followingShop">Following Shops</string>
+    <string name="followingShop">Stores</string>
     <string name="login_email">Email</string>
     <string name="password">Password</string>
     <string name="forgot_your_password">Forgot your password ?</string>
@@ -73,6 +73,23 @@
     <string name="last_added">Last added</string>
     <string name="submit">Submit</string>
     <string name="resend_in_60_sec">Resend in 60 sec</string>
+    <string name="generalError">Some Error Happened</string>
+    <string name="emptyList">No Data</string>
+    <string name="category">Category</string>
+    <string name="retry">Retry</string>
+    <string name="emptyEmail">Email Field Empty</string>
+    <string name="emptyPassword">Password Field Empty</string>
+    <string name="login_with_facebook">Login with Facebook</string>
+    <string name="loginSuccess">Login Completed Successfully</string>
+    <string name="noConnection">No Internet Connection!</string>
+    <string name="logOut">LogOut</string>
+    <string name="login">Login</string>
+    <string name="NewAccount">New Account</string>
+    <string name="you_must_login">You must login first!</string>
+    <string name="logoutSuccess">Logout Completed Successfully</string>
+    <string name="fav">Succssfully Added to Favourites.</string>
+    <string name="notFav">Succssfully Removed to Favourites.</string>
+    <string name="emptyFavouriteList">You Have No Favourites.</string>
 
 
     <string-array name="country_array">

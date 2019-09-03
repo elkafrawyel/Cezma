@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.cezma.store">
+    package="com.cezma.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".CezmaApp"
+        android:name="com.cezma.app.CezmaApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,10 +16,10 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
         <activity
-            android:name=".views.playerActivity.PlayerActivity"
+            android:name="com.cezma.app.ui.playerActivity.PlayerActivity"
             android:screenOrientation="sensorLandscape"/>
         <activity
-            android:name=".views.splashActivity.SplashActivity"
+            android:name="com.cezma.app.ui.splashActivity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/splash">
             <intent-filter>
@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.mainActivity.MainActivity"
+            android:name="com.cezma.app.ui.mainActivity.MainActivity"
             android:screenOrientation="portrait" />
     </application>
 

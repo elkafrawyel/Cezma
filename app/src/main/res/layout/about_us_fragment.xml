@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".views.mainActivity.aboutUs.AboutUsFragment">
+    tools:context=".ui.mainActivity.aboutUs.AboutUsFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -26,10 +26,10 @@
                 android:src="@drawable/back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/searchTv" />
+                app:layout_constraintTop_toTopOf="@id/searchImg" />
 
             <TextView
-                android:id="@+id/searchTv"
+                android:id="@+id/searchImg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"

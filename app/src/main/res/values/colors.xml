@@ -8,4 +8,6 @@
     <color name="colorTextOnViewWhite">#FFFFFF</color>
     <color name="colorSideMenuBgColor">#545454</color>
     <color name="colorFacebook">#4266B2</color>
+    <color name="colorScrim">#64000000</color>
+
 </resources>

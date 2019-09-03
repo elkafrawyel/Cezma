@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.mainActivity.home.messages_fragment.MessagesFragment">
+    tools:context=".ui.mainActivity.home.messages_fragment.MessagesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/messagesRv"

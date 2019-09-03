@@ -1,0 +1,121 @@
+package com.cezma.app.ui.mainActivity.auth.login
+
+import androidx.lifecycle.ViewModelProviders
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
+import com.blankj.utilcode.util.KeyboardUtils
+
+import com.cezma.app.R
+import com.cezma.app.data.model.LoginBody
+import com.cezma.app.utiles.ViewState
+import com.cezma.app.utiles.snackBar
+import com.cezma.app.utiles.snackBarWithAction
+import com.cezma.app.utiles.toast
+import com.koraextra.app.utily.observeEvent
+import kotlinx.android.synthetic.main.login_fragment.*
+
+class LoginFragment : Fragment() {
+
+    companion object {
+        fun newInstance() = LoginFragment()
+    }
+
+    private lateinit var viewModel: LoginViewModel
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.login_fragment, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        viewModel.uiState.observeEvent(this) { onLoginResponse(it) }
+
+
+        singnUpMbtn.setOnClickListener {
+        }
+
+        forgotPasswordTv.setOnClickListener {
+        }
+
+        loginMbtn.setOnClickListener {
+            KeyboardUtils.hideSoftInput(activity)
+            login()
+        }
+    }
+
+    private fun onLoginResponse(it: ViewState) {
+        when (it) {
+            ViewState.Loading -> {
+                onLoading()
+            }
+            ViewState.Success -> {
+                onSuccess()
+            }
+            ViewState.NoConnection -> {
+                onNoConnection()
+            }
+            ViewState.Empty -> {
+            }
+            is ViewState.Error -> {
+                onError(it.message)
+            }
+        }
+    }
+
+    private fun onNoConnection() {
+        loading.visibility = View.GONE
+        activity?.snackBarWithAction(
+            getString(R.string.noConnection),
+            getString(R.string.retry),
+            rootView
+        ) {
+            login()
+        }
+    }
+
+    private fun onError(message: String) {
+        loading.visibility = View.GONE
+        activity?.snackBar(message, rootView)
+    }
+
+    private fun onSuccess() {
+        loading.visibility = View.GONE
+
+        activity?.toast(getString(R.string.loginSuccess))
+
+        findNavController().navigate(
+            R.id.mainHomeFragment, null, NavOptions.Builder().setPopUpTo(
+                R.id.loginFragment,
+                true
+            ).build()
+        )
+    }
+
+    private fun onLoading() {
+        loading.visibility = View.VISIBLE
+    }
+
+    private fun login() {
+        if (emailEt.text.isEmpty()) {
+            emailEt.error = getString(R.string.emptyEmail)
+            return
+        }
+
+        if (passwordEt.text.isEmpty()) {
+            passwordEt.error = getString(R.string.emptyPassword)
+            return
+        }
+
+        viewModel.login(LoginBody(emailEt.text.toString(), passwordEt.text.toString()))
+    }
+
+}

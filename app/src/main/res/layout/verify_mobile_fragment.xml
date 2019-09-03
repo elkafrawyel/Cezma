@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.mainActivity.auth.verifyMobile.VerifyMobileFragment">
+    tools:context=".ui.mainActivity.auth.verifyMobile.VerifyMobileFragment">
 
     <ImageView
         android:id="@+id/bg"

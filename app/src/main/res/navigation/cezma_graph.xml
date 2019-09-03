@@ -6,7 +6,7 @@
     app:startDestination="@id/mainHomeFragment">
     <fragment
         android:id="@+id/mainHomeFragment"
-        android:name="com.cezma.store.views.mainActivity.home.MainHomeFragment"
+        android:name="com.cezma.app.ui.mainActivity.home.MainHomeFragment"
         android:label="main_home_fragment"
         tools:layout="@layout/main_home_fragment" >
         <action
@@ -41,7 +41,7 @@
             app:destination="@id/privacyPolicyFragment" />
         <action
             android:id="@+id/action_mainHomeFragment_to_tremsAndConditionsFragment"
-            app:destination="@id/tremsAndConditionsFragment" />
+            app:destination="@id/termsAndConditionsFragment" />
         <action
             android:id="@+id/action_mainHomeFragment_to_upgradeAccountFragment"
             app:destination="@id/upgradeAccountFragment" />
@@ -56,7 +56,7 @@
             app:destination="@id/searchFragment" />
         <action
             android:id="@+id/action_mainHomeFragment_to_productDetailsFragment"
-            app:destination="@id/productDetailsFragment" />
+            app:destination="@id/adDetailsFragment" />
         <action
             android:id="@+id/action_mainHomeFragment_to_chatRoomFragment"
             app:destination="@id/chatRoomFragment" />
@@ -64,19 +64,19 @@
 
     <fragment
         android:id="@+id/messagesFragment"
-        android:name="com.cezma.store.views.mainActivity.home.messages_fragment.MessagesFragment"
+        android:name="com.cezma.app.ui.mainActivity.home.messages_fragment.MessagesFragment"
         android:label="messages_fragment"
         tools:layout="@layout/messages_fragment" />
 
     <fragment
         android:id="@+id/notificationsFragment"
-        android:name="com.cezma.store.views.mainActivity.home.notifications_fragment.NotificationsFragment"
+        android:name="com.cezma.app.ui.mainActivity.home.notifications_fragment.NotificationsFragment"
         android:label="notifications_fragment"
         tools:layout="@layout/notifications_fragment" />
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.cezma.store.views.mainActivity.profile.ProfileFragment"
+        android:name="com.cezma.app.ui.mainActivity.profile.ProfileFragment"
         android:label="profile_fragment"
         tools:layout="@layout/profile_fragment" >
         <action
@@ -85,27 +85,27 @@
     </fragment>
     <fragment
         android:id="@+id/subHomeFragment"
-        android:name="com.cezma.store.views.mainActivity.home.sub_home_fragment.SubHomeFragment"
+        android:name="com.cezma.app.ui.mainActivity.home.sub_home_fragment.SubHomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/sub_home_fragment" />
     <fragment
         android:id="@+id/aboutUsFragment"
-        android:name="com.cezma.store.views.mainActivity.aboutUs.AboutUsFragment"
+        android:name="com.cezma.app.ui.mainActivity.aboutUs.AboutUsFragment"
         android:label="about_us_fragment"
         tools:layout="@layout/about_us_fragment" />
     <fragment
         android:id="@+id/addProductFragment"
-        android:name="com.cezma.store.views.mainActivity.addProduct.AddProductFragment"
+        android:name="com.cezma.app.ui.mainActivity.addProduct.AddProductFragment"
         android:label="add_product_fragment"
         tools:layout="@layout/add_product_fragment" />
     <fragment
         android:id="@+id/addShopFragment"
-        android:name="com.cezma.store.views.mainActivity.addShop.AddShopFragment"
+        android:name="com.cezma.app.ui.mainActivity.addShop.AddShopFragment"
         android:label="add_shop_fragment"
         tools:layout="@layout/add_shop_fragment" />
     <fragment
         android:id="@+id/categoryFragment"
-        android:name="com.cezma.store.views.mainActivity.category.CategoryFragment"
+        android:name="com.cezma.app.ui.mainActivity.category.CategoryFragment"
         android:label="category_fragment"
         tools:layout="@layout/category_fragment" >
         <action
@@ -114,7 +114,7 @@
     </fragment>
     <fragment
         android:id="@+id/chatRoomFragment"
-        android:name="com.cezma.store.views.mainActivity.chatRoom.ChatRoomFragment"
+        android:name="com.cezma.app.ui.mainActivity.chatRoom.ChatRoomFragment"
         android:label="chat_room_fragment"
         tools:layout="@layout/chat_room_fragment" >
         <argument
@@ -123,27 +123,31 @@
     </fragment>
     <fragment
         android:id="@+id/contactUsFragment"
-        android:name="com.cezma.store.views.mainActivity.contactUs.ContactUsFragment"
+        android:name="com.cezma.app.ui.mainActivity.contactUs.ContactUsFragment"
         android:label="contact_us_fragment"
         tools:layout="@layout/contact_us_fragment" />
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.cezma.store.views.mainActivity.profile.editProfile.EditProfileFragment"
+        android:name="com.cezma.app.ui.mainActivity.profile.editProfile.EditProfileFragment"
         android:label="edit_profile_fragment"
         tools:layout="@layout/edit_profile_fragment" />
     <fragment
         android:id="@+id/favouritesFragment"
-        android:name="com.cezma.store.views.mainActivity.favourites.FavouritesFragment"
+        android:name="com.cezma.app.ui.mainActivity.favourites.FavouritesFragment"
         android:label="favourites_fragment"
-        tools:layout="@layout/favourites_fragment" />
+        tools:layout="@layout/favourites_fragment" >
+        <action
+            android:id="@+id/action_favouritesFragment_to_adDetailsFragment"
+            app:destination="@id/adDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/followingFragment"
-        android:name="com.cezma.store.views.mainActivity.following.FollowingFragment"
+        android:name="com.cezma.app.ui.mainActivity.following.FollowingFragment"
         android:label="following_fragment"
         tools:layout="@layout/following_fragment" />
     <fragment
         android:id="@+id/followingShopsFragment"
-        android:name="com.cezma.store.views.mainActivity.followingShops.FollowingShopsFragment"
+        android:name="com.cezma.app.ui.mainActivity.followingShops.FollowingShopsFragment"
         android:label="following_shops_fragment"
         tools:layout="@layout/following_shops_fragment" >
         <action
@@ -152,59 +156,68 @@
     </fragment>
     <fragment
         android:id="@+id/howToOpenShopFragment"
-        android:name="com.cezma.store.views.mainActivity.how_to_open_shop.HowToOpenShopFragment"
+        android:name="com.cezma.app.ui.mainActivity.how_to_open_shop.HowToOpenShopFragment"
         android:label="how_to_open_shop_fragment"
         tools:layout="@layout/how_to_open_shop_fragment" />
     <fragment
         android:id="@+id/privacyPolicyFragment"
-        android:name="com.cezma.store.views.mainActivity.privacyPolicy.PrivacyPolicyFragment"
+        android:name="com.cezma.app.ui.mainActivity.privacyPolicy.PrivacyPolicyFragment"
         android:label="privacy_policy_fragment"
         tools:layout="@layout/privacy_policy_fragment" />
     <fragment
-        android:id="@+id/productDetailsFragment"
-        android:name="com.cezma.store.views.mainActivity.productDetails.ProductDetailsFragment"
-        android:label="product_details_fragment"
-        tools:layout="@layout/product_details_fragment" >
+        android:id="@+id/adDetailsFragment"
+        android:name="com.cezma.app.ui.mainActivity.adDetails.AdDetailsFragment"
+        android:label="ad_details_fragment"
+        tools:layout="@layout/ad_details_fragment" >
         <argument
-            android:name="productId"
+            android:name="adId"
             app:argType="string" />
         <action
-            android:id="@+id/action_productDetailsFragment_to_chatRoomFragment"
+            android:id="@+id/action_adDetailsFragment_to_chatRoomFragment"
             app:destination="@id/chatRoomFragment" />
         <action
-            android:id="@+id/action_productDetailsFragment_to_fullScreenSliderFragment"
+            android:id="@+id/action_adDetailsFragment_to_fullScreenSliderFragment"
             app:destination="@id/fullScreenSliderFragment" />
+        <action
+            android:id="@+id/action_adDetailsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.cezma.store.views.mainActivity.search.SearchFragment"
+        android:name="com.cezma.app.ui.mainActivity.search.SearchFragment"
         android:label="search_fragment"
         tools:layout="@layout/search_fragment" />
     <fragment
         android:id="@+id/subCategoryFragment"
-        android:name="com.cezma.store.views.mainActivity.subCategory.SubCategoryFragment"
+        android:name="com.cezma.app.ui.mainActivity.subCategory.SubCategoryFragment"
         android:label="sub_category_fragment"
         tools:layout="@layout/sub_category_fragment" >
         <action
             android:id="@+id/action_subCategoryFragment_to_productsFragment"
-            app:destination="@id/productsFragment" />
+            app:destination="@id/adsFragment" />
         <action
             android:id="@+id/action_subCategoryFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
+        <argument
+            android:name="categoryNameApi"
+            app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/tremsAndConditionsFragment"
-        android:name="com.cezma.store.views.mainActivity.terms.TermsAndConditionsFragment"
-        android:label="trems_and_conditions_fragment"
-        tools:layout="@layout/trems_and_conditions_fragment" />
+        android:id="@+id/termsAndConditionsFragment"
+        android:name="com.cezma.app.ui.mainActivity.terms.TermsAndConditionsFragment"
+        android:label="terms_and_conditions_fragment"
+        tools:layout="@layout/terms_and_conditions_fragment" />
     <fragment
         android:id="@+id/upgradeAccountFragment"
-        android:name="com.cezma.store.views.mainActivity.upgradeAccount.UpgradeAccountFragment"
+        android:name="com.cezma.app.ui.mainActivity.upgradeAccount.UpgradeAccountFragment"
         android:label="upgrade_account_fragment"
         tools:layout="@layout/upgrade_account_fragment" />
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.cezma.store.views.mainActivity.auth.login.LoginFragment"
+        android:name="com.cezma.app.ui.mainActivity.auth.login.LoginFragment"
         android:label="login_fragment"
         tools:layout="@layout/login_fragment" >
         <action
@@ -216,7 +229,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.cezma.store.views.mainActivity.auth.signUp.SignUpFragment"
+        android:name="com.cezma.app.ui.mainActivity.auth.signUp.SignUpFragment"
         android:label="sign_up_fragment"
         tools:layout="@layout/sign_up_fragment" >
         <action
@@ -225,35 +238,58 @@
     </fragment>
     <fragment
         android:id="@+id/forgetPasswordFragment"
-        android:name="com.cezma.store.views.mainActivity.auth.forgetPassword.ForgetPasswordFragment"
+        android:name="com.cezma.app.ui.mainActivity.auth.forgetPassword.ForgetPasswordFragment"
         android:label="forget_password_fragment"
         tools:layout="@layout/forget_password_fragment" />
     <fragment
         android:id="@+id/verifyMobileFragment"
-        android:name="com.cezma.store.views.mainActivity.auth.verifyMobile.VerifyMobileFragment"
+        android:name="com.cezma.app.ui.mainActivity.auth.verifyMobile.VerifyMobileFragment"
         android:label="verify_mobile_fragment"
         tools:layout="@layout/verify_mobile_fragment" />
     <fragment
-        android:id="@+id/productsFragment"
-        android:name="com.cezma.store.views.mainActivity.products.ProductsFragment"
-        android:label="products_fragment"
-        tools:layout="@layout/products_fragment" >
-        <action
-            android:id="@+id/action_productsFragment_to_productDetailsFragment"
-            app:destination="@id/productDetailsFragment" />
+        android:id="@+id/adsFragment"
+        android:name="com.cezma.app.ui.mainActivity.ads.AdsFragment"
+        android:label="ads_fragment"
+        tools:layout="@layout/ads_fragment" >
         <action
             android:id="@+id/action_productsFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <argument
+            android:name="categoryNameApi"
+            app:argType="string" />
+        <argument
+            android:name="subCategoryName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_adsFragment_to_adDetailsFragment"
+            app:destination="@id/adDetailsFragment" />
+        <argument
+            android:name="subCategoryNameApi"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/shopDetailsFragment"
-        android:name="com.cezma.store.views.mainActivity.shopDetails.ShopDetailsFragment"
+        android:name="com.cezma.app.ui.mainActivity.shopDetails.ShopDetailsFragment"
         android:label="shop_details_fragment"
-        tools:layout="@layout/shop_details_fragment" />
+        tools:layout="@layout/shop_details_fragment" >
+        <argument
+            android:name="userName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_shopDetailsFragment_to_adDetailsFragment"
+            app:destination="@id/adDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/fullScreenSliderFragment"
-        android:name="com.cezma.store.views.mainActivity.fullScreenSlider.FullScreenSliderFragment"
+        android:name="com.cezma.app.ui.mainActivity.fullScreenSlider.FullScreenSliderFragment"
         android:label="fragment_full_screen_slider"
-        tools:layout="@layout/fragment_full_screen_slider" />
+        tools:layout="@layout/fragment_full_screen_slider" >
+        <argument
+            android:name="selectedImagePos"
+            app:argType="integer" />
+        <argument
+            android:name="AdImages"
+            app:argType="com.cezma.app.data.model.AdImagesToSliderModel" />
+    </fragment>
 
 </navigation>

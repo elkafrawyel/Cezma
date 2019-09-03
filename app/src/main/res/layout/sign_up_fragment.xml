@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.mainActivity.auth.signUp.SignUpFragment">
+    tools:context=".ui.mainActivity.auth.signUp.SignUpFragment">
 
     <ImageView
         android:layout_width="match_parent"

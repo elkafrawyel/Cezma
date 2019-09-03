@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.mainActivity.addProduct.AddProductFragment">
+    tools:context=".ui.mainActivity.addProduct.AddProductFragment">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -184,7 +184,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/productDateTv"
+                        android:id="@+id/adDateTv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/main_category_item_rounded"

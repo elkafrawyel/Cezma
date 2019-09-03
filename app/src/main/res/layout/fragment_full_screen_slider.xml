@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.mainActivity.fullScreenSlider.FullScreenSliderFragment">
+    android:background="@android:color/black"
+    tools:context=".ui.mainActivity.fullScreenSlider.FullScreenSliderFragment">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/bannerSliderVp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 
 </FrameLayout>
