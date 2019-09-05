@@ -22,3 +22,7 @@ data class LoginBody(
     val email: String,
     val password: String
 )
+
+data class RefreshTokenBody(
+    val refresh_token:String
+)

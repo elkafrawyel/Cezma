@@ -75,6 +75,10 @@
     <string name="submit">تأكيد</string>
     <string name="resend_in_60_sec">اعادة الارسال خلال 60 ث</string>
 
+    <string-array name="gender">
+        <item>انثي</item>
+        <item>ذكر</item>
+    </string-array>
 
     <string-array name="country_array">
         <item>مصر</item>
@@ -104,6 +108,17 @@
     <string name="logoutSuccess">تم تسجيل الخروج بنجاح</string>
     <string name="notFav">تم الحذف من المفضلة</string>
     <string name="you_must_login">يجب تسجيل الدخول اولا</string>
+    <string name="Country">الدولة</string>
+    <string name="Gender">النوع</string>
+    <string name="State">المحافظة</string>
+    <string name="phoneCode">مفتاح الدولة</string>
+    <string name="oldPassword">كلمة السر القديمة</string>
+    <string name="enterNewPassword">ادخل كلمة السر الجديدة</string>
+    <string name="enterOldPassword">ادخل كلمة السر القديمة</string>
+    <string name="newPassword">كلمة السر الجديدة</string>
+    <string name="emptyField">حقل فارغ</string>
+    <string name="requestPermission">طلب الصلاحيات</string>
+    <string name="errorSelectImage">خطأ في اختيار الصورة</string>
 
 
 </resources>

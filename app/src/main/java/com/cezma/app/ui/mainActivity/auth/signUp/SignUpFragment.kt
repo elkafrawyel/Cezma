@@ -40,7 +40,7 @@ class SignUpFragment : Fragment() {
         ArrayAdapter.createFromResource(requireContext(), R.array.gover_array, android.R.layout.simple_spinner_item)
             .also { adapter ->
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                signUpGovernorateSpinner.adapter = adapter
+                stateSpinner.adapter = adapter
             }
 
         signUpMbtn.setOnClickListener {

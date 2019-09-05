@@ -38,6 +38,7 @@ class LoginViewModel : AppViewModel() {
                     val helper = Injector.getPreferenceHelper()
                     helper.isLoggedIn = true
                     helper.token = result.data.accessToken
+                    helper.refreshToken= result.data.refreshToken
                     runOnMainThread {
                         _uiState.value = Event(ViewState.Success)
                     }

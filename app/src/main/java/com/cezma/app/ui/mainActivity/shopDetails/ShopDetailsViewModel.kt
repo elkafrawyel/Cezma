@@ -3,6 +3,7 @@ package com.cezma.app.ui.mainActivity.shopDetails
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.blankj.utilcode.util.NetworkUtils
+import com.cezma.app.data.model.Ad
 import com.cezma.app.data.model.StoreModel
 import com.cezma.app.ui.AppViewModel
 import com.cezma.app.utiles.DataResource
@@ -21,6 +22,7 @@ class ShopDetailsViewModel : AppViewModel() {
 
     var store: StoreModel? = null
     var userName: String? = null
+    var ads: ArrayList<Ad> = arrayListOf()
 
     fun getStoreDetails() {
         if (NetworkUtils.isConnected()) {
@@ -38,9 +40,23 @@ class ShopDetailsViewModel : AppViewModel() {
             when (val result = Injector.getStoreDetailsRepo().get(userName!!)) {
                 is DataResource.Success -> {
                     store = result.data.store
-                    runOnMainThread {
-                        _uiState.value = ViewState.Success
+
+                    when (val adsResult =
+                        Injector.getAdsByOwnerId().getAds(store!!.ownerId.toString())) {
+                        is DataResource.Success -> {
+                            ads.clear()
+                            ads.addAll(adsResult.data.ads)
+                            runOnMainThread {
+                                _uiState.value = ViewState.Success
+                            }
+                        }
+                        is DataResource.Error -> {
+                            runOnMainThread {
+                                _uiState.value = ViewState.Error(adsResult.message)
+                            }
+                        }
                     }
+
                 }
                 is DataResource.Error -> {
                     runOnMainThread {

@@ -96,6 +96,15 @@ class ShopDetailsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListene
             shopDetailsTitle.text = store.shortDesc
             shopDetailsTv.text = store.title
         }
+
+        if (viewModel.ads.isEmpty()){
+            adsRv.visibility = View.GONE
+            emptyView.visibility = View.VISIBLE
+            emptyView.text = resources.getString(R.string.emptyList)
+        }else{
+            adsRv.visibility = View.VISIBLE
+            adapterAds.replaceData(viewModel.ads)
+        }
     }
 
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {

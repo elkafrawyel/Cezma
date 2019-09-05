@@ -84,4 +84,5 @@ dependencies {
     // Background threads
     implementation "org.jetbrains.anko:anko-commons:0.10.0"
 
+    implementation "pub.devrel:easypermissions:3.0.0"
 }

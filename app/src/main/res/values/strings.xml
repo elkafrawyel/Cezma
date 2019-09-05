@@ -90,7 +90,23 @@
     <string name="fav">Succssfully Added to Favourites.</string>
     <string name="notFav">Succssfully Removed to Favourites.</string>
     <string name="emptyFavouriteList">You Have No Favourites.</string>
+    <string name="phoneCode">Phone Code</string>
+    <string name="State">State</string>
+    <string name="Country">Country</string>
+    <string name="oldPassword">Old Password</string>
+    <string name="Gender">Gender</string>
+    <string name="newPassword">New Password</string>
+    <string name="enterNewPassword">Enter new password here</string>
+    <string name="enterOldPassword">Enter old password here</string>
+    <string name="emptyField">Empty Field</string>
+    <string name="requestPermission">Requesting permission</string>
+    <string name="errorSelectImage">Error Select Image</string>
 
+
+    <string-array name="gender">
+        <item>Female</item>
+        <item>Male</item>
+    </string-array>
 
     <string-array name="country_array">
         <item>Egypt</item>

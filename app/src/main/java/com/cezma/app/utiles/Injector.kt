@@ -70,7 +70,7 @@ object Injector {
 
     fun getSubCategoriesRepo() = SubCategoriesRepo(getApiService())
 
-    fun getAdsRepo() = AdsRepo(getApiService(),getPreferenceHelper())
+    fun getAdsRepo() = AdsRepo(getApiService(), getPreferenceHelper())
 
     fun getLoginRepo() = LoginRepo(getApiService())
 
@@ -83,4 +83,19 @@ object Injector {
     fun getStoreDetailsRepo() = StoreDetailsRepo(getApiService())
 
     fun getFavouriteActionRepo() = FavouriteActionRepo(getApiService(), getPreferenceHelper())
+
+    fun getProfileRepo() = ProfileRepo(getApiService(), getPreferenceHelper())
+
+    fun getCountriesRepo() = CountriesRepo(getApiService())
+
+    fun getStatesRepo() = StatesRepo(getApiService())
+
+    fun getCitiesRepo() = CitiesRepo(getApiService())
+
+    fun getRefreshTokenRepo() = RefreshTokenRepo(getApiService(), getPreferenceHelper())
+
+    fun getUpdateProfileRepo() = UpdateProfileRepo(getApiService(), getPreferenceHelper())
+
+    fun getAdsByOwnerId() = AdsByOwnerRepo(getApiService(), getPreferenceHelper())
+
 }

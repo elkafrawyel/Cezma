@@ -94,7 +94,7 @@ class AdDetailsFragment : Fragment(), (Int) -> Unit {
                     getString(R.string.retry),
                     rootView
                 ) {
-                    viewModel.getAd()
+                    viewModel.refresh()
                 }
             }
             ViewState.Empty -> {

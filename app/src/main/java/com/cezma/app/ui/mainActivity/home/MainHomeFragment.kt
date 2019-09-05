@@ -180,7 +180,18 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_Profile -> {
-                findNavController().navigate(R.id.action_mainHomeFragment_to_profileFragment)
+                if (Injector.getPreferenceHelper().isLoggedIn) {
+                    findNavController().navigate(R.id.action_mainHomeFragment_to_profileFragment)
+                } else {
+                    activity?.snackBarWithAction(
+                        getString(R.string.you_must_login),
+                        getString(R.string.login),
+                        rootView
+                    ) {
+                        findNavController().navigate(R.id.action_mainHomeFragment_to_loginFragment)
+
+                    }
+                }
             }
             R.id.nav_AddProduct -> {
                 findNavController().navigate(R.id.action_mainHomeFragment_to_addProductFragment)

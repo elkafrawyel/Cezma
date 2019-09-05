@@ -130,7 +130,11 @@
         android:id="@+id/editProfileFragment"
         android:name="com.cezma.app.ui.mainActivity.profile.editProfile.EditProfileFragment"
         android:label="edit_profile_fragment"
-        tools:layout="@layout/edit_profile_fragment" />
+        tools:layout="@layout/edit_profile_fragment" >
+        <argument
+            android:name="userModel"
+            app:argType="com.cezma.app.data.model.UserModel" />
+    </fragment>
     <fragment
         android:id="@+id/favouritesFragment"
         android:name="com.cezma.app.ui.mainActivity.favourites.FavouritesFragment"

@@ -47,6 +47,7 @@
         android:drawablePadding="12dp"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:gravity="end|center"
         android:paddingStart="18dp"
         android:textAppearance="?attr/textAppearanceBody1"
         android:textColor="@android:color/black"
