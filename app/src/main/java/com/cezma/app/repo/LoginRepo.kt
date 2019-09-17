@@ -8,6 +8,7 @@ import com.cezma.app.data.storage.remote.RetrofitApiService
 import com.cezma.app.utiles.DataResource
 import com.cezma.app.utiles.Injector
 import com.cezma.app.utiles.safeApiCall
+import retrofit2.Response
 
 class LoginRepo(private val retrofitApiService: RetrofitApiService) {
 
@@ -29,5 +30,6 @@ class LoginRepo(private val retrofitApiService: RetrofitApiService) {
         else
             DataResource.Success(response)
     }
+
 
 }

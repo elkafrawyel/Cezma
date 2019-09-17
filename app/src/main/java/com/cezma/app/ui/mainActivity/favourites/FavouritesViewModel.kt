@@ -48,7 +48,7 @@ class FavouritesViewModel : AppViewModel() {
                 }
                 is DataResource.Error -> {
                     runOnMainThread {
-                        _uiState.value = ViewState.Error(result.message)
+                        _uiState.value = ViewState.Error(result.errorMessage)
                     }
                 }
             }
@@ -92,7 +92,7 @@ class FavouritesViewModel : AppViewModel() {
                 }
                 is DataResource.Error -> {
                     runOnMainThread {
-                        _uiStateFav.value = ViewState.Error(result.message)
+                        _uiStateFav.value = ViewState.Error(result.errorMessage)
                     }
                 }
             }

@@ -12,13 +12,13 @@ import androidx.navigation.fragment.findNavController
 import com.cezma.app.R
 import com.cezma.app.data.model.Ad
 import com.cezma.app.ui.adapters.AdapterAds
+import com.cezma.app.utiles.CustomLoadMoreView
 import com.cezma.app.utiles.ViewState
 import com.cezma.app.utiles.snackBarWithAction
 import com.chad.library.adapter.base.BaseQuickAdapter
 import kotlinx.android.synthetic.main.ads_fragment.*
 
 class AdsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
-
 
     companion object {
         fun newInstance() = AdsFragment()
@@ -27,6 +27,9 @@ class AdsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
     private lateinit var viewModel: AdsViewModel
     private val adapterAds = AdapterAds().also {
         it.onItemChildClickListener = this
+        it.setOnLoadMoreListener({ viewModel.getAds(true) }, adsRv)
+        it.setEnableLoadMore(true)
+        it.setLoadMoreView(CustomLoadMoreView())
     }
 
     override fun onCreateView(
@@ -41,7 +44,7 @@ class AdsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
         viewModel = ViewModelProviders.of(this).get(AdsViewModel::class.java)
         viewModel.uiState.observe(this, Observer { onAdsResponse(it) })
 
-        if(viewModel.adsList.isEmpty()) {
+        if (viewModel.adsList.isEmpty()) {
             arguments?.let {
                 val categoryNameApi = AdsFragmentArgs.fromBundle(it).categoryNameApi
                 val subCategoryName = AdsFragmentArgs.fromBundle(it).subCategoryName
@@ -57,6 +60,7 @@ class AdsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
 
         subCategoryTitle.text = viewModel.subCategoryName
 
+        adapterAds.setEnableLoadMore(true)
         adsRv.adapter = adapterAds
         adsRv.setHasFixedSize(true)
 
@@ -71,7 +75,7 @@ class AdsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
     }
 
     private fun onAdsResponse(it: ViewState?) {
-        when(it){
+        when (it) {
             ViewState.Loading -> {
                 onLoading()
             }
@@ -93,6 +97,14 @@ class AdsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
             }
             is ViewState.Error -> {
                 onError(it.message)
+            }
+            ViewState.LastPage -> {
+                emptyView.visibility = View.GONE
+                loading.visibility = View.GONE
+                adapterAds.loadMoreEnd()
+            }
+            null -> {
+
             }
         }
     }

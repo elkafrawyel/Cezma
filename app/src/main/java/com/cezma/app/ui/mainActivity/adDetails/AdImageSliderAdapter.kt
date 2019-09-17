@@ -8,7 +8,7 @@ import androidx.viewpager.widget.PagerAdapter
 import com.bumptech.glide.Glide
 import com.cezma.app.R
 
-class AdImageSliderAdapter(private val listener: (Int) -> Unit) : PagerAdapter() {
+class AdImageSliderAdapter(private val openFullScreenSlider: (Int) -> Unit) : PagerAdapter() {
 
     private val images = ArrayList<String>()
 
@@ -30,7 +30,7 @@ class AdImageSliderAdapter(private val listener: (Int) -> Unit) : PagerAdapter()
             .load(images[position])
             .into(imageView)
 
-        imageView.setOnClickListener { listener(position) }
+        imageView.setOnClickListener { openFullScreenSlider(position) }
         return imageView
     }
 

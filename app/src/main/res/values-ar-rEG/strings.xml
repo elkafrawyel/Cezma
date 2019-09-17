@@ -119,6 +119,27 @@
     <string name="emptyField">حقل فارغ</string>
     <string name="requestPermission">طلب الصلاحيات</string>
     <string name="errorSelectImage">خطأ في اختيار الصورة</string>
+    <string name="radio_female">انثي</string>
+    <string name="radio_male">ذكر</string>
+    <string name="countryCodeValue">20</string>
+    <string name="fullName">الاسم بالكامل</string>
+    <string name="VerifiedUser">بائع موثوق</string>
+    <string name="ok">موافق</string>
+    <string name="cancel">الغاء</string>
+    <string name="sureToReportAd">هل انت متأكد من التبليغ عن هذا المنتج ؟</string>
+    <string name="adOfferMessage">ادخل عرضك علي المنتج هنا</string>
+    <string name="adOffer">اضف عرضك</string>
+    <string name="load_failed">فشل في التحميل</string>
+    <string name="loading">تحميل...</string>
+    <string name="load_end">لا يوجد المزيد</string>
+    <string name="offer">العرض</string>
+    <string name="offers">العروض</string>
+    <string name="accepted">تم قبول العرض</string>
+    <string name="writeComment">اضف تعليقك</string>
+    <string name="hint_leave_review">اكتب تعليقاا...</string>
+    <string name="label_confirm_review">ارسل التعليق</string>
+    <string name="error_star_count_zero">اختر علي الاقل نجمة واحدة</string>
+    <string name="label_write_review_message">اكتب تعليقك اولا</string>
 
 
 </resources>

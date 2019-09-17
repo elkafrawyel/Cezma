@@ -101,6 +101,28 @@
     <string name="emptyField">Empty Field</string>
     <string name="requestPermission">Requesting permission</string>
     <string name="errorSelectImage">Error Select Image</string>
+    <string name="radio_male">Male</string>
+    <string name="radio_female">Female</string>
+    <string name="countryCodeValue">20</string>
+    <string name="fullName">Full Name</string>
+    <string name="VerifiedUser">Verified Customer</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="sureToReportAd">Are you sure you want to report this ad?</string>
+    <string name="adOfferMessage">Enter your ad offer here</string>
+    <string name="adOffer">Make Offer</string>
+    <string name="loading">Loading...</string>
+    <string name="load_failed">Load Failed.</string>
+    <string name="load_end">No More Data</string>
+    <string name="offer">offer</string>
+    <string name="offers">Offers</string>
+    <string name="accepted">Accepted</string>
+    <string name="writeComment">Write Comment</string>
+    <string name="hint_leave_review">write comment...</string>
+    <string name="label_confirm_review">Send Comment</string>
+    <string name="error_star_count_zero">Choose at least 1 Stars</string>
+    <string name="label_write_review_message">Write your comment first</string>
+    <string name="adComment">اضف تعليقك</string>
 
 
     <string-array name="gender">

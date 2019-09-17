@@ -1,6 +1,5 @@
 package com.cezma.app.ui.mainActivity.profile.editProfile
 
-import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.blankj.utilcode.util.NetworkUtils
@@ -54,7 +53,7 @@ class EditProfileViewModel : AppViewModel() {
                 }
                 is DataResource.Error -> {
                     runOnMainThread {
-                        _uiState.value = ViewState.Error(countriesResult.message)
+                        _uiState.value = ViewState.Error(countriesResult.errorMessage)
                     }
                 }
             }
@@ -80,7 +79,7 @@ class EditProfileViewModel : AppViewModel() {
             }
             is DataResource.Error -> {
                 runOnMainThread {
-                    _uiState.value = ViewState.Error(statesResult.message)
+                    _uiState.value = ViewState.Error(statesResult.errorMessage)
                 }
             }
         }
@@ -105,7 +104,7 @@ class EditProfileViewModel : AppViewModel() {
             }
             is DataResource.Error -> {
                 runOnMainThread {
-                    _uiState.value = ViewState.Error(citiesResult.message)
+                    _uiState.value = ViewState.Error(citiesResult.errorMessage)
                 }
             }
         }
@@ -174,7 +173,7 @@ class EditProfileViewModel : AppViewModel() {
                 }
                 is DataResource.Error -> {
                     runOnMainThread {
-                        _uiStateUpdateProfile.value = ViewState.Error(result.message)
+                        _uiStateUpdateProfile.value = ViewState.Error(result.errorMessage)
                     }
                 }
             }

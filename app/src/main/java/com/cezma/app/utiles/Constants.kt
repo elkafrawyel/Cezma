@@ -9,6 +9,13 @@ object Constants {
     const val TermsUrl = "http://r-z.store/privacyar.php"
     const val aboutUsUrl = "http://r-z.store/privacyar.php"
 
+    enum class StaticPages(val page:String){
+        ABOUT("about"),
+        PRIVACY("privacy"),
+        HOW_TO_USE("how_to_use"),
+        OPEN_SHOP("open_shop"),
+        TERMS("terms")
+    }
 
 
     enum class Language(val value: String) {

@@ -13,6 +13,16 @@ interface RetrofitApiService {
         @Body loginBody: LoginBody
     ): Deferred<LoginResponse>
 
+    @POST("auth/register")
+    fun getRegisterAsync(
+        @Body registerBody: RegisterBody
+    ): Deferred<RegisterResponse>
+
+    @POST("contactn")
+    fun contactUsAsync(
+        @Body contactUsBody: ContactUsBody
+    ): Deferred<ContactUsResponse>
+
     @GET("categories")
     fun getCategoriesAsync(
     ): Deferred<CategoriesResponse>
@@ -25,7 +35,8 @@ interface RetrofitApiService {
     @GET("category/{categoryName}/{subCategoryName}")
     fun getAdsAsync(
         @Path("categoryName") categoryName: String,
-        @Path("subCategoryName") subCategoryName: String
+        @Path("subCategoryName") subCategoryName: String,
+        @Query("page") page: Int
     ): Deferred<AdsResponse>
 
     @GET("listing/{adId}")
@@ -39,31 +50,43 @@ interface RetrofitApiService {
         @Path("adId") adId: String
     ): Deferred<AdResponse>
 
-    @GET("logout")
+    @POST("logout")
     fun logOutAsync(
         @Header("Authorization") token: String
-    ): Deferred<AdResponse>
+    ): Deferred<LogoutResponse>
 
     @GET("favoritesaction/{adId}")
     fun favouriteActionAsync(
         @Header("Authorization") token: String,
         @Path("adId") adId: String
-    ): Deferred<AdResponse>
+    ): Deferred<FavouriteActionResponse>
+
+    @POST("sendreview")
+    fun sentCommentWithReviewAsync(
+        @Header("Authorization") token: String,
+        @Body writeCommentBody: WriteCommentBody
+    ): Deferred<WriteCommentResponse>
 
     @GET("favorites")
     fun getFavouritesAsync(
         @Header("Authorization") token: String
     ): Deferred<FavoritesAdsResponse>
 
+    @GET("listoffers")
+    fun getOffersAsync(
+        @Header("Authorization") token: String,
+        @Query("page") page: Int
+    ): Deferred<OffersResponse>
+
     @GET("stores")
-    fun getStoresAsync(
-    ): Deferred<StoresResponse>
+    fun getStoresAsync(@Query("page") page: Int): Deferred<StoresResponse>
 
     @GET("category/{categoryName}/{subCategoryName}")
     fun getAdsAuthAsync(
         @Header("Authorization") token: String,
         @Path("categoryName") categoryName: String,
-        @Path("subCategoryName") subCategoryName: String
+        @Path("subCategoryName") subCategoryName: String,
+        @Query("page") page: Int
     ): Deferred<AdsResponse>
 
     @GET("store/{userName}")
@@ -121,7 +144,8 @@ interface RetrofitApiService {
         @Part("new_password") new_password: RequestBody,
         @Part("old_password") old_password: RequestBody,
         @Part("city") city: RequestBody,
-        @Part avatar: MultipartBody.Part): Deferred<UpdateProfileResponse>
+        @Part avatar: MultipartBody.Part
+    ): Deferred<UpdateProfileResponse>
 
     @Multipart
     @POST("profile")
@@ -137,7 +161,8 @@ interface RetrofitApiService {
         @Part("country") country: RequestBody,
         @Part("state") state: RequestBody,
         @Part("city") city: RequestBody,
-        @Part avatar: MultipartBody.Part): Deferred<UpdateProfileResponse>
+        @Part avatar: MultipartBody.Part
+    ): Deferred<UpdateProfileResponse>
 
     @POST("profile")
     fun updateProfileWithoutImageAsync(
@@ -145,4 +170,41 @@ interface RetrofitApiService {
         @Body updateProfileBody: UpdateProfileBody
     ): Deferred<UpdateProfileResponse>
 
+    @POST("reportad")
+    fun reportAdAsync(
+        @Header("Authorization") token: String,
+        @Body reportAdBody: ReportAdBody
+    ): Deferred<ReportAdResponse>
+
+
+    @POST("setoffer")
+    fun adOfferAsync(
+        @Header("Authorization") token: String,
+        @Body adOfferBody: AdOfferBody
+    ): Deferred<AdOfferResponse>
+
+    @POST("acceptdenyoffer")
+    fun offersActionAsync(
+        @Header("Authorization") token: String,
+        @Body offersActionBody: OffersActionBody
+    ): Deferred<OffersActionResponse>
+    //===================== Static Pages ==================================
+    @GET("page/aboutcezma")
+    fun aboutUsPageAsync(): Deferred<PagesResponse>
+
+
+    @GET("page/terms")
+    fun termsPageAsync(): Deferred<PagesResponse>
+
+
+    @GET("page/howtousecezma")
+    fun howToUsePageAsync(): Deferred<PagesResponse>
+
+
+    @GET("page/howtoopenshop")
+    fun howToOpenPageAsync(): Deferred<PagesResponse>
+
+
+    @GET("page/privacy")
+    fun privacyPageAsync(): Deferred<PagesResponse>
 }

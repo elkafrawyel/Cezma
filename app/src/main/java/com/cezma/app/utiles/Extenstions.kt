@@ -3,6 +3,7 @@ package com.cezma.app.utiles
 import android.annotation.SuppressLint
 import android.content.ContentUris
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.database.Cursor
 import android.database.DatabaseUtils
@@ -13,6 +14,7 @@ import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.cezma.app.BuildConfig.DEBUG
 import com.cezma.app.R
 import com.google.android.material.snackbar.Snackbar
@@ -76,6 +78,23 @@ fun Context.snackBar(message: String?, rootView: View) {
     val textView = view.findViewById<View>(R.id.snackbar_text)
     textView.textAlignment = View.TEXT_ALIGNMENT_CENTER
     snackBar.show()
+}
+
+fun Context.showMessageInDialog(message: String, okAction: () -> Unit, cancelAction: () -> Unit) {
+    val dialog = AlertDialog.Builder(this)
+        .setMessage(message)
+        .setTitle(getString(R.string.app_name))
+        .setCancelable(true)
+        .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
+            okAction.invoke()
+            dialog.dismiss()
+        }.setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
+            cancelAction.invoke()
+            dialog.dismiss()
+        }.create()
+
+    dialog.show()
+
 }
 
 //=============================== Image Real Path =============================

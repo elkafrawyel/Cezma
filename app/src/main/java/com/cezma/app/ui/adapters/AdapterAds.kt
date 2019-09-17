@@ -16,6 +16,12 @@ class AdapterAds : BaseQuickAdapter<Ad, BaseViewHolder>(R.layout.ad_item_view) {
         helper.setText(R.id.adCategoryTv, item.categoryName)
         helper.setText(R.id.adSubCategoryTv, item.subCategoryName)
 
+        if (item.isFeatured == 1){
+            helper.setVisible(R.id.featured,true)
+        }else{
+            helper.setVisible(R.id.featured,false)
+        }
+
         Glide.with(mContext).load(item.photos[0]).into(helper.getView(R.id.productImgv))
         helper.addOnClickListener(R.id.adItem)
     }

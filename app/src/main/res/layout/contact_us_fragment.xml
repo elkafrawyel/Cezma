@@ -2,114 +2,192 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.mainActivity.contactUs.ContactUsFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <ScrollView
         android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/contactUsBackImgv"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/fullNameEt"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/back"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/contactUsTv" />
-
-            <TextView
-                android:id="@+id/contactUsTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="@string/contactUs"
-                android:textAppearance="?attr/textAppearanceBody1"
-                android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/contactus_edittext_item_rounded"
+                android:hint="@string/fullName"
+                android:paddingStart="24dp"
+                android:textColorHint="@android:color/darker_gray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/logo" />
+
+            <EditText
+                android:id="@+id/emailEt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/contactus_edittext_item_rounded"
+                android:hint="@string/email"
+                android:paddingStart="24dp"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fullNameEt" />
+
+
+            <EditText
+                android:id="@+id/phoneEt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/contactus_edittext_item_rounded"
+                android:hint="@string/phone"
+                android:gravity="end"
+                android:inputType="phone"
+                android:paddingStart="24dp"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/emailEt" />
+
+            <EditText
+                android:id="@+id/contactUsSubjectEt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/contactus_edittext_item_rounded"
+                android:hint="@string/subject"
+                android:paddingStart="24dp"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/phoneEt" />
+
+            <EditText
+                android:id="@+id/contactUsMessageEt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/contactus_edittext_item_rounded"
+                android:gravity="top"
+                android:hint="@string/typeMessage"
+                android:lines="4"
+                android:paddingStart="24dp"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="@id/contactUsSubjectEt"
+                app:layout_constraintStart_toStartOf="@id/contactUsSubjectEt"
+                app:layout_constraintTop_toBottomOf="@id/contactUsSubjectEt" />
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:src="@drawable/logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/contactUsBackImgv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/back"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/contactUsTv" />
+
+                    <TextView
+                        android:id="@+id/contactUsTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="@string/contactUs"
+                        android:textAppearance="?attr/textAppearanceBody1"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/contactUsSendMessageMbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/send_message"
+                app:cornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/contactUsMessageEt" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.appcompat.widget.Toolbar>
+
+    </ScrollView>
 
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+    <FrameLayout
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@color/colorScrim"
+        android:elevation="2dp"
+        android:visibility="gone">
 
-    <EditText
-        android:id="@+id/contactUsSubjectEt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/contactus_edittext_item_rounded"
-        android:hint="@string/subject"
-        android:paddingStart="24dp"
-        android:textColorHint="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="16dp"
+            app:contentPadding="8dp">
 
-    <EditText
-        android:id="@+id/contactUsEmailEt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:background="@drawable/contactus_edittext_item_rounded"
-        android:hint="@string/email"
-        android:paddingStart="24dp"
-        android:textColorHint="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="@id/contactUsSubjectEt"
-        app:layout_constraintStart_toStartOf="@id/contactUsSubjectEt"
-        app:layout_constraintTop_toBottomOf="@id/contactUsSubjectEt" />
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/contactUsMessageEt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:background="@drawable/contactus_edittext_item_rounded"
-        android:hint="@string/typeMessage"
-        android:lines="7"
-        android:gravity="top"
-        android:paddingStart="24dp"
-        android:textColorHint="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="@id/contactUsSubjectEt"
-        app:layout_constraintStart_toStartOf="@id/contactUsSubjectEt"
-        app:layout_constraintTop_toBottomOf="@id/contactUsEmailEt" />
+        </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
 
-
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/contactUsSendMessageMbtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:cornerRadius="15dp"
-        android:layout_marginTop="18dp"
-        android:text="@string/send_message"
-        app:layout_constraintTop_toBottomOf="@id/contactUsMessageEt"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>

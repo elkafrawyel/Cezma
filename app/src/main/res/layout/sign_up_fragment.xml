@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/rootView"
     android:layout_height="match_parent"
     tools:context=".ui.mainActivity.auth.signUp.SignUpFragment">
 
@@ -19,7 +20,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/dataCl"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/logo"
@@ -30,7 +33,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <EditText
                 android:id="@+id/FirstNameEt"
@@ -68,7 +70,6 @@
                 app:layout_constraintStart_toStartOf="@id/FirstNameEt"
                 app:layout_constraintTop_toBottomOf="@id/FirstNameEt" />
 
-
             <EditText
                 android:id="@+id/EmailEt"
                 android:layout_width="0dp"
@@ -87,26 +88,48 @@
                 app:layout_constraintTop_toBottomOf="@id/LastNameEt" />
 
 
-            <EditText
-                android:id="@+id/PhoneNumberEt"
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:id="@+id/phoneLinear"
                 android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
+                app:layout_constraintStart_toStartOf="@id/FirstNameEt"
+                app:layout_constraintTop_toBottomOf="@id/EmailEt">
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:background="@drawable/auth_bg_rounded"
+                android:inputType="numberDecimal"
+                android:text="@string/countryCodeValue"
+                android:enabled="false"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:id="@+id/code"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@android:color/black" />
+
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:background="@drawable/auth_bg_rounded"
                 android:drawableStart="@drawable/ic_call_black_24dp"
                 android:drawablePadding="12dp"
-                android:hint="@string/phone"
-                android:gravity="end|center_vertical"
                 android:inputType="phone"
-                android:paddingStart="18dp"
+                tools:text="01019744661"
+                android:id="@+id/phone"
                 android:textAppearance="?attr/textAppearanceBody1"
-                android:textColor="@android:color/black"
-                app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
-                app:layout_constraintStart_toStartOf="@id/FirstNameEt"
-                app:layout_constraintTop_toBottomOf="@id/LastNameEt" />
+                android:textColor="@android:color/black" />
+
+            </LinearLayout>
+
 
             <Spinner
-                android:id="@+id/signUpCountrySpinner"
+                android:id="@+id/countrySpinner"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="12dp"
@@ -114,7 +137,7 @@
                 android:spinnerMode="dialog"
                 app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
                 app:layout_constraintStart_toStartOf="@id/FirstNameEt"
-                app:layout_constraintTop_toBottomOf="@id/PhoneNumberEt" />
+                app:layout_constraintTop_toBottomOf="@id/phoneLinear" />
 
             <Spinner
                 android:id="@+id/stateSpinner"
@@ -125,7 +148,19 @@
                 android:spinnerMode="dialog"
                 app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
                 app:layout_constraintStart_toStartOf="@id/FirstNameEt"
-                app:layout_constraintTop_toBottomOf="@id/signUpCountrySpinner" />
+                app:layout_constraintTop_toBottomOf="@id/countrySpinner" />
+
+            <Spinner
+                android:id="@+id/citySpinner"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/spinner_bg"
+                android:spinnerMode="dialog"
+                app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
+                app:layout_constraintStart_toStartOf="@id/FirstNameEt"
+                app:layout_constraintTop_toBottomOf="@id/stateSpinner" />
+
 
             <EditText
                 android:id="@+id/passwordEt"
@@ -142,7 +177,7 @@
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
                 app:layout_constraintStart_toStartOf="@id/FirstNameEt"
-                app:layout_constraintTop_toBottomOf="@id/stateSpinner" />
+                app:layout_constraintTop_toBottomOf="@id/citySpinner" />
 
             <EditText
                 android:id="@+id/confirmPasswordEt"
@@ -161,6 +196,32 @@
                 app:layout_constraintStart_toStartOf="@id/FirstNameEt"
                 app:layout_constraintTop_toBottomOf="@id/passwordEt" />
 
+            <RadioGroup
+                android:id="@+id/genderGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
+                app:layout_constraintStart_toStartOf="@id/FirstNameEt"
+                app:layout_constraintTop_toBottomOf="@id/confirmPasswordEt">
+
+                <RadioButton
+                    android:id="@+id/radioMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="18dp"
+                    android:checked="true"
+                    android:text="@string/radio_male" />
+
+                <RadioButton
+                    android:id="@+id/radioFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_female" />
+            </RadioGroup>
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/signUpMbtn"
                 android:layout_width="0dp"
@@ -172,7 +233,8 @@
                 app:cornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
                 app:layout_constraintStart_toStartOf="@id/FirstNameEt"
-                app:layout_constraintTop_toBottomOf="@id/confirmPasswordEt" />
+                app:layout_constraintTop_toBottomOf="@id/genderGroup" />
+
 
             <TextView
                 android:id="@+id/signUpHaveAccount"
@@ -198,6 +260,30 @@
                 app:layout_constraintStart_toEndOf="@id/signUpHaveAccount"
                 app:layout_constraintTop_toTopOf="@id/signUpHaveAccount" />
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorScrim"
+        android:elevation="2dp"
+        android:visibility="gone"
+        android:layout_gravity="center">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="16dp"
+            app:contentPadding="8dp">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
 </FrameLayout>

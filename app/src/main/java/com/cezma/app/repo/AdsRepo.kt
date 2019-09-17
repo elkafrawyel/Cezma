@@ -16,28 +16,31 @@ class AdsRepo(
 
     suspend fun getAds(
         categoryName: String,
-        subCategoryName: String
+        subCategoryName: String,
+        page: Int
     ): DataResource<AdsResponse> {
         return safeApiCall(
-            call = { call(categoryName, subCategoryName) },
+            call = { call(categoryName, subCategoryName,page) },
             errorMessage = Injector.getApplicationContext().getString(R.string.generalError)
         )
     }
 
     private suspend fun call(
         categoryName: String,
-        subCategoryName: String
+        subCategoryName: String,
+        page: Int
     ): DataResource<AdsResponse> {
         return if (helper.isLoggedIn) {
             val response = retrofitApiService.getAdsAuthAsync(
                 "${Constants.AUTHORIZATION_START} ${helper.token}",
                 categoryName,
-                subCategoryName
+                subCategoryName,
+                page
             ).await()
             DataResource.Success(response)
 
         } else {
-            val response = retrofitApiService.getAdsAsync(categoryName, subCategoryName).await()
+            val response = retrofitApiService.getAdsAsync(categoryName, subCategoryName,page).await()
             DataResource.Success(response)
 
         }

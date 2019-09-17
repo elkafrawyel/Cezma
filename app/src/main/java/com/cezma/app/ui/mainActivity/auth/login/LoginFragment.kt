@@ -41,6 +41,7 @@ class LoginFragment : Fragment() {
 
 
         singnUpMbtn.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
         }
 
         forgotPasswordTv.setOnClickListener {
@@ -92,12 +93,6 @@ class LoginFragment : Fragment() {
 
         activity?.toast(getString(R.string.loginSuccess))
 
-        findNavController().navigate(
-            R.id.mainHomeFragment, null, NavOptions.Builder().setPopUpTo(
-                R.id.loginFragment,
-                true
-            ).build()
-        )
     }
 
     private fun onLoading() {

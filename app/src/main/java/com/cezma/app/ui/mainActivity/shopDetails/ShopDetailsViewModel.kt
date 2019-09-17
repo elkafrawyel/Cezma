@@ -52,7 +52,7 @@ class ShopDetailsViewModel : AppViewModel() {
                         }
                         is DataResource.Error -> {
                             runOnMainThread {
-                                _uiState.value = ViewState.Error(adsResult.message)
+                                _uiState.value = ViewState.Error(adsResult.errorMessage)
                             }
                         }
                     }
@@ -60,7 +60,7 @@ class ShopDetailsViewModel : AppViewModel() {
                 }
                 is DataResource.Error -> {
                     runOnMainThread {
-                        _uiState.value = ViewState.Error(result.message)
+                        _uiState.value = ViewState.Error(result.errorMessage)
                     }
                 }
             }

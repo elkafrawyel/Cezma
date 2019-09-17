@@ -12,6 +12,11 @@
         android:title="@string/profile" />
 
     <item
+        android:id="@+id/nav_offers"
+        android:icon="@drawable/offers"
+        android:title="@string/offers" />
+
+    <item
         android:id="@+id/nav_AddProduct"
         android:icon="@drawable/add"
         android:title="@string/addProduct" />

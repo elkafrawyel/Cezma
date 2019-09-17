@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/offerItem"
+    android:layout_marginBottom="8dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/adItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/productImgv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/test_product"
+                app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/featured"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="4dp"
+                android:src="@drawable/premium"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/productPriceTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/product_price_rounded"
+                android:paddingStart="8dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="4dp"
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="@id/adTitleTv"
+                app:layout_constraintTop_toBottomOf="@id/adTitleTv"
+                tools:text="2750 EGP" />
+
+            <TextView
+                android:id="@+id/adCategoryTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/product_category_item_rounded"
+                android:textColor="@color/colorText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/adSubCategoryTv"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/productPriceTv"
+                tools:text="Elctronics" />
+
+            <TextView
+                android:id="@+id/adSubCategoryTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/product_category_item_rounded"
+                android:textColor="@color/colorText"
+                app:layout_constraintBottom_toBottomOf="@id/adCategoryTv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/adCategoryTv"
+                app:layout_constraintTop_toTopOf="@id/adCategoryTv"
+                tools:text="Laptops" />
+
+            <TextView
+                android:id="@+id/adTitleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constrainedWidth="true"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/productImgv"
+                tools:text="Samsung 7200,core i3,300GB 32G Ram" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/offerItemUserImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/test_user_image" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/offerItemUserName"
+            tools:text="Mahmoud"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:layout_gravity="center"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginTop="8dp"/>
+
+        <View
+            android:layout_width="140dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:background="@android:color/darker_gray"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/offer"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:layout_gravity="center"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginTop="8dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:strokeColor="@color/colorPrimary"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textColor="@color/colorPrimary"
+            android:layout_gravity="center"
+            tools:text="1000 EGP"
+            android:id="@+id/offerPrice"
+            android:textAllCaps="false"
+            android:insetTop="0dp"
+            android:minHeight="0dp"
+            android:insetBottom="0dp"
+            android:layout_marginTop="8dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:id="@+id/linearActions">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/yes"
+                android:src="@drawable/yes"
+                android:layout_marginEnd="12dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/no"
+                android:src="@drawable/no"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/actionResult"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="@android:color/black"
+            />
+    </LinearLayout>
+</LinearLayout>

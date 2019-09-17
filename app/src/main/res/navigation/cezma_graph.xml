@@ -60,6 +60,9 @@
         <action
             android:id="@+id/action_mainHomeFragment_to_chatRoomFragment"
             app:destination="@id/chatRoomFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_offersFragment"
+            app:destination="@id/offersFragment" />
     </fragment>
 
     <fragment
@@ -185,6 +188,9 @@
         <action
             android:id="@+id/action_adDetailsFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_adDetailsFragment_to_writeCommentFragment"
+            app:destination="@id/writeCommentFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -294,6 +300,24 @@
         <argument
             android:name="AdImages"
             app:argType="com.cezma.app.data.model.AdImagesToSliderModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/offersFragment"
+        android:name="com.cezma.app.ui.mainActivity.offers.OffersFragment"
+        android:label="offers_fragment"
+        tools:layout="@layout/offers_fragment" >
+        <action
+            android:id="@+id/action_offersFragment_to_adDetailsFragment"
+            app:destination="@id/adDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/writeCommentFragment"
+        android:name="com.cezma.app.ui.mainActivity.writeComment.WriteCommentFragment"
+        android:label="write_comment_fragment"
+        tools:layout="@layout/write_comment_fragment" >
+        <argument
+            android:name="adId"
+            app:argType="string" />
     </fragment>
 
 </navigation>

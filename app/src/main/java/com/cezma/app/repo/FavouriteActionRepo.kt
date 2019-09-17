@@ -3,6 +3,7 @@ package com.cezma.app.repo
 import com.cezma.app.R
 import com.cezma.app.data.model.AdResponse
 import com.cezma.app.data.model.AdsResponse
+import com.cezma.app.data.model.FavouriteActionResponse
 import com.cezma.app.data.storage.local.PreferencesHelper
 import com.cezma.app.data.storage.remote.RetrofitApiService
 import com.cezma.app.utiles.Constants
@@ -17,7 +18,7 @@ class FavouriteActionRepo(
 
     suspend fun favouriteAction(
         adId: String
-    ): DataResource<AdResponse> {
+    ): DataResource<FavouriteActionResponse> {
         return safeApiCall(
             call = { call(adId) },
             errorMessage = Injector.getApplicationContext().getString(R.string.generalError)
@@ -26,7 +27,7 @@ class FavouriteActionRepo(
 
     private suspend fun call(
         adId: String
-    ): DataResource<AdResponse> {
+    ): DataResource<FavouriteActionResponse> {
         val response = retrofitApiService.favouriteActionAsync(
             "${Constants.AUTHORIZATION_START} ${helper.token}",
             adId

@@ -80,7 +80,7 @@ data class Ad(
     @field:Json(name = "updated_at")
     val updatedAt: String?,
     @field:Json(name = "fav")
-    val fav: Int?,
+    var fav: Int?,
     @field:Json(name = "url")
     val url: String?,
     @field:Json(name = "username")
@@ -91,6 +91,8 @@ data class Ad(
     val subCategoryName: String?,
     @field:Json(name = "maincategory_name")
     val categoryName: String?,
+    @field:Json(name = "hasstore")
+    val hasStore: Int?,
     @field:Json(name = "atributes")
     val attributeModels: List<AttributeModel>
 )

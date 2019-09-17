@@ -54,7 +54,7 @@ class CategoryViewModel : AppViewModel() {
                 }
                 is DataResource.Error -> {
                     runOnMainThread {
-                        _uiState.value = ViewState.Error(result.message)
+                        _uiState.value = ViewState.Error(result.errorMessage)
                     }
                 }
             }

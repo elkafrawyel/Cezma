@@ -45,7 +45,7 @@ class LoginViewModel : AppViewModel() {
                 }
                 is DataResource.Error -> {
                     runOnMainThread {
-                        _uiState.value = Event(ViewState.Error(result.message))
+                        _uiState.value = Event(ViewState.Error(result.errorMessage))
                     }
                 }
             }

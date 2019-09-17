@@ -6,4 +6,5 @@ sealed class ViewState {
     data class Error(val message: String) : ViewState()
     object NoConnection : ViewState()
     object Empty : ViewState()
+    object LastPage : ViewState()
 }

@@ -4,12 +4,15 @@
       <w>atributes</w>
       <w>cezma</w>
       <w>coroutines</w>
+      <w>currentpage</w>
       <w>favoritesaction</w>
       <w>governorate</w>
       <w>imgv</w>
       <w>maincategory</w>
+      <w>mbtn</w>
       <w>phonecode</w>
       <w>recyclerview</w>
+      <w>totalcount</w>
     </words>
   </dictionary>
 </component>

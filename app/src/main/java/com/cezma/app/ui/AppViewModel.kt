@@ -1,10 +1,12 @@
 package com.cezma.app.ui
 
 import androidx.lifecycle.ViewModel
+import com.cezma.app.data.model.AdResponse
+import com.cezma.app.utiles.DataResource
 import com.koraextra.app.utily.CoroutinesDispatcherProvider
 import kotlinx.coroutines.*
 
-open class AppViewModel : ViewModel() {
+open abstract class AppViewModel : ViewModel() {
 
     private val coroutinesDispatcherProvider = CoroutinesDispatcherProvider(
         Dispatchers.Main,
@@ -28,5 +30,8 @@ open class AppViewModel : ViewModel() {
                 action.invoke()
             }
         }
+    }
+
+    fun checkResult(result: DataResource<AdResponse>) {
     }
 }

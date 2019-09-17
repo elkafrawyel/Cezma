@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 
 data class FavouriteActionResponse(
     @field:Json(name = "status")
-    val status: Boolean?,
+    val status: Boolean,
     @field:Json(name = "message")
-    val message: String?
+    val message: String
 )

@@ -9,13 +9,13 @@ data class LoginResponse(
     @field:Json(name = "message")
     val message: String?,
     @field:Json(name = "token_type")
-    val tokenType: String,
+    val tokenType: String?,
     @field:Json(name = "expires_in")
-    val expiresIn: Int,
+    val expiresIn: Int?,
     @field:Json(name = "access_token")
-    val accessToken: String,
+    val accessToken: String?,
     @field:Json(name = "refresh_token")
-    val refreshToken: String
+    val refreshToken: String?
 )
 
 data class LoginBody(
@@ -25,4 +25,11 @@ data class LoginBody(
 
 data class RefreshTokenBody(
     val refresh_token:String
+)
+
+data class LogoutResponse(
+    @field:Json(name = "status")
+    val status: Boolean,
+    @field:Json(name = "message")
+    val message: String
 )

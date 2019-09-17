@@ -98,4 +98,22 @@ object Injector {
 
     fun getAdsByOwnerId() = AdsByOwnerRepo(getApiService(), getPreferenceHelper())
 
+    fun getRegisterRepo() = RegisterRepo(getApiService())
+
+    fun getContactUsRepo() = ContactUsRepo(getApiService())
+
+    fun getStaticPagesRepo() = StaticPagesRepo(getApiService())
+
+    fun getReportAdRepo() = ReportAdRepo(getApiService(), getPreferenceHelper())
+
+    fun getAdOfferRepo() = AdOfferRepo(getApiService(), getPreferenceHelper())
+
+    fun getLogoutRepo() = LogoutRepo(getApiService(), getPreferenceHelper())
+
+    fun getOffersRepo() = OffersRepo(getApiService(), getPreferenceHelper())
+
+    fun getOffersActionRepo() = OffersActionRepo(getApiService(), getPreferenceHelper())
+
+    fun getWriteCommentRepo() = WriteCommentRepo(getApiService(), getPreferenceHelper())
+
 }

@@ -12,6 +12,11 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class AdsViewModel : AppViewModel() {
+
+    var page: Int = 0
+    private var lastPage: Int = 1
+
+
     private var job: Job? = null
 
     private var _uiState = MutableLiveData<ViewState>()
@@ -24,39 +29,53 @@ class AdsViewModel : AppViewModel() {
     lateinit var subCategoryName: String
     lateinit var subCategoryNameApi: String
 
-    fun getAds() {
+    fun getAds(loadMore: Boolean = false) {
         if (NetworkUtils.isConnected()) {
             if (job?.isActive == true)
                 return
-            job = launchJob()
+            page++
+            if (page <= lastPage) {
+                job = launchJob(loadMore)
+            } else {
+                _uiState.value = ViewState.LastPage
+            }
+
         } else {
             _uiState.value = ViewState.NoConnection
         }
     }
 
-    private fun launchJob(): Job {
+    private fun launchJob(loadMore: Boolean): Job {
         return scope.launch(dispatcherProvider.io) {
-            runOnMainThread { _uiState.value = ViewState.Loading }
-            when (val result = Injector.getAdsRepo().getAds(categoryNameApi, subCategoryNameApi)) {
-                is DataResource.Success -> {
-                    if (result.data.ads.isNotEmpty()) {
-                        adsList.clear()
-                        adsList.addAll(result.data.ads)
-                        runOnMainThread {
-                            _uiState.value = ViewState.Success
-                        }
+            if (!loadMore) {
+                runOnMainThread { _uiState.value = ViewState.Loading }
+            }
+            when (val result =
+            Injector.getAdsRepo().getAds(categoryNameApi, subCategoryNameApi,page)) {
+            is DataResource.Success -> {
+                if (result.data.ads.isNotEmpty()) {
+                    lastPage = result.data.pages
+                    if (result.data.ads.isEmpty()) {
+                        _uiState.value = ViewState.Empty
                     } else {
-                        runOnMainThread {
-                            _uiState.value = ViewState.Empty
-                        }
+//                            adsList.clear()
+                        adsList.addAll(result.data.ads)
                     }
-                }
-                is DataResource.Error -> {
                     runOnMainThread {
-                        _uiState.value = ViewState.Error(result.message)
+                        _uiState.value = ViewState.Success
+                    }
+                } else {
+                    runOnMainThread {
+                        _uiState.value = ViewState.Empty
                     }
                 }
             }
+            is DataResource.Error -> {
+                runOnMainThread {
+                    _uiState.value = ViewState.Error(result.errorMessage)
+                }
+            }
+        }
         }
     }
 

@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 
 import com.cezma.app.R
 import com.cezma.app.data.model.StoreModel
+import com.cezma.app.utiles.CustomLoadMoreView
 import com.cezma.app.utiles.ViewState
 import com.cezma.app.utiles.snackBar
 import com.cezma.app.utiles.snackBarWithAction
@@ -24,8 +25,11 @@ class FollowingShopsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickList
     }
 
     private lateinit var viewModel: FollowingShopsViewModel
-    private val adapterFollowingShopsFragment = AdapterFollowingShops().also {
+    private val adapterStores = AdapterFollowingShops().also {
         it.onItemChildClickListener = this
+        it.setOnLoadMoreListener({ viewModel.getStores(true) }, followingShopsRv)
+        it.setEnableLoadMore(true)
+        it.setLoadMoreView(CustomLoadMoreView())
     }
 
     override fun onCreateView(
@@ -40,7 +44,7 @@ class FollowingShopsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickList
         viewModel = ViewModelProviders.of(this).get(FollowingShopsViewModel::class.java)
         viewModel.uiState.observe(this, Observer { onStoresResponse(it) })
 
-        followingShopsRv.adapter = adapterFollowingShopsFragment
+        followingShopsRv.adapter = adapterStores
         followingShopsRv.setHasFixedSize(true)
 
         followingShopBackImgv.setOnClickListener {
@@ -57,14 +61,19 @@ class FollowingShopsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickList
             ViewState.Loading -> {
                 followingShopsRv.visibility = View.GONE
                 loading.visibility = View.VISIBLE
+                emptyView.visibility = View.GONE
+
             }
             ViewState.Success -> {
                 followingShopsRv.visibility = View.VISIBLE
                 loading.visibility = View.GONE
-                adapterFollowingShopsFragment.replaceData(viewModel.storesList)
+                emptyView.visibility = View.GONE
+
+                adapterStores.replaceData(viewModel.storesList)
             }
             ViewState.NoConnection -> {
                 followingShopsRv.visibility = View.GONE
+                emptyView.visibility = View.GONE
 
                 loading.visibility = View.GONE
                 activity?.snackBarWithAction(
@@ -75,6 +84,7 @@ class FollowingShopsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickList
                     viewModel.refresh()
                 }
             }
+
             ViewState.Empty -> {
                 loading.visibility = View.GONE
                 followingShopsRv.visibility = View.GONE
@@ -85,7 +95,14 @@ class FollowingShopsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickList
             is ViewState.Error -> {
                 followingShopsRv.visibility = View.GONE
                 loading.visibility = View.GONE
+                emptyView.visibility = View.GONE
                 activity?.snackBar(it.message, rootView)
+            }
+
+            ViewState.LastPage -> {
+                emptyView.visibility = View.GONE
+                loading.visibility = View.GONE
+                adapterStores.loadMoreEnd()
             }
         }
     }

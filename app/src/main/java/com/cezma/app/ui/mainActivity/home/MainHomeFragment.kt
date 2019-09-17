@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 
@@ -17,6 +18,7 @@ import com.cezma.app.utiles.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.navigation.NavigationView
+import com.koraextra.app.utily.observeEvent
 import kotlinx.android.synthetic.main.main_home_fragment.*
 
 class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener {
@@ -37,6 +39,7 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainHomeFragmentViewModel::class.java)
+        viewModel.uiStateLogOut.observeEvent(this) { onLogOut(it) }
 
         navigationView.setNavigationItemSelectedListener(this)
         bottom_navigation.setOnNavigationItemSelectedListener(
@@ -82,8 +85,42 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
 
     }
 
+    private fun onLogOut(it: ViewState?) {
+        when(it){
+            ViewState.Loading -> {
+                loading.visibility = View.VISIBLE
+            }
+            ViewState.Success -> {
+                loading.visibility = View.GONE
+                activity?.toast(viewModel.logOutMessage)
+                Injector.getPreferenceHelper().clear()
+                setAuthState()
+            }
+            is ViewState.Error -> {
+                loading.visibility = View.GONE
+                activity?.snackBar(it.message, rootView)
+            }
+            ViewState.NoConnection -> {
+                loading.visibility = View.GONE
+                activity?.snackBarWithAction(
+                    getString(R.string.noConnection),
+                    getString(R.string.retry),
+                    rootView
+                ) {
+                    viewModel.logOut()
+                }
+            }
+            ViewState.Empty -> {
+
+            }
+            null -> {
+
+            }
+        }
+    }
+
     private fun handleSocialClicks() {
-        val socialItemId = 15
+        val socialItemId = 16
         val viewClicked = navigationView.menu.getItem(socialItemId).actionView
         viewClicked.findViewById<ImageView>(R.id.facebook).setOnClickListener {
         }
@@ -96,7 +133,7 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun handleLanguageView() {
-        val languageItemId = 16
+        val languageItemId = 17
         val viewClicked2 = navigationView.menu.getItem(languageItemId).actionView
 
         when (Injector.getPreferenceHelper().language) {
@@ -193,6 +230,20 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
                     }
                 }
             }
+            R.id.nav_offers -> {
+                if (Injector.getPreferenceHelper().isLoggedIn) {
+                    findNavController().navigate(R.id.action_mainHomeFragment_to_offersFragment)
+                } else {
+                    activity?.snackBarWithAction(
+                        getString(R.string.you_must_login),
+                        getString(R.string.login),
+                        rootView
+                    ) {
+                        findNavController().navigate(R.id.action_mainHomeFragment_to_loginFragment)
+
+                    }
+                }
+            }
             R.id.nav_AddProduct -> {
                 findNavController().navigate(R.id.action_mainHomeFragment_to_addProductFragment)
             }
@@ -212,7 +263,6 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
                         rootView
                     ) {
                         findNavController().navigate(R.id.action_mainHomeFragment_to_loginFragment)
-
                     }
                 }
             }
@@ -242,10 +292,7 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
             }
             R.id.nav_LogOut -> {
                 if (Injector.getPreferenceHelper().isLoggedIn) {
-                    Injector.getPreferenceHelper().clear()
-                    setAuthState()
-                    //Logout from service still
-                    activity?.toast(getString(R.string.logoutSuccess))
+                    viewModel.logOut()
                 } else {
                     findNavController().navigate(R.id.action_mainHomeFragment_to_loginFragment)
                 }
