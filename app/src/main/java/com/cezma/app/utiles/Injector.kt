@@ -116,4 +116,6 @@ object Injector {
 
     fun getWriteCommentRepo() = WriteCommentRepo(getApiService(), getPreferenceHelper())
 
+    fun getCommentsRepo() = CommentsRepo(getApiService(), getPreferenceHelper())
+
 }

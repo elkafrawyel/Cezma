@@ -69,6 +69,8 @@ data class Ad(
     val isOos: Int?,
     @field:Json(name = "is_trashed")
     val isTrashed: Int?,
+    @field:Json(name = "commentscount")
+    val commentsCount: Int?,
     @field:Json(name = "trashed_by_admin")
     val trashedByAdmin: Int?,
     @field:Json(name = "deleted_at")

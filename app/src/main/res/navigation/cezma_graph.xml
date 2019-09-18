@@ -191,6 +191,9 @@
         <action
             android:id="@+id/action_adDetailsFragment_to_writeCommentFragment"
             app:destination="@id/writeCommentFragment" />
+        <action
+            android:id="@+id/action_adDetailsFragment_to_adCommentsFragment"
+            app:destination="@id/adCommentsFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -315,6 +318,15 @@
         android:name="com.cezma.app.ui.mainActivity.writeComment.WriteCommentFragment"
         android:label="write_comment_fragment"
         tools:layout="@layout/write_comment_fragment" >
+        <argument
+            android:name="adId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/adCommentsFragment"
+        android:name="com.cezma.app.ui.mainActivity.adComments.AdCommentsFragment"
+        android:label="ad_comments_fragment"
+        tools:layout="@layout/ad_comments_fragment" >
         <argument
             android:name="adId"
             app:argType="string" />

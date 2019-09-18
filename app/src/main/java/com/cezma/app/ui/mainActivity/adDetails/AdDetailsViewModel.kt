@@ -19,7 +19,7 @@ class AdDetailsViewModel : AppViewModel() {
     var ad: Ad? = null
     lateinit var adId: String
     var adOfferBody: AdOfferBody? = null
-    var writeCommentBody:WriteCommentBody? = null
+    var writeCommentBody: WriteCommentBody? = null
     var reportMessage: String = ""
     var offerMessage: String = ""
     var commentMessage: String = ""
@@ -97,7 +97,6 @@ class AdDetailsViewModel : AppViewModel() {
                                         Event(ViewState.Error(result.data.message))
                                 }
                             }
-
                         }
                         is DataResource.Error -> {
                             runOnMainThread {
@@ -137,7 +136,19 @@ class AdDetailsViewModel : AppViewModel() {
                     }
                 }
                 AdActions.COMMENT -> {
-
+                    when (val result = Injector.getWriteCommentRepo().send(writeCommentBody!!)) {
+                        is DataResource.Success -> {
+                            commentMessage = result.data.msg
+                            runOnMainThread {
+                                _uiStateActions.value = Event(ViewState.Success)
+                            }
+                        }
+                        is DataResource.Error -> {
+                            runOnMainThread {
+                                _uiStateActions.value = Event(ViewState.Error(result.errorMessage))
+                            }
+                        }
+                    }
                 }
             }
         }

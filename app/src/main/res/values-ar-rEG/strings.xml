@@ -140,6 +140,8 @@
     <string name="label_confirm_review">ارسل التعليق</string>
     <string name="error_star_count_zero">اختر علي الاقل نجمة واحدة</string>
     <string name="label_write_review_message">اكتب تعليقك اولا</string>
+    <string name="adComment">اضف تعليقك</string>
+    <string name="comments">التعليقات</string>
 
 
 </resources>

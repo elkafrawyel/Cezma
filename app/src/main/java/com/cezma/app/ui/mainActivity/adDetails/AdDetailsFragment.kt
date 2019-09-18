@@ -88,11 +88,17 @@ class AdDetailsFragment : Fragment() {
         }
 
         adCommentMbtn.setOnClickListener {
-            if (viewModel.ad?.hasStore == 1){
+            if (viewModel.ad?.hasStore == 1) {
                 openWriteCommentFragment()
-            }else{
+            } else {
                 openWriteCommentDialog()
             }
+        }
+
+        AdCommentsCount.setOnClickListener {
+            val action =
+                AdDetailsFragmentDirections.actionAdDetailsFragmentToAdCommentsFragment(viewModel.adId)
+            findNavController().navigate(action)
         }
     }
 
@@ -124,7 +130,7 @@ class AdDetailsFragment : Fragment() {
 
                 if (!TextUtils.isEmpty(comment)) {
 
-                    viewModel.writeCommentBody = WriteCommentBody(viewModel.adId,comment,0)
+                    viewModel.writeCommentBody = WriteCommentBody(viewModel.adId, comment, 0)
                     viewModel.setAction(AdActions.COMMENT)
 
                     dialog.cancel()
@@ -232,6 +238,10 @@ class AdDetailsFragment : Fragment() {
             AdActions.Offer -> {
                 activity?.toast(viewModel.offerMessage)
             }
+            AdActions.COMMENT -> {
+                activity?.toast(viewModel.commentMessage)
+            }
+
             null -> {
 
             }
@@ -327,7 +337,6 @@ class AdDetailsFragment : Fragment() {
                 rootView
             ) {
                 findNavController().navigate(R.id.action_adDetailsFragment_to_loginFragment)
-
             }
         }
     }
@@ -392,6 +401,8 @@ class AdDetailsFragment : Fragment() {
             } else {
                 adOfferMbtn.visibility = View.GONE
             }
+
+            AdCommentsCount.text = getString(R.string.comments) + " (" + ad.commentsCount + ")"
         }
     }
 

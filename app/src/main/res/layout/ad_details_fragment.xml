@@ -194,7 +194,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="start|center"
                         android:textAppearance="?attr/textAppearanceBody1"
-                        tools:text="Comments (2)"
+                        android:text="Comments (2)"
                         android:layout_marginBottom="18dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginStart="18dp"

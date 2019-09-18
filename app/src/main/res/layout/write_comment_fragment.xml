@@ -53,8 +53,8 @@
         app:layout_constraintEnd_toEndOf="parent"
 
         android:stepSize="1"
-        android:id="@+id/rateBar"
         android:numStars="5"
+        android:id="@+id/rateBar"
         />
 
     <com.google.android.material.textfield.TextInputLayout

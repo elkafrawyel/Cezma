@@ -122,7 +122,8 @@
     <string name="label_confirm_review">Send Comment</string>
     <string name="error_star_count_zero">Choose at least 1 Stars</string>
     <string name="label_write_review_message">Write your comment first</string>
-    <string name="adComment">اضف تعليقك</string>
+    <string name="adComment">Add Your Comment</string>
+    <string name="comments">Comments</string>
 
 
     <string-array name="gender">

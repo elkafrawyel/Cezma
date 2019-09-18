@@ -6,7 +6,7 @@ import com.cezma.app.utiles.DataResource
 import com.koraextra.app.utily.CoroutinesDispatcherProvider
 import kotlinx.coroutines.*
 
-open abstract class AppViewModel : ViewModel() {
+abstract class AppViewModel : ViewModel() {
 
     private val coroutinesDispatcherProvider = CoroutinesDispatcherProvider(
         Dispatchers.Main,
@@ -32,6 +32,4 @@ open abstract class AppViewModel : ViewModel() {
         }
     }
 
-    fun checkResult(result: DataResource<AdResponse>) {
-    }
 }

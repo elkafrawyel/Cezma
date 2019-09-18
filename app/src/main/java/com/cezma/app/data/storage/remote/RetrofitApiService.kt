@@ -62,7 +62,7 @@ interface RetrofitApiService {
     ): Deferred<FavouriteActionResponse>
 
     @POST("sendreview")
-    fun sentCommentWithReviewAsync(
+    fun writeCommentAsync(
         @Header("Authorization") token: String,
         @Body writeCommentBody: WriteCommentBody
     ): Deferred<WriteCommentResponse>
@@ -77,6 +77,13 @@ interface RetrofitApiService {
         @Header("Authorization") token: String,
         @Query("page") page: Int
     ): Deferred<OffersResponse>
+
+    @POST("listcomments")
+    fun getCommentsAsync(
+        @Header("Authorization") token: String,
+        @Body commentsBody: CommentsBody
+    ): Deferred<CommentsResponse>
+
 
     @GET("stores")
     fun getStoresAsync(@Query("page") page: Int): Deferred<StoresResponse>

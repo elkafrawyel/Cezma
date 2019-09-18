@@ -164,9 +164,9 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
     private fun setAuthState() {
         val preferencesHelper = Injector.getPreferenceHelper()
         if (preferencesHelper.isLoggedIn) {
-            navigationView.menu.getItem(14).title = context?.resources?.getString(R.string.logOut)
+            navigationView.menu.getItem(15).title = context?.resources?.getString(R.string.logOut)
         } else {
-            navigationView.menu.getItem(14).title =
+            navigationView.menu.getItem(15).title =
                 context?.resources?.getString(R.string.NewAccount)
         }
     }
