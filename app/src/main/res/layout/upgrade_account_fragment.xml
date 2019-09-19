@@ -48,114 +48,132 @@
     </androidx.appcompat.widget.Toolbar>
 
 
-    <LinearLayout
-        android:id="@+id/Linear1"
+    <WebView
+        android:id="@+id/webView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="18dp"
-        android:background="@drawable/upgrade_account_rounded"
-        android:orientation="vertical"
-        android:padding="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Premium Account"
-            android:textAppearance="?attr/textAppearanceBody1"
-            android:textColor="@android:color/black" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="8dp"
-            android:text="200 EGP / 1 month"
-            android:textAppearance="?attr/textAppearanceHeadline5"
-            android:textColor="@color/colorPrimary" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/Linear2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="18dp"
-        android:background="@drawable/upgrade_account_rounded_2"
-        android:orientation="vertical"
-        android:padding="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Linear1">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Premium Account"
-            android:textAppearance="?attr/textAppearanceBody1"
-            android:textColor="@android:color/white" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="8dp"
-            android:text="200 EGP / 1 month"
-            android:textAppearance="?attr/textAppearanceHeadline5"
-            android:textColor="@android:color/white" />
-
-    </LinearLayout>
-
-    <View
-        android:id="@+id/line"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_margin="16dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Linear2" />
-
-    <TextView
-        android:id="@+id/paymentTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="18dp"
-        android:text="@string/payment"
-        android:textAppearance="?attr/textAppearanceBody1"
-        android:textColor="@android:color/darker_gray"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line" />
-
-    <ImageView
-        android:id="@+id/fawryImg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:src="@drawable/fawry"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/paymentTv" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/payMbtn"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Pay Now"
-        android:textAppearance="?attr/textAppearanceHeadline5"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:textColor="@android:color/white"
-        app:backgroundTint="@color/colorPrimary"
-        app:icon="@drawable/pay"
-        app:iconGravity="textStart"
-        app:iconTint="@android:color/white"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/Linear1"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="18dp"-->
+<!--        android:background="@drawable/upgrade_account_rounded"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="24dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/toolbar">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="Premium Account"-->
+<!--            android:textAppearance="?attr/textAppearanceBody1"-->
+<!--            android:textColor="@android:color/black" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:padding="8dp"-->
+<!--            android:text="200 EGP / 1 month"-->
+<!--            android:textAppearance="?attr/textAppearanceHeadline5"-->
+<!--            android:textColor="@color/colorPrimary" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/Linear2"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="18dp"-->
+<!--        android:background="@drawable/upgrade_account_rounded_2"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="24dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/Linear1">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="Premium Account"-->
+<!--            android:textAppearance="?attr/textAppearanceBody1"-->
+<!--            android:textColor="@android:color/white" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:padding="8dp"-->
+<!--            android:text="200 EGP / 1 month"-->
+<!--            android:textAppearance="?attr/textAppearanceHeadline5"-->
+<!--            android:textColor="@android:color/white" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    <View-->
+<!--        android:id="@+id/line"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:background="@android:color/darker_gray"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/Linear2" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/paymentTv"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="18dp"-->
+<!--        android:text="@string/payment"-->
+<!--        android:textAppearance="?attr/textAppearanceBody1"-->
+<!--        android:textColor="@android:color/darker_gray"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/line" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/fawryImg"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:src="@drawable/fawry"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/paymentTv" />-->
+
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:id="@+id/payMbtn"-->
+<!--        style="@style/Widget.MaterialComponents.Button.TextButton"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Pay Now"-->
+<!--        android:textAppearance="?attr/textAppearanceHeadline5"-->
+<!--        android:insetTop="0dp"-->
+<!--        android:insetBottom="0dp"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        app:backgroundTint="@color/colorPrimary"-->
+<!--        app:icon="@drawable/pay"-->
+<!--        app:iconGravity="textStart"-->
+<!--        app:iconTint="@android:color/white"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

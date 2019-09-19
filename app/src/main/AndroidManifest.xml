@@ -3,12 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.cezma.app">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
     <application
-        android:name="com.cezma.app.CezmaApp"
+        android:name=".CezmaApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,26 +13,22 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
-
+        <activity android:name=".ui.mainActivity.auth.VerifyPhoneActivity"></activity>
         <activity
-            android:name="com.cezma.app.ui.playerActivity.PlayerActivity"
-            android:screenOrientation="sensorLandscape"/>
-
+            android:name=".ui.playerActivity.PlayerActivity"
+            android:screenOrientation="sensorLandscape" />
         <activity
-            android:name="com.cezma.app.ui.splashActivity.SplashActivity"
+            android:name=".ui.splashActivity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/splash">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
-            android:name="com.cezma.app.ui.mainActivity.MainActivity"
+            android:name=".ui.mainActivity.MainActivity"
             android:screenOrientation="portrait" />
 
         <provider
@@ -46,10 +38,12 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths">
-            </meta-data>
+                android:resource="@xml/file_paths"></meta-data>
         </provider>
-
     </application>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "454415543043",
+    "firebase_url": "https://cezmastore.firebaseio.com",
+    "project_id": "cezmastore",
+    "storage_bucket": "cezmastore.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454415543043:android:f2ae79ffb8f3ef4a811736",
+        "android_client_info": {
+          "package_name": "com.Cezma.store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "454415543043-lk943qp63a5l8360js3kaeqqj5l74k0g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Cezma.store",
+            "certificate_hash": "c0d9e2b6b00d6a4f60b061310241c782b6278847"
+          }
+        },
+        {
+          "client_id": "454415543043-ibu2cevn7s9gsi3b50bapvohbs1nsa5b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCD24z_H91DlTf9Uou-DrqF1M0vr9P8ovE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "454415543043-ibu2cevn7s9gsi3b50bapvohbs1nsa5b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

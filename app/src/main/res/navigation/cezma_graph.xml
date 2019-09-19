@@ -75,7 +75,11 @@
         android:id="@+id/notificationsFragment"
         android:name="com.cezma.app.ui.mainActivity.home.notifications_fragment.NotificationsFragment"
         android:label="notifications_fragment"
-        tools:layout="@layout/notifications_fragment" />
+        tools:layout="@layout/notifications_fragment" >
+        <action
+            android:id="@+id/action_notificationsFragment_to_adDetailsFragment"
+            app:destination="@id/adDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/profileFragment"
@@ -239,6 +243,12 @@
         <action
             android:id="@+id/action_loginFragment_to_forgetPasswordFragment"
             app:destination="@id/forgetPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_receiveNumberFragment"
+            app:destination="@id/receiveNumberFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_verifyMobileFragment"
+            app:destination="@id/verifyMobileFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -258,7 +268,11 @@
         android:id="@+id/verifyMobileFragment"
         android:name="com.cezma.app.ui.mainActivity.auth.verifyMobile.VerifyMobileFragment"
         android:label="verify_mobile_fragment"
-        tools:layout="@layout/verify_mobile_fragment" />
+        tools:layout="@layout/verify_mobile_fragment" >
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/adsFragment"
         android:name="com.cezma.app.ui.mainActivity.ads.AdsFragment"
@@ -321,6 +335,15 @@
         <argument
             android:name="adId"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiveNumberFragment"
+        android:name="com.cezma.app.ui.mainActivity.auth.verifyPhone.ReceiveNumberFragment"
+        android:label="verify_phone_number_fragment"
+        tools:layout="@layout/receive_number_fragment" >
+        <action
+            android:id="@+id/action_verifyPhoneNumber_to_receiveNumberFragment"
+            app:destination="@id/verifyMobileFragment" />
     </fragment>
     <fragment
         android:id="@+id/adCommentsFragment"

@@ -14,6 +14,8 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel : AppViewModel() {
 
+    var phone_verfied = true
+    var phone_number: String? = null
     private var job: Job? = null
 
     private var _uiState = MutableLiveData<Event<ViewState>>()
@@ -38,9 +40,26 @@ class LoginViewModel : AppViewModel() {
                     val helper = Injector.getPreferenceHelper()
                     helper.isLoggedIn = true
                     helper.token = result.data.accessToken
-                    helper.refreshToken= result.data.refreshToken
-                    runOnMainThread {
-                        _uiState.value = Event(ViewState.Success)
+                    helper.refreshToken = result.data.refreshToken
+
+                    when (val profileResult = Injector.getProfileRepo().get()) {
+                        is DataResource.Success -> {
+                            this@LoginViewModel.phone_verfied =
+                                profileResult.data.userModel?.phone_verfied == 1
+                            if (profileResult.data.userModel?.phone != null) {
+                                this@LoginViewModel.phone_number =
+                                    profileResult.data.userModel.phone.toString()
+                            }
+
+                            runOnMainThread {
+                                _uiState.value = Event(ViewState.Success)
+                            }
+                        }
+                        is DataResource.Error -> {
+                            runOnMainThread {
+                                _uiState.value = Event(ViewState.Error(profileResult.errorMessage))
+                            }
+                        }
                     }
                 }
                 is DataResource.Error -> {

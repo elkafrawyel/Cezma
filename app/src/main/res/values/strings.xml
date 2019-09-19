@@ -55,7 +55,7 @@
     <string name="addImage">Add Image</string>
     <string name="add_Product">Add Product</string>
     <string name="verify_mobile_number">Verify Mobile Number</string>
-    <string name="verification_code_has_been_sent_to_you_on_your_mobile_number_please_enter_it_below">verification code has been sent to you on your mobile number. please enter it below</string>
+    <string name="verification_code_has_been_sent_to_you_on_your_mobile_number">verification code has been sent to you on your mobile number</string>
     <string name="enter_the_code_you_received">Enter the code you received</string>
     <string name="didn_t_receive_verification_code">Didn\'t receive verification code?</string>
     <string name="search_your_product">Search your product</string>
@@ -72,7 +72,9 @@
     <string name="logout">Logout</string>
     <string name="last_added">Last added</string>
     <string name="submit">Submit</string>
-    <string name="resend_in_60_sec">Resend in 60 sec</string>
+    <string name="resend_in">Resend in </string>
+    <string name="second"> sec</string>
+    <string name="resend">Resend</string>
     <string name="generalError">Some Error Happened</string>
     <string name="emptyList">No Data</string>
     <string name="category">Category</string>
@@ -122,6 +124,15 @@
     <string name="label_confirm_review">Send Comment</string>
     <string name="error_star_count_zero">Choose at least 1 Stars</string>
     <string name="label_write_review_message">Write your comment first</string>
+    <string name="Verify_phone">Verify phone number</string>
+    <string name="verify">Verify</string>
+    <string name="code">Code</string>
+    <string name="send_code">Send Code</string>
+    <string name="enter_phone">please enter your phone number</string>
+    <string name="enter_valid_phone">please enter valid phone number</string>
+    <string name="invalid_code">This code is invalid</string>
+    <string name="enter_code">Please enter verify code</string>
+    <string name="please_enter_it_below">please enter it below</string>
     <string name="adComment">Add Your Comment</string>
     <string name="comments">Comments</string>
 

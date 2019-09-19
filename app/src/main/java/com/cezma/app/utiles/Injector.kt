@@ -6,8 +6,6 @@ import com.cezma.app.data.storage.remote.RetrofitApiService
 import com.cezma.app.repo.*
 import com.cezma.app.utiles.Constants.BASE_URL
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.koraextra.app.utily.CoroutinesDispatcherProvider
-import kotlinx.coroutines.Dispatchers
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -115,6 +113,12 @@ object Injector {
     fun getOffersActionRepo() = OffersActionRepo(getApiService(), getPreferenceHelper())
 
     fun getWriteCommentRepo() = WriteCommentRepo(getApiService(), getPreferenceHelper())
+
+    fun getVerifyUserRepo() = VerifyUserRepo(getApiService(), getPreferenceHelper())
+
+    fun getNotisRepo() = NotiRepo(getApiService(), getPreferenceHelper())
+
+    fun getUpgradeAccountRepo() = UpgradeAccountRepo(getApiService(), getPreferenceHelper())
 
     fun getCommentsRepo() = CommentsRepo(getApiService(), getPreferenceHelper())
 

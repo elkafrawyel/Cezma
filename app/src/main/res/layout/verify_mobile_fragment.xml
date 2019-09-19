@@ -49,8 +49,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mobileIconImg" />
 
-    <TextView
-        android:id="@+id/verifyMessage2"
+    <LinearLayout
+        android:id="@+id/verifyMessageLayout"
+        android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
@@ -58,23 +59,40 @@
         android:layout_marginEnd="18dp"
         android:gravity="center"
         android:paddingBottom="8dp"
-        android:text="@string/verification_code_has_been_sent_to_you_on_your_mobile_number_please_enter_it_below"
-        android:textAppearance="?attr/textAppearanceBody2"
-        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/verifyMessage1" />
+        app:layout_constraintTop_toBottomOf="@id/verifyMessage1" >
+
+        <TextView
+            android:id="@+id/phoneNumberMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/verification_code_has_been_sent_to_you_on_your_mobile_number"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/please_enter_it_below"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/verifyMobileEt"
-        android:layout_width="0dp"
+        android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_margin="18dp"
         android:background="@drawable/auth_bg_rounded"
-        android:hint="@string/enter_the_code_you_received"
+        android:hint="@string/code"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/verifyMessage2" />
+        app:layout_constraintTop_toBottomOf="@id/verifyMessageLayout" />
 
     <TextView
         android:id="@+id/verifyMessage3"
@@ -93,8 +111,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="@string/resend_in_60_sec"
-        app:backgroundTint="@android:color/darker_gray"
+        android:text="@string/resend"
+        android:enabled="false"
         app:layout_constraintEnd_toStartOf="@id/submitCode"
         app:layout_constraintHorizontal_chainStyle="packed"
         android:layout_marginEnd="12dp"
@@ -109,4 +127,15 @@
         app:layout_constraintStart_toEndOf="@id/resentCode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/resentCode" />
+
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loading"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

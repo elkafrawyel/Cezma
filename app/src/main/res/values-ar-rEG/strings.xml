@@ -56,7 +56,7 @@
     <string name="addImage">اضافة صورة شخصية</string>
     <string name="add_Product">اضافة منتج</string>
     <string name="verify_mobile_number">تفعيل رقم الهاتف</string>
-    <string name="verification_code_has_been_sent_to_you_on_your_mobile_number_please_enter_it_below">تم ارسال رمز التأكيد الي هاتفك من فضلك قم بكتابة الرمز في الاسفل</string>
+    <string name="verification_code_has_been_sent_to_you_on_your_mobile_number">تم ارسال رمز التأكيد الي هاتفك</string>
     <string name="enter_the_code_you_received">قم بكتابة الكود الذي ارسل اليك</string>
     <string name="didn_t_receive_verification_code">لم استلم رمز تأكيد</string>
     <string name="search_your_product">البحث عن المنتجات</string>
@@ -73,7 +73,9 @@
     <string name="logout">تسجيل الخروج</string>
     <string name="last_added">الاحدث</string>
     <string name="submit">تأكيد</string>
-    <string name="resend_in_60_sec">اعادة الارسال خلال 60 ث</string>
+    <string name="resend_in">اعادة الارسال خلال </string>
+    <string name="resend">اعادة الارسال</string>
+    <string name="second"> ث</string>
 
     <string-array name="gender">
         <item>انثي</item>
@@ -140,6 +142,15 @@
     <string name="label_confirm_review">ارسل التعليق</string>
     <string name="error_star_count_zero">اختر علي الاقل نجمة واحدة</string>
     <string name="label_write_review_message">اكتب تعليقك اولا</string>
+    <string name="Verify_phone">التحقق من رقم الهاتف</string>
+    <string name="verify">موافق</string>
+    <string name="code">الكود</string>
+    <string name="send_code">ارسال الكود</string>
+    <string name="enter_phone">يرجى إدخال رقم الهاتف</string>
+    <string name="enter_valid_phone">الرجاء إدخال رقم هاتف صحيح</string>
+    <string name="invalid_code">هذا الكود غير صحيح</string>
+    <string name="enter_code">من فضلك ادخل الكود</string>
+    <string name="please_enter_it_below">من فضلك قم بكتابة الرمز في الاسفل</string>
     <string name="adComment">اضف تعليقك</string>
     <string name="comments">التعليقات</string>
 

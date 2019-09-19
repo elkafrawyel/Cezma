@@ -73,8 +73,10 @@ data class UserModel(
     @field:Json(name = "country_id")
     var country_id: Int?,
     @field:Json(name = "country_name")
-    var country_name: String?
-) : Parcelable {
+    var country_name: String?,
+    @field:Json(name = "phone_verfied")
+    var phone_verfied: Int?
+):Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readString(),
@@ -109,8 +111,10 @@ data class UserModel(
         parcel.readString(),
         parcel.readString(),
         parcel.readValue(Int::class.java.classLoader) as? Int,
-        parcel.readString()
-    )
+        parcel.readString(),
+        parcel.readValue(Int::class.java.classLoader) as? Int
+    ) {
+    }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(id)
@@ -147,6 +151,7 @@ data class UserModel(
         parcel.writeString(updatedAt)
         parcel.writeValue(country_id)
         parcel.writeString(country_name)
+        parcel.writeValue(phone_verfied)
     }
 
     override fun describeContents(): Int {

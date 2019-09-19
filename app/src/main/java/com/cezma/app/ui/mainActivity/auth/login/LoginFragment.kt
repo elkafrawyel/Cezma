@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.blankj.utilcode.util.KeyboardUtils
 
@@ -92,7 +91,16 @@ class LoginFragment : Fragment() {
         loading.visibility = View.GONE
 
         activity?.toast(getString(R.string.loginSuccess))
+        if (viewModel.phone_verfied) {
+            // go to home
+            findNavController().navigate(R.id.mainHomeFragment)
+        } else {
+            if (viewModel.phone_number == null)
+                findNavController().navigate(R.id.receiveNumberFragment)
+            else
 
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToVerifyMobileFragment(viewModel.phone_number!!))
+        }
     }
 
     private fun onLoading() {

@@ -1,5 +1,6 @@
 package com.cezma.app.ui.mainActivity.home
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.view.GravityCompat
-import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 
@@ -63,7 +63,6 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
         drawerToggleImgBtn.setOnClickListener {
             rootViewDl.openDrawer(GravityCompat.START)
         }
-
         handleSocialClicks()
 
         searchImg.setOnClickListener {

@@ -55,6 +55,11 @@ interface RetrofitApiService {
         @Header("Authorization") token: String
     ): Deferred<LogoutResponse>
 
+    @POST("verifyuser")
+    fun verifyUserAsync(
+        @Header("Authorization") token: String
+    ): Deferred<FavouriteActionResponse>
+
     @GET("favoritesaction/{adId}")
     fun favouriteActionAsync(
         @Header("Authorization") token: String,
@@ -95,6 +100,22 @@ interface RetrofitApiService {
         @Path("subCategoryName") subCategoryName: String,
         @Query("page") page: Int
     ): Deferred<AdsResponse>
+
+    @GET("notifications")
+    fun getNotisAsync(
+        @Header("Authorization") token: String,
+        @Query("page") page: Int
+    ): Deferred<NotificationsResponse>
+
+    @GET("checkout/fawry")
+    fun upgradeAccountAsync(
+        @Header("Authorization") token: String
+    ): Deferred<String>
+
+    @GET("setnotfication")
+    fun readNotisAsync(
+        @Header("Authorization") token: String
+    ): Deferred<FavouriteActionResponse>
 
     @GET("store/{userName}")
     fun getStoreDetailsAsync(
@@ -195,6 +216,7 @@ interface RetrofitApiService {
         @Header("Authorization") token: String,
         @Body offersActionBody: OffersActionBody
     ): Deferred<OffersActionResponse>
+
     //===================== Static Pages ==================================
     @GET("page/aboutcezma")
     fun aboutUsPageAsync(): Deferred<PagesResponse>
