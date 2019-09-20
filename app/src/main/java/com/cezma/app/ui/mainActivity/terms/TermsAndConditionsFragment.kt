@@ -7,17 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
 import com.cezma.app.R
-import com.cezma.app.utiles.Constants.TermsUrl
 import com.cezma.app.utiles.ViewState
 import com.cezma.app.utiles.changeLanguage
 import com.cezma.app.utiles.toast
-import kotlinx.android.synthetic.main.privacy_policy_fragment.*
 import kotlinx.android.synthetic.main.terms_and_conditions_fragment.*
 import kotlinx.android.synthetic.main.terms_and_conditions_fragment.backImgv
 import kotlinx.android.synthetic.main.terms_and_conditions_fragment.loading

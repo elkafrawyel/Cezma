@@ -53,7 +53,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:paddingTop="4dp"
-        android:clipToPadding="false"
+        android:clipToPadding="true"
         android:paddingBottom="8dp"
         android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

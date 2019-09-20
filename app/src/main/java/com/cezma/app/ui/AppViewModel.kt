@@ -1,8 +1,6 @@
 package com.cezma.app.ui
 
 import androidx.lifecycle.ViewModel
-import com.cezma.app.data.model.AdResponse
-import com.cezma.app.utiles.DataResource
 import com.koraextra.app.utily.CoroutinesDispatcherProvider
 import kotlinx.coroutines.*
 

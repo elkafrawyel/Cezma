@@ -2,8 +2,6 @@ package com.cezma.app.repo
 
 import com.cezma.app.R
 import com.cezma.app.data.model.CitiesRespose
-import com.cezma.app.data.model.CountriesResponse
-import com.cezma.app.data.model.StateResponse
 import com.cezma.app.data.storage.remote.RetrofitApiService
 import com.cezma.app.utiles.DataResource
 import com.cezma.app.utiles.Injector

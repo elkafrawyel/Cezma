@@ -1,18 +1,17 @@
 package com.cezma.app.ui.mainActivity.home
 
-import android.content.Intent
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-
 import com.cezma.app.R
 import com.cezma.app.utiles.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -20,13 +19,26 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.navigation.NavigationView
 import com.koraextra.app.utily.observeEvent
 import kotlinx.android.synthetic.main.main_home_fragment.*
+import q.rorbin.badgeview.Badge
+import q.rorbin.badgeview.QBadgeView
+
 
 class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener {
 
     companion object {
         fun newInstance() = MainHomeFragment()
+
+        private const val ID_HOME = 1
+        private const val ID_MESSAGE = 2
+        private const val ID_NOTIFICATION = 3
+
+        private const val HOME_INDEX = 0
+        private const val MESSAGE_INDEX = 1
+        private const val NOTIFICATION_INDEX = 2
     }
 
+    private var messagesBadge: Badge? = null
+    private var notificationBadge: Badge? = null
     private lateinit var viewModel: MainHomeFragmentViewModel
 
     override fun onCreateView(
@@ -40,25 +52,33 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainHomeFragmentViewModel::class.java)
         viewModel.uiStateLogOut.observeEvent(this) { onLogOut(it) }
-
+        viewModel.uiStateNotification.observe(this, Observer { onNotificationResponse(it) })
         navigationView.setNavigationItemSelectedListener(this)
-        bottom_navigation.setOnNavigationItemSelectedListener(
+
+        bottom_navigation.enableAnimation(false)
+
+        bottom_navigation.onNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { item: MenuItem ->
                 when (item.itemId) {
                     R.id.action_Home -> {
+                        viewModel.selectedBottomItemId = ID_HOME
                         selectSubHomeFragment()
                     }
                     R.id.action_Messages -> {
+                        viewModel.selectedBottomItemId = ID_MESSAGE
                         selectMessagesFragment()
+                        removeBadgeAt(MESSAGE_INDEX)
                     }
                     R.id.action_Notifications -> {
+                        viewModel.selectedBottomItemId = ID_NOTIFICATION
                         selectNotificationFragment()
+                        removeBadgeAt(NOTIFICATION_INDEX)
                     }
                     else -> {
                     }
                 }
                 return@OnNavigationItemSelectedListener true
-            })
+            }
 
         drawerToggleImgBtn.setOnClickListener {
             rootViewDl.openDrawer(GravityCompat.START)
@@ -66,7 +86,6 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
         handleSocialClicks()
 
         searchImg.setOnClickListener {
-            viewModel.selectedBottomItemId = bottom_navigation.selectedItemId
             findNavController().navigate(R.id.action_mainHomeFragment_to_searchFragment)
         }
 
@@ -82,10 +101,86 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
 
         setAuthState()
 
+//        addBadgeAt(MESSAGE_INDEX, 5)
+//
+//        addBadgeAt(NOTIFICATION_INDEX, 10)
+    }
+
+    private fun onNotificationResponse(it: ViewState?) {
+        when (it) {
+            ViewState.Loading -> {
+
+            }
+            ViewState.Success -> {
+                addBadgeAt(NOTIFICATION_INDEX, viewModel.unreadNotisCount)
+            }
+            is ViewState.Error -> {
+
+            }
+            ViewState.NoConnection -> {
+
+            }
+            ViewState.Empty -> {
+
+            }
+            ViewState.LastPage -> {
+
+            }
+            null -> {
+
+            }
+        }
+    }
+
+    private fun addBadgeAt(position: Int, number: Int) {
+
+        when (position) {
+            HOME_INDEX -> {
+
+            }
+
+            MESSAGE_INDEX -> {
+                // add badge
+                messagesBadge = QBadgeView(context)
+                    .setBadgeNumber(number)
+                    .setGravityOffset(12F, 2F, true)
+                    .setOnDragStateChangedListener { _, _, _ -> }
+                    .bindTarget(bottom_navigation.getBottomNavigationItemView(position))
+
+            }
+
+            NOTIFICATION_INDEX -> {
+                notificationBadge = QBadgeView(context)
+                    .setBadgeNumber(number)
+                    .setGravityOffset(12F, 2F, true)
+                    .setOnDragStateChangedListener { _, _, _ -> }
+                    .bindTarget(bottom_navigation.getBottomNavigationItemView(position))
+            }
+        }
+    }
+
+    private fun removeBadgeAt(position: Int) {
+        when (position) {
+            HOME_INDEX -> {
+
+            }
+
+            MESSAGE_INDEX -> {
+                if (messagesBadge != null) {
+                    messagesBadge!!.hide(false)
+                }
+            }
+
+            NOTIFICATION_INDEX -> {
+                if (notificationBadge != null) {
+                    notificationBadge!!.hide(false)
+                }
+            }
+        }
     }
 
     private fun onLogOut(it: ViewState?) {
-        when(it){
+        when (it) {
             ViewState.Loading -> {
                 loading.visibility = View.VISIBLE
             }
@@ -172,16 +267,16 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
 
     private fun showHomeHeader(selectedBottomItem: Int) {
         when (selectedBottomItem) {
-            R.id.action_Home -> {
+            1 -> {
                 searchImg.visibility = View.VISIBLE
                 homeFragmentTitleTv.visibility = View.GONE
             }
-            R.id.action_Messages -> {
+            2 -> {
                 homeFragmentTitleTv.text = getString(R.string.messages)
                 homeFragmentTitleTv.visibility = View.VISIBLE
                 searchImg.visibility = View.GONE
             }
-            R.id.action_Notifications -> {
+            3 -> {
                 homeFragmentTitleTv.text = getString(R.string.notifications)
                 searchImg.visibility = View.GONE
                 homeFragmentTitleTv.visibility = View.VISIBLE
@@ -225,7 +320,6 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
                         rootView
                     ) {
                         findNavController().navigate(R.id.action_mainHomeFragment_to_loginFragment)
-
                     }
                 }
             }
@@ -296,9 +390,7 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
                     findNavController().navigate(R.id.action_mainHomeFragment_to_loginFragment)
                 }
             }
-
         }
-        viewModel.selectedBottomItemId = bottom_navigation.selectedItemId
         rootViewDl.closeDrawer(GravityCompat.START)
         return true
     }

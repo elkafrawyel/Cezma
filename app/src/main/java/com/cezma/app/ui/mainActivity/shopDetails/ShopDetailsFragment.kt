@@ -15,7 +15,6 @@ import com.cezma.app.ui.adapters.AdapterAds
 import com.cezma.app.utiles.ViewState
 import com.cezma.app.utiles.snackBar
 import com.cezma.app.utiles.snackBarWithAction
-import com.cezma.app.utiles.toast
 import com.chad.library.adapter.base.BaseQuickAdapter
 import kotlinx.android.synthetic.main.shop_details_fragment.*
 

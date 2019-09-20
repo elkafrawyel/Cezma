@@ -3,7 +3,6 @@ package com.cezma.app.utiles
 import android.annotation.SuppressLint
 import android.content.ContentUris
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.database.Cursor
 import android.database.DatabaseUtils

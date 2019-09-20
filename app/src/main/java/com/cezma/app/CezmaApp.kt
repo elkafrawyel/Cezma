@@ -2,7 +2,6 @@ package com.cezma.app
 
 import android.app.Application
 import com.blankj.utilcode.util.Utils
-import com.cezma.app.utiles.changeLanguage
 
 class CezmaApp : Application() {
 

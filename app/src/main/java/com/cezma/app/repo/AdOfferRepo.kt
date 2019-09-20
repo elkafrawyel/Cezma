@@ -3,8 +3,6 @@ package com.cezma.app.repo
 import com.cezma.app.R
 import com.cezma.app.data.model.AdOfferBody
 import com.cezma.app.data.model.AdOfferResponse
-import com.cezma.app.data.model.ReportAdBody
-import com.cezma.app.data.model.ReportAdResponse
 import com.cezma.app.data.storage.local.PreferencesHelper
 import com.cezma.app.data.storage.remote.RetrofitApiService
 import com.cezma.app.utiles.Constants

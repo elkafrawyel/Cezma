@@ -2,7 +2,6 @@ package com.cezma.app.ui.mainActivity.offers
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.NetworkUtils
 import com.cezma.app.data.model.OfferModel
 import com.cezma.app.data.model.OffersActionBody

@@ -3,7 +3,6 @@ package com.cezma.app.repo
 import com.cezma.app.R
 import com.cezma.app.data.model.ContactUsBody
 import com.cezma.app.data.model.ContactUsResponse
-import com.cezma.app.data.model.RegisterResponse
 import com.cezma.app.data.storage.remote.RetrofitApiService
 import com.cezma.app.utiles.DataResource
 import com.cezma.app.utiles.Injector

@@ -1,7 +1,6 @@
 package com.cezma.app.repo
 
 import com.cezma.app.R
-import com.cezma.app.data.model.CategoriesResponse
 import com.cezma.app.data.model.CountriesResponse
 import com.cezma.app.data.storage.remote.RetrofitApiService
 import com.cezma.app.utiles.DataResource

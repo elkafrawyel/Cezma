@@ -3,7 +3,6 @@ package com.cezma.app.ui.mainActivity.writeComment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.blankj.utilcode.util.NetworkUtils
-import com.cezma.app.data.model.CategoryModel
 import com.cezma.app.data.model.WriteCommentBody
 import com.cezma.app.ui.AppViewModel
 import com.cezma.app.utiles.DataResource

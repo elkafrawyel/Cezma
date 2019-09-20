@@ -153,6 +153,13 @@
     <string name="please_enter_it_below">من فضلك قم بكتابة الرمز في الاسفل</string>
     <string name="adComment">اضف تعليقك</string>
     <string name="comments">التعليقات</string>
+    <string name="featured">المميزة</string>
+    <string name="high_price">الاعلي سعرا</string>
+    <string name="low_price">الاقل سعرا</string>
+    <string name="newFilter">الجديدة</string>
+    <string name="used">المستعملة</string>
+    <string name="choose_filter">الاختيارات</string>
+    <string name="filters">الاختيارات</string>
 
 
 </resources>

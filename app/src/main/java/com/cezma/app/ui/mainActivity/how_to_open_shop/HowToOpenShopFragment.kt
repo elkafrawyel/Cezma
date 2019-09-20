@@ -13,11 +13,9 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
 import com.cezma.app.R
-import com.cezma.app.utiles.Constants.howToOpenYourShopUrl
 import com.cezma.app.utiles.ViewState
 import com.cezma.app.utiles.changeLanguage
 import com.cezma.app.utiles.toast
-import kotlinx.android.synthetic.main.about_us_fragment.*
 import kotlinx.android.synthetic.main.how_to_open_shop_fragment.*
 import kotlinx.android.synthetic.main.how_to_open_shop_fragment.backImgv
 import kotlinx.android.synthetic.main.how_to_open_shop_fragment.loading

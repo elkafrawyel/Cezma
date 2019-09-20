@@ -49,21 +49,21 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener, VideoListener 
         setContentView(R.layout.activity_player)
 
 
-        changeLanguage()
+//        changeLanguage()
 
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+//        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
 
-        initiatePlayer()
+//        initiatePlayer()
 
 
-        val mUrl = intent?.extras?.getString(videoUrlExtra,"")
-
-        play(mUrl!!)
-
-        backImgv.setOnClickListener {
-            release()
-            finish()
-        }
+//        val mUrl = intent?.extras?.getString(videoUrlExtra,"")
+//
+//        play(mUrl!!)
+//
+//        backImgv.setOnClickListener {
+//            release()
+//            finish()
+//        }
     }
 
 

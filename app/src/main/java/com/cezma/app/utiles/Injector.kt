@@ -122,4 +122,8 @@ object Injector {
 
     fun getCommentsRepo() = CommentsRepo(getApiService(), getPreferenceHelper())
 
+    fun getHomeAdsRepo() = HomeAdsRepo(getApiService())
+
+    fun getSlidersRepo() = SlidersRepo(getApiService())
+
 }

@@ -7,13 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
 import com.cezma.app.R
-import com.cezma.app.utiles.Constants.privacyUrl
 import com.cezma.app.utiles.ViewState
 import com.cezma.app.utiles.changeLanguage
 import com.cezma.app.utiles.toast

@@ -1,6 +1,5 @@
 package com.cezma.app.ui.mainActivity.adComments
 
-import android.widget.RatingBar
 import com.bumptech.glide.Glide
 import com.cezma.app.R
 import com.cezma.app.data.model.CommentModel
@@ -18,7 +17,7 @@ class AdapterComments :
 
         if (item.rating > 0) {
             helper.setGone(R.id.commentRating, true)
-            helper.getView<RatingBar>(R.id.commentRating).rating = item.rating.toFloat()
+            helper.setText(R.id.starNumbers,item.rating.toString())
         } else {
             helper.setGone(R.id.commentRating, false)
         }

@@ -10,7 +10,6 @@ import android.view.WindowManager
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.cezma.app.R
-import com.cezma.app.utiles.Constants.aboutUsUrl
 import com.cezma.app.utiles.ViewState
 import com.cezma.app.utiles.changeLanguage
 import com.cezma.app.utiles.toast

@@ -63,6 +63,9 @@
         <action
             android:id="@+id/action_mainHomeFragment_to_offersFragment"
             app:destination="@id/offersFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_subCategoryFragment"
+            app:destination="@id/subCategoryFragment" />
     </fragment>
 
     <fragment

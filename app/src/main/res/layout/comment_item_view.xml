@@ -47,20 +47,27 @@
             app:layout_constraintTop_toBottomOf="@id/commentRating"
             tools:text="2 days ago" />
 
-        <androidx.appcompat.widget.AppCompatRatingBar
+        <ImageView
             android:id="@+id/commentRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:numStars="5"
-            android:stepSize="1"
-            android:rating="2"
+            android:src="@drawable/ic_star_black_24dp"
             android:theme="@style/ratingBar"
             android:visibility="visible"
-            android:layout_marginTop="8dp"
+            android:layout_margin="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentUserImage" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/starNumbers"
+            app:layout_constraintEnd_toStartOf="@id/commentRating"
+            app:layout_constraintBottom_toBottomOf="@id/commentRating"
+            app:layout_constraintTop_toTopOf="@id/commentRating"
+            tools:text="5"
+            android:padding="8dp"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/commentUserImage"
             android:layout_width="90dp"

@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.mainActivity.home.sub_home_fragment.SubHomeFragment">
@@ -10,6 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
+        android:id="@+id/mScrollView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,31 +21,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/bannerSliderVp"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:focusableInTouchMode="true"
-                android:nestedScrollingEnabled="true"
-                app:layout_constraintDimensionRatio="16:9"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.rd.PageIndicatorView
-                android:id="@+id/pageIndicator"
+            <ImageView
+                android:id="@+id/listImgv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="@id/bannerSliderVp"
+                android:layout_marginEnd="18dp"
+                android:src="@drawable/list"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/bannerSliderVp"
-                app:piv_animationType="worm"
-                app:piv_dynamicCount="true"
-                app:piv_interactiveAnimation="true"
-                app:piv_selectedColor="@color/colorTextOnViewBlue"
-                app:piv_unselectedColor="@android:color/darker_gray"
-                app:piv_viewPager="@id/bannerSliderVp" />
+                app:layout_constraintTop_toTopOf="@id/filterTv" />
+
+            <ImageView
+                android:id="@+id/gridImgv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/grid_not_selected"
+                app:layout_constraintEnd_toStartOf="@id/listImgv"
+                app:layout_constraintTop_toTopOf="@id/filterTv" />
 
             <TextView
                 android:id="@+id/categoriesTv"
@@ -68,6 +62,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/categoriesTv" />
 
+            <TextView
+                android:id="@+id/filterTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/filter"
+                android:drawablePadding="8dp"
+                android:text="@string/filters"
+                app:layout_constraintStart_toStartOf="@id/categoriesTv"
+                app:layout_constraintTop_toBottomOf="@id/categoriesRv" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/categoriesRv"
                 android:layout_width="0dp"
@@ -81,63 +86,69 @@
                 app:reverseLayout="false"
                 tools:listitem="@layout/category_home_item_view" />
 
-            <TextView
-                android:id="@+id/filterTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:drawableStart="@drawable/filter"
-                android:drawablePadding="8dp"
-                android:text="@string/last_added"
-                app:layout_constraintStart_toStartOf="@id/categoriesTv"
-                app:layout_constraintTop_toBottomOf="@id/categoriesRv" />
-
-            <ImageView
-                android:id="@+id/listImgv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:src="@drawable/list"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/filterTv" />
-
-            <ImageView
-                android:id="@+id/gridImgv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/arrange_icon"
-                app:layout_constraintEnd_toStartOf="@id/listImgv"
-                app:layout_constraintTop_toTopOf="@id/filterTv" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/adsRv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:nestedScrollingEnabled="true"
+                android:clipToPadding="true"
+                android:nestedScrollingEnabled="false"
+                android:paddingBottom="18dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/filterTv"
-                app:reverseLayout="false"
                 app:spanCount="2"
                 tools:listitem="@layout/ad_item_view" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/bannerSliderVp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:focusableInTouchMode="true"
+                android:nestedScrollingEnabled="true"
+                app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/filterTv" />
+
+            <com.rd.PageIndicatorView
+                android:id="@+id/pageIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/bannerSliderVp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/bannerSliderVp"
+                app:piv_animationType="worm"
+                app:piv_dynamicCount="true"
+                app:piv_interactiveAnimation="true"
+                app:piv_selectedColor="@color/colorTextOnViewBlue"
+                app:piv_unselectedColor="@android:color/darker_gray"
+                app:piv_viewPager="@id/bannerSliderVp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addProductFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:rippleColor="@android:color/white"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="60dp"
+        app:backgroundTint="@color/colorTextOnViewBlue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@android:color/white"
         app:srcCompat="@drawable/ic_add_white_24dp"
-        app:tint="@android:color/white"
-        app:backgroundTint="@color/colorTextOnViewBlue"/>
+        app:tint="@android:color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

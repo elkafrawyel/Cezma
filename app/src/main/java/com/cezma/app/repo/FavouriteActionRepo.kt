@@ -1,8 +1,6 @@
 package com.cezma.app.repo
 
 import com.cezma.app.R
-import com.cezma.app.data.model.AdResponse
-import com.cezma.app.data.model.AdsResponse
 import com.cezma.app.data.model.FavouriteActionResponse
 import com.cezma.app.data.storage.local.PreferencesHelper
 import com.cezma.app.data.storage.remote.RetrofitApiService

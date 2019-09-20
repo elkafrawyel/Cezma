@@ -12,7 +12,6 @@ import com.cezma.app.R
 import com.cezma.app.data.model.WriteCommentBody
 import com.cezma.app.utiles.ViewState
 import com.cezma.app.utiles.snackBar
-import com.cezma.app.utiles.snackBarWithAction
 import com.cezma.app.utiles.toast
 import kotlinx.android.synthetic.main.write_comment_fragment.*
 

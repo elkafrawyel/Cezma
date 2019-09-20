@@ -1,8 +1,6 @@
 package com.cezma.app.repo
 
 import com.cezma.app.R
-import com.cezma.app.data.model.AdsResponse
-import com.cezma.app.data.model.LoginBody
 import com.cezma.app.data.model.LoginResponse
 import com.cezma.app.data.model.RefreshTokenBody
 import com.cezma.app.data.storage.local.PreferencesHelper

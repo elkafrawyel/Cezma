@@ -135,6 +135,13 @@
     <string name="please_enter_it_below">please enter it below</string>
     <string name="adComment">Add Your Comment</string>
     <string name="comments">Comments</string>
+    <string name="featured">Featured</string>
+    <string name="newFilter">New</string>
+    <string name="used">Used</string>
+    <string name="high_price">High Price</string>
+    <string name="low_price">Low Price</string>
+    <string name="choose_filter">Choose an filter</string>
+    <string name="filters">Filters</string>
 
 
     <string-array name="gender">

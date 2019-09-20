@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import com.cezma.app.R
 import com.cezma.app.data.model.ContactUsBody
 import com.cezma.app.utiles.ViewState
-import com.cezma.app.utiles.snackBarWithAction
 import com.cezma.app.utiles.toast
 import kotlinx.android.synthetic.main.contact_us_fragment.*
 

@@ -120,14 +120,15 @@ class AdsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
         loading.visibility = View.GONE
         emptyView.visibility = View.GONE
         adsRv.visibility = View.VISIBLE
-
-        adapterAds.replaceData(viewModel.adsList)
+        adapterAds.addData(viewModel.adsList)
+        adapterAds.loadMoreComplete()
     }
 
     private fun onError(message: String) {
         loading.visibility = View.GONE
         emptyView.visibility = View.GONE
         adsRv.visibility = View.GONE
+        adapterAds.loadMoreFail()
         activity?.snackBarWithAction(message, getString(R.string.retry), rootView) {
             viewModel.refresh()
         }

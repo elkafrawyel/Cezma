@@ -17,7 +17,6 @@ class NotificationsViewModel : AppViewModel() {
     private var lastPage: Int = 1
     private var unreadNotisCount: Int = 0
 
-
     private var job: Job? = null
 
     private var _uiState = MutableLiveData<ViewState>()
@@ -51,33 +50,17 @@ class NotificationsViewModel : AppViewModel() {
             when (val result =
                 Injector.getNotisRepo().getNotis(page)) {
                 is DataResource.Success -> {
-                    if (result.data.notifications != null) {
-                        if (result.data.notifications.isNotEmpty()) {
-
-                            if(result.data.currentpage==1) {
-                                when(val resultRead = Injector.getNotisRepo().readNotis()){
-                                    is DataResource.Success->{
-                                        // All Notifications read
-                                    }
-                                    is DataResource.Error->{
-
-                                    }
-                                }
-                            }
-                            //  Notifications not read count
-                            unreadNotisCount = result.data.unreadcount
-
-                            lastPage = result.data.pages
-                            notisList.addAll(result.data.notifications)
-                            runOnMainThread {
-                                _uiState.value = ViewState.Success
-                            }
-                        } else {
-                            runOnMainThread {
-                                _uiState.value = ViewState.Empty
-                            }
+                    if (result.data.notifications.isNotEmpty()) {
+                        if (page == 1) {
+                            Injector.getNotisRepo().readNotis()
                         }
-                    }else{
+
+                        lastPage = result.data.pages
+                        notisList.addAll(result.data.notifications)
+                        runOnMainThread {
+                            _uiState.value = ViewState.Success
+                        }
+                    } else {
                         runOnMainThread {
                             _uiState.value = ViewState.Empty
                         }

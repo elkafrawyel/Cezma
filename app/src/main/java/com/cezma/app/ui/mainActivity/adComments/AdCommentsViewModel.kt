@@ -14,6 +14,10 @@ import kotlinx.coroutines.launch
 class AdCommentsViewModel : AppViewModel() {
     private var job: Job? = null
 
+    var page: Int = 0
+    private var lastPage: Int = 1
+
+
     private var _uiState = MutableLiveData<ViewState>()
     val uiState: LiveData<ViewState>
         get() = _uiState
@@ -21,21 +25,30 @@ class AdCommentsViewModel : AppViewModel() {
     var adId: String? = null
     var comments: ArrayList<CommentModel> = arrayListOf()
 
-    fun getComments() {
+    fun getComments(loadMore: Boolean = false) {
         if (NetworkUtils.isConnected()) {
             if (job?.isActive == true)
                 return
-            job = launchJob()
+            page++
+            if (page <= lastPage) {
+                job = launchJob(loadMore)
+            } else {
+                _uiState.value = ViewState.LastPage
+            }
         } else {
             _uiState.value = ViewState.NoConnection
         }
     }
 
-    private fun launchJob(): Job {
+    private fun launchJob(loadMore: Boolean): Job {
         return scope.launch(dispatcherProvider.io) {
-            runOnMainThread { _uiState.value = ViewState.Loading }
-            when (val result = Injector.getCommentsRepo().getComments(adId!!)) {
+            if (!loadMore) {
+                runOnMainThread { _uiState.value = ViewState.Loading }
+            }
+            when (val result = Injector.getCommentsRepo().getComments(adId!!, page)) {
                 is DataResource.Success -> {
+                    lastPage = result.data.pages
+
                     comments.clear()
                     comments.addAll(result.data.comments)
                     runOnMainThread {
@@ -52,6 +65,7 @@ class AdCommentsViewModel : AppViewModel() {
     }
 
     fun refresh() {
+        page = 0
         getComments()
     }
 

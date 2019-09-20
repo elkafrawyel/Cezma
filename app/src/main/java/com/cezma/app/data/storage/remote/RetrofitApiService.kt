@@ -8,6 +8,15 @@ import retrofit2.http.*
 
 interface RetrofitApiService {
 
+    @GET("gethome")
+    fun getHomeAdsAsync(
+        @Query("page") page: Int,
+        @Query("is_featured") is_featured: Int?,
+        @Query("is_used") is_used: Int?,
+        @Query("pricelevel") priceLevel: String?
+    ): Deferred<HomeAdsResponse>
+
+
     @POST("auth/login")
     fun getLoginAsync(
         @Body loginBody: LoginBody
@@ -50,6 +59,12 @@ interface RetrofitApiService {
         @Path("adId") adId: String
     ): Deferred<AdResponse>
 
+
+    @GET("getsliders")
+    fun getSlidersAsync(
+    ): Deferred<SlidersResponse>
+
+
     @POST("logout")
     fun logOutAsync(
         @Header("Authorization") token: String
@@ -86,9 +101,9 @@ interface RetrofitApiService {
     @POST("listcomments")
     fun getCommentsAsync(
         @Header("Authorization") token: String,
-        @Body commentsBody: CommentsBody
+        @Body commentsBody: CommentsBody,
+        @Query("page") page: Int
     ): Deferred<CommentsResponse>
-
 
     @GET("stores")
     fun getStoresAsync(@Query("page") page: Int): Deferred<StoresResponse>

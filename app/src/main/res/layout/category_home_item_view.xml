@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/category_item_rounded"
     android:text="Category"
+    android:id="@+id/categoryName"
     android:textAppearance="?attr/textAppearanceBody1"
     android:textColor="@color/colorTextOnViewBlue"
     android:padding="4dp"
