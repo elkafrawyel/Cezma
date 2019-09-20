@@ -15,17 +15,34 @@ class UpgradeAccountRepo(
     private val helper: PreferencesHelper
 ) {
 
-    suspend fun upgradeAccount(): DataResource<String> {
+    suspend fun upgradeAccount(): DataResource<FavouriteActionResponse> {
         return safeApiCall(
             call = { call() },
             errorMessage = Injector.getApplicationContext().getString(R.string.generalError)
         )
     }
 
-    private suspend fun call(): DataResource<String> {
+    private suspend fun call(): DataResource<FavouriteActionResponse> {
 
         val response = retrofitApiService.upgradeAccountAsync(
             "${Constants.AUTHORIZATION_START} ${helper.token}"
+        ).await()
+        return DataResource.Success(response)
+
+    }
+//========================upgrade ad
+    suspend fun upgradeAd(id:String): DataResource<FavouriteActionResponse> {
+        return safeApiCall(
+            call = { upgradeAdCall(id) },
+            errorMessage = Injector.getApplicationContext().getString(R.string.generalError)
+        )
+    }
+
+    private suspend fun upgradeAdCall(id:String): DataResource<FavouriteActionResponse> {
+
+        val response = retrofitApiService.upgradeAdAsync(
+            "${Constants.AUTHORIZATION_START} ${helper.token}",
+            id
         ).await()
         return DataResource.Success(response)
 

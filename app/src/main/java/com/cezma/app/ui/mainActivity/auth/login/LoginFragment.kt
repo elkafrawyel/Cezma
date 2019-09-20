@@ -11,6 +11,7 @@ import com.blankj.utilcode.util.KeyboardUtils
 
 import com.cezma.app.R
 import com.cezma.app.data.model.LoginBody
+import com.cezma.app.ui.mainActivity.MainActivity
 import com.cezma.app.utiles.ViewState
 import com.cezma.app.utiles.snackBar
 import com.cezma.app.utiles.snackBarWithAction
@@ -49,6 +50,10 @@ class LoginFragment : Fragment() {
         loginMbtn.setOnClickListener {
             KeyboardUtils.hideSoftInput(activity)
             login()
+        }
+
+        facebookMbtn.setOnClickListener {
+//            (activity as MainActivity).loginWithFacebook()
         }
     }
 

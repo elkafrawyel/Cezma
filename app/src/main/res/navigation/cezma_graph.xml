@@ -232,9 +232,18 @@
         tools:layout="@layout/terms_and_conditions_fragment" />
     <fragment
         android:id="@+id/upgradeAccountFragment"
-        android:name="com.cezma.app.ui.mainActivity.upgradeAccount.UpgradeAccountFragment"
+        android:name="com.cezma.app.ui.mainActivity.upgrade.upgradeAccount.UpgradeAccountFragment"
         android:label="upgrade_account_fragment"
         tools:layout="@layout/upgrade_account_fragment" />
+    <fragment
+        android:id="@+id/upgradeAdFragment"
+        android:name="com.cezma.app.ui.mainActivity.upgrade.upgradeAd.UpgradeAdFragment"
+        android:label="upgrade_ad_fragment"
+        tools:layout="@layout/upgrade_ad_fragment" >
+        <argument
+            android:name="adId"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.cezma.app.ui.mainActivity.auth.login.LoginFragment"

@@ -153,6 +153,8 @@
     <string name="please_enter_it_below">من فضلك قم بكتابة الرمز في الاسفل</string>
     <string name="adComment">اضف تعليقك</string>
     <string name="comments">التعليقات</string>
+    <string name="upgrade">ترقيه</string>
+    <string name="upgradeAd">ترقية اعلان</string>
     <string name="featured">المميزة</string>
     <string name="high_price">الاعلي سعرا</string>
     <string name="low_price">الاقل سعرا</string>

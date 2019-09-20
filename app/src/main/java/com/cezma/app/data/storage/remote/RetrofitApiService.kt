@@ -125,7 +125,13 @@ interface RetrofitApiService {
     @GET("checkout/fawry")
     fun upgradeAccountAsync(
         @Header("Authorization") token: String
-    ): Deferred<String>
+    ): Deferred<FavouriteActionResponse>
+
+    @GET("checkout/upgradead/{id}")
+    fun upgradeAdAsync(
+        @Header("Authorization") token: String,
+        @Path("id")id:String
+    ): Deferred<FavouriteActionResponse>
 
     @GET("setnotfication")
     fun readNotisAsync(

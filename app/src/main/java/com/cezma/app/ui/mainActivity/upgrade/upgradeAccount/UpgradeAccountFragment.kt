@@ -1,4 +1,4 @@
-package com.cezma.app.ui.mainActivity.upgradeAccount
+package com.cezma.app.ui.mainActivity.upgrade.upgradeAccount
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -43,9 +43,9 @@ class UpgradeAccountFragment : Fragment() {
         activity?.changeLanguage()
 
         //secure the screen prevent Screen Shots
-        requireActivity().window.setFlags(
-            WindowManager.LayoutParams.FLAG_SECURE,
-            WindowManager.LayoutParams.FLAG_SECURE)
+//        requireActivity().window.setFlags(
+//            WindowManager.LayoutParams.FLAG_SECURE,
+//            WindowManager.LayoutParams.FLAG_SECURE)
 
 
         webView.setOnLongClickListener {
@@ -63,9 +63,9 @@ class UpgradeAccountFragment : Fragment() {
             }
             ViewState.Success -> {
                 loading.visibility = View.GONE
-                val htmlData = viewModel.page
+                val url = viewModel.page
                 webView.settings.javaScriptEnabled = true
-                webView.loadDataWithBaseURL("", htmlData, "text/html", "UTF-8", "")
+                webView.loadUrl(url)
 
             }
             is ViewState.Error -> {

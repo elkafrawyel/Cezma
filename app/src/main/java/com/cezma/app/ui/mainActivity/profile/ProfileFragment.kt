@@ -8,24 +8,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 
 import com.cezma.app.R
+import com.cezma.app.data.model.Ad
+import com.cezma.app.data.model.FavoriteAd
 import com.cezma.app.ui.adapters.AdapterAds
+import com.cezma.app.ui.adapters.AdapterMyAds
 import com.cezma.app.utiles.ViewState
 import com.cezma.app.utiles.snackBarWithAction
 import com.cezma.app.utiles.toast
+import com.chad.library.adapter.base.BaseQuickAdapter
 import kotlinx.android.synthetic.main.profile_fragment.*
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
 
     companion object {
         fun newInstance() = ProfileFragment()
     }
 
     private lateinit var viewModel: ProfileViewModel
-    private val adapterAds = AdapterAds()
+    private val adapterAds = AdapterMyAds().also {
+        it.onItemChildClickListener = this
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -105,5 +112,21 @@ class ProfileFragment : Fragment() {
             adapterAds.replaceData(viewModel.ads)
         }
     }
+    override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
+        val ad = (adapter?.data as List<Ad>)[position]
+        when (view?.id) {
+            R.id.upgradeTv -> {
+                val bundle = Bundle()
+                bundle.putString("adId", ad.adId.toString())
+                activity?.findNavController(R.id.fragment)!!.navigate(R.id.upgradeAdFragment,bundle)
+            }
 
+            R.id.adItem -> {
+                val bundle = Bundle()
+                bundle.putString("adId", ad.adId.toString())
+                activity?.findNavController(R.id.fragment)!!.navigate(R.id.adDetailsFragment,bundle)
+            }
+
+        }
+    }
 }
