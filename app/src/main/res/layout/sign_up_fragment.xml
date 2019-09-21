@@ -88,6 +88,7 @@
                 app:layout_constraintTop_toBottomOf="@id/LastNameEt" />
 
 
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -96,37 +97,37 @@
                 android:layout_marginTop="12dp"
                 app:layout_constraintEnd_toEndOf="@id/FirstNameEt"
                 app:layout_constraintStart_toStartOf="@id/FirstNameEt"
-                app:layout_constraintTop_toBottomOf="@id/EmailEt">
-
-            <EditText
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:background="@drawable/auth_bg_rounded"
-                android:inputType="numberDecimal"
-                android:text="@string/countryCodeValue"
-                android:enabled="false"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:id="@+id/code"
-                android:textAppearance="?attr/textAppearanceBody1"
-                android:textColor="@android:color/black" />
+                app:layout_constraintTop_toBottomOf="@id/EmailEt"
+                android:gravity="left"
+                android:background="@drawable/auth_bg_rounded">
 
 
-            <EditText
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:background="@drawable/auth_bg_rounded"
-                android:drawableStart="@drawable/ic_call_black_24dp"
-                android:drawablePadding="12dp"
-                android:inputType="phone"
-                tools:text="01019744661"
-                android:id="@+id/phone"
-                android:textAppearance="?attr/textAppearanceBody1"
-                android:textColor="@android:color/black" />
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/egypt" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="+2"
+                    android:gravity="center"
+                    android:textColor="#545454"
+                    android:layout_marginStart="8dp"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:background="@null"
+                    android:layout_height="match_parent"
+                    android:hint="@string/phone"
+                    android:inputType="phone"
+                    android:paddingLeft="18dp"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:textColor="@android:color/black" />
 
             </LinearLayout>
-
 
             <Spinner
                 android:id="@+id/countrySpinner"

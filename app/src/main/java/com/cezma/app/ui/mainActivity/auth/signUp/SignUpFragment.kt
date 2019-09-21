@@ -16,10 +16,13 @@ import com.cezma.app.data.model.CityModel
 import com.cezma.app.data.model.CountryModel
 import com.cezma.app.data.model.RegisterBody
 import com.cezma.app.data.model.StateModel
+import com.cezma.app.ui.mainActivity.adComments.AdCommentsFragmentArgs
 import com.cezma.app.utiles.ViewState
 import com.cezma.app.utiles.snackBarWithAction
 import com.cezma.app.utiles.toast
 import kotlinx.android.synthetic.main.sign_up_fragment.*
+
+
 
 class SignUpFragment : Fragment() {
 
@@ -33,7 +36,7 @@ class SignUpFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.sign_up_fragment, container, false)
+        return inflater.inflate(com.cezma.app.R.layout.sign_up_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -46,6 +49,14 @@ class SignUpFragment : Fragment() {
         signUpMbtn.setOnClickListener {
             register()
         }
+
+        arguments?.let {
+            FirstNameEt.setText(it.getString("firstName"))
+            LastNameEt.setText(it.getString("lastName"))
+            EmailEt.setText(it.getString("email"))
+        }
+//        val bundle = this.arguments
+
     }
 
     private fun onRegisterResponse(it: ViewState?) {
@@ -70,8 +81,8 @@ class SignUpFragment : Fragment() {
                 loading.visibility = View.GONE
                 dataCl.visibility = View.VISIBLE
                 activity?.snackBarWithAction(
-                    getString(R.string.noConnection),
-                    getString(R.string.retry),
+                    getString(com.cezma.app.R.string.noConnection),
+                    getString(com.cezma.app.R.string.retry),
                     rootView
                 ) {
                     viewModel.refresh()
@@ -102,8 +113,8 @@ class SignUpFragment : Fragment() {
                 loading.visibility = View.GONE
                 dataCl.visibility = View.GONE
                 activity?.snackBarWithAction(
-                    getString(R.string.noConnection),
-                    getString(R.string.retry),
+                    getString(com.cezma.app.R.string.noConnection),
+                    getString(com.cezma.app.R.string.retry),
                     rootView
                 ) {
                     viewModel.refresh()
@@ -220,34 +231,34 @@ class SignUpFragment : Fragment() {
 
     private fun register() {
         if (FirstNameEt.text.toString().isEmpty()) {
-            FirstNameEt.error = resources.getString(R.string.emptyField)
+            FirstNameEt.error = resources.getString(com.cezma.app.R.string.emptyField)
             return
         }
 
         if (LastNameEt.text.toString().isEmpty()) {
-            LastNameEt.error = resources.getString(R.string.emptyField)
+            LastNameEt.error = resources.getString(com.cezma.app.R.string.emptyField)
             return
         }
 
 
         if (EmailEt.text.toString().isEmpty()) {
-            EmailEt.error = resources.getString(R.string.emptyField)
+            EmailEt.error = resources.getString(com.cezma.app.R.string.emptyField)
             return
         }
 
 
         if (phone.text.toString().isEmpty()) {
-            phone.error = resources.getString(R.string.emptyField)
+            phone.error = resources.getString(com.cezma.app.R.string.emptyField)
             return
         }
 
         if (passwordEt.text.toString().isEmpty()) {
-            passwordEt.error = resources.getString(R.string.emptyField)
+            passwordEt.error = resources.getString(com.cezma.app.R.string.emptyField)
             return
         }
 
         if (confirmPasswordEt.text.toString().isEmpty()) {
-            confirmPasswordEt.error = resources.getString(R.string.emptyField)
+            confirmPasswordEt.error = resources.getString(com.cezma.app.R.string.emptyField)
             return
         }
 

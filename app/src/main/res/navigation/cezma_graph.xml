@@ -270,6 +270,16 @@
         <action
             android:id="@+id/action_signUpFragment_to_verifyMobileFragment"
             app:destination="@id/verifyMobileFragment" />
+
+        <argument
+            android:name="firstName"
+            app:argType="string" />
+        <argument
+            android:name="lastName"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/forgetPasswordFragment"

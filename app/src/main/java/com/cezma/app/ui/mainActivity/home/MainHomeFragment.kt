@@ -182,20 +182,20 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
     private fun onLogOut(it: ViewState?) {
         when (it) {
             ViewState.Loading -> {
-                loading.visibility = View.VISIBLE
+                loadingF.visibility = View.VISIBLE
             }
             ViewState.Success -> {
-                loading.visibility = View.GONE
+                loadingF.visibility = View.GONE
                 activity?.toast(viewModel.logOutMessage)
                 Injector.getPreferenceHelper().clear()
                 setAuthState()
             }
             is ViewState.Error -> {
-                loading.visibility = View.GONE
+                loadingF.visibility = View.GONE
                 activity?.snackBar(it.message, rootView)
             }
             ViewState.NoConnection -> {
-                loading.visibility = View.GONE
+                loadingF.visibility = View.GONE
                 activity?.snackBarWithAction(
                     getString(R.string.noConnection),
                     getString(R.string.retry),

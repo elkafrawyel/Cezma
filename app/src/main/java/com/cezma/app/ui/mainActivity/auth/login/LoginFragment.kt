@@ -53,7 +53,7 @@ class LoginFragment : Fragment() {
         }
 
         facebookMbtn.setOnClickListener {
-//            (activity as MainActivity).loginWithFacebook()
+            (activity as MainActivity).loginWithFacebook()
         }
     }
 

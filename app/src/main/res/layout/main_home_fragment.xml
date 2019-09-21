@@ -101,7 +101,7 @@
                 />
 
             <FrameLayout
-                android:id="@+id/loading"
+                android:id="@+id/loadingF"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@color/colorScrim"
