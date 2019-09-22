@@ -15,8 +15,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionManager
 import com.cezma.app.R
 import com.cezma.app.data.model.Ad
+import com.cezma.app.data.model.AdImagesToSliderModel
 import com.cezma.app.data.model.CategoryModel
 import com.cezma.app.ui.adapters.AdapterAds
+import com.cezma.app.ui.adapters.ImageSliderAdapter
 import com.cezma.app.ui.mainActivity.MainActivity
 import com.cezma.app.ui.mainActivity.home.MainHomeFragmentDirections
 import com.cezma.app.utiles.CustomLoadMoreView
@@ -48,13 +50,25 @@ class SubHomeFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
 
     private lateinit var viewModel: SubHomeFragmentViewModel
     private var timer: Timer? = null
-    private val imageSliderAdapter = HomeImageSliderAdapter()
+    private val imageSliderAdapter = ImageSliderAdapter { position ->
+        val images = viewModel.slidersList
+        if (images.isNotEmpty()) {
+            val action =
+                MainHomeFragmentDirections.actionMainHomeFragmentToFullScreenSliderFragment(
+                    position,
+                    AdImagesToSliderModel(images)
+                )
+            activity?.findNavController(R.id.fragment)!!.navigate(action)
+        }
+    }
+
     private val adsAdapter = AdapterAds().also {
         it.onItemChildClickListener = this
         it.setEnableLoadMore(true)
         it.setOnLoadMoreListener({ viewModel.getAds(true) }, adsRv)
         it.setLoadMoreView(CustomLoadMoreView())
     }
+
     private val categoriesAdapter = AdapterCategories().also {
         it.onItemChildClickListener =
             BaseQuickAdapter.OnItemChildClickListener { adapter, view, position ->
@@ -178,76 +192,92 @@ class SubHomeFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
             val action =
                 MainHomeFragmentDirections.actionMainHomeFragmentToCategoryFragment()
             activity?.findNavController(R.id.fragment)!!.navigate(action)
+            val spacesItemDecoration = SpacesItemDecoration(8)
+
+            if (viewModel.isList) {
+                listImgv.background = resources.getDrawable(R.drawable.list)
+                gridImgv.background = resources.getDrawable(R.drawable.grid_not_selected)
+                adsRv.layoutManager = GridLayoutManager(
+                    requireContext(),
+                    1,
+                    RecyclerView.VERTICAL,
+                    false
+                )
+            } else {
+                listImgv.background = resources.getDrawable(R.drawable.list_not_selected)
+                gridImgv.background = resources.getDrawable(R.drawable.grid)
+
+                adsRv.layoutManager = GridLayoutManager(
+                    requireContext(),
+                    2,
+                    RecyclerView.VERTICAL,
+                    false
+                )
+                adsRv.addItemDecoration(spacesItemDecoration)
+            }
+
+            listImgv.setOnClickListener {
+                if (!viewModel.isList) {
+                    listImgv.background = resources.getDrawable(R.drawable.list)
+                    gridImgv.background = resources.getDrawable(R.drawable.grid_not_selected)
+                    adsRv.post {
+                        TransitionManager.beginDelayedTransition(adsRv)
+                        (adsRv.layoutManager as GridLayoutManager).spanCount = 1
+                        adsRv.removeItemDecoration(spacesItemDecoration)
+                    }
+                    viewModel.isList = true
+                }
+            }
+
+            gridImgv.setOnClickListener {
+                if (viewModel.isList) {
+                    listImgv.background = resources.getDrawable(R.drawable.list_not_selected)
+                    gridImgv.background = resources.getDrawable(R.drawable.grid)
+                    adsRv.post {
+                        TransitionManager.beginDelayedTransition(adsRv)
+                        (adsRv.layoutManager as GridLayoutManager).spanCount = 2
+                        adsRv.addItemDecoration(spacesItemDecoration)
+                    }
+                    viewModel.isList = false
+                }
+            }
+
+
+            adsRv.adapter = adsAdapter
+            mScrollView.viewTreeObserver.addOnScrollChangedListener {
+                if (mScrollView != null) {
+                    val view = mScrollView.getChildAt(mScrollView.childCount - 1) as View
+
+                    val diff = view.bottom - (mScrollView.height + mScrollView
+                        .scrollY)
+
+                    if (diff == 0) {
+                        viewModel.getAds(true)
+                    }
+                }
+            }
+            ViewCompat.setNestedScrollingEnabled(adsRv, false)
+
+            if (viewModel.categoriesList.isEmpty()) {
+                viewModel.uiState.observe(this, androidx.lifecycle.Observer { onAdsResponse(it) })
+                viewModel.uiStateCategory.observe(
+                    this,
+                    androidx.lifecycle.Observer { onCategoriesResponse(it) })
+
+                viewModel.getCategories()
+            } else {
+                loading.visibility = View.GONE
+                adsAdapter.replaceData(viewModel.allAds)
+                imageSliderAdapter.submitList(viewModel.slidersList)
+                bannerSliderVp.adapter = imageSliderAdapter
+            }
+
         }
 
         filterTv.setOnClickListener {
             openFilterDialog()
         }
-    }
 
-    private fun openFilterDialog() {
-        val filters: Array<String> = arrayOf(
-            context!!.getString(R.string.featured),
-            context!!.getString(R.string.newFilter),
-            context!!.getString(R.string.used),
-            context!!.getString(R.string.high_price),
-            context!!.getString(R.string.low_price)
-        )
-
-        val mBuilder = AlertDialog.Builder(context!!)
-        mBuilder.setTitle(getString(R.string.choose_filter))
-        mBuilder.setSingleChoiceItems(filters, viewModel.filterIndex) { dialogInterface, i ->
-            filterTv.text = filters[i]
-            when (i) {
-                0 -> {
-                    viewModel.isFeatured = 1
-                    viewModel.isUsed = null
-                    viewModel.priceLevel=null
-                }
-
-                1 -> {
-                    viewModel.isUsed = 0
-                    viewModel.isFeatured = null
-                    viewModel.priceLevel=null
-                }
-
-                2 ->{
-                    viewModel.isUsed = 1
-                    viewModel.isFeatured = null
-                    viewModel.priceLevel = null
-                }
-
-                3->{
-                    viewModel.isUsed = null
-                    viewModel.isFeatured = null
-                    viewModel.priceLevel = "high"
-                }
-
-                4->{
-                    viewModel.isUsed = null
-                    viewModel.isFeatured = null
-                    viewModel.priceLevel = "low"
-                }
-            }
-            viewModel.allAds.clear()
-            viewModel.adsList.clear()
-            adsAdapter.data.clear()
-            adsAdapter.notifyDataSetChanged()
-            viewModel.page = 0
-            viewModel.lastPage = 1
-            viewModel.getAds()
-            viewModel.filterIndex = i
-            dialogInterface.dismiss()
-        }
-
-        // Set the neutral/cancel button click listener
-        mBuilder.setNeutralButton(getString(R.string.cancel)) { dialog, which ->
-            // Do something when click the neutral button
-            dialog.cancel()
-        }
-
-        val mDialog = mBuilder.create()
-        mDialog.show()
     }
 
     private fun onCategoriesResponse(it: ViewState?) {
@@ -285,6 +315,72 @@ class SubHomeFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
 
             }
         }
+    }
+
+
+    private fun openFilterDialog() {
+        val filters: Array<String> = arrayOf(
+            context!!.getString(R.string.featured),
+            context!!.getString(R.string.newFilter),
+            context!!.getString(R.string.used),
+            context!!.getString(R.string.high_price),
+            context!!.getString(R.string.low_price)
+        )
+
+        val mBuilder = AlertDialog.Builder(context!!)
+        mBuilder.setTitle(getString(R.string.choose_filter))
+        mBuilder.setSingleChoiceItems(filters, viewModel.filterIndex) { dialogInterface, i ->
+            filterTv.text = filters[i]
+            when (i) {
+                0 -> {
+                    viewModel.isFeatured = 1
+                    viewModel.isUsed = null
+                    viewModel.priceLevel = null
+                }
+
+                1 -> {
+                    viewModel.isUsed = 0
+                    viewModel.isFeatured = null
+                    viewModel.priceLevel = null
+                }
+
+                2 -> {
+                    viewModel.isUsed = 1
+                    viewModel.isFeatured = null
+                    viewModel.priceLevel = null
+                }
+
+                3 -> {
+                    viewModel.isUsed = null
+                    viewModel.isFeatured = null
+                    viewModel.priceLevel = "high"
+                }
+
+                4 -> {
+                    viewModel.isUsed = null
+                    viewModel.isFeatured = null
+                    viewModel.priceLevel = "low"
+                }
+            }
+            viewModel.allAds.clear()
+            viewModel.adsList.clear()
+            adsAdapter.data.clear()
+            adsAdapter.notifyDataSetChanged()
+            viewModel.page = 0
+            viewModel.lastPage = 1
+            viewModel.getAds()
+            viewModel.filterIndex = i
+            dialogInterface.dismiss()
+        }
+
+        // Set the neutral/cancel button click listener
+        mBuilder.setNeutralButton(getString(R.string.cancel)) { dialog, which ->
+            // Do something when click the neutral button
+            dialog.cancel()
+        }
+
+        val mDialog = mBuilder.create()
+        mDialog.show()
     }
 
     override fun onResume() {

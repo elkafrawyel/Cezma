@@ -104,7 +104,7 @@ class MainHomeFragmentViewModel : AppViewModel() {
 
     private fun getNotis() {
         if (NetworkUtils.isConnected()) {
-            if (job?.isActive == true)
+            if (jobNotifications?.isActive == true)
                 return
             jobNotifications = launchNotificationJob()
 
@@ -121,12 +121,12 @@ class MainHomeFragmentViewModel : AppViewModel() {
                     //  Notifications not read count
                     unreadNotisCount = result.data.unreadcount
                     runOnMainThread {
-                        _uiState.value = ViewState.Success
+                        _uiStateNotifications.value = ViewState.Success
                     }
                 }
                 is DataResource.Error -> {
                     runOnMainThread {
-                        _uiState.value = ViewState.Error(result.errorMessage)
+                        _uiStateNotifications.value = ViewState.Error(result.errorMessage)
                     }
                 }
             }

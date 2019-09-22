@@ -55,7 +55,7 @@ class NotificationsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListe
                     getString(R.string.login),
                     rootView
                 ) {
-                    findNavController().navigate(R.id.action_mainHomeFragment_to_loginFragment)
+                    activity?.findNavController(R.id.fragment)!!.navigate(R.id.action_mainHomeFragment_to_loginFragment)
                 }
             }
         }

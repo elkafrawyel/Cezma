@@ -66,6 +66,9 @@
         <action
             android:id="@+id/action_mainHomeFragment_to_subCategoryFragment"
             app:destination="@id/subCategoryFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_fullScreenSliderFragment"
+            app:destination="@id/fullScreenSliderFragment" />
     </fragment>
 
     <fragment
@@ -293,6 +296,11 @@
         tools:layout="@layout/verify_mobile_fragment" >
         <argument
             android:name="phoneNumber"
+            app:argType="string" />
+        <argument
+            android:name="token"
+            app:argType="string" />
+        <argument android:name="refresh_token"
             app:argType="string" />
     </fragment>
     <fragment

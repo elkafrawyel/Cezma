@@ -22,6 +22,7 @@ import com.cezma.app.R
 import com.cezma.app.data.model.AdImagesToSliderModel
 import com.cezma.app.data.model.AdOfferBody
 import com.cezma.app.data.model.WriteCommentBody
+import com.cezma.app.ui.adapters.ImageSliderAdapter
 import com.cezma.app.utiles.*
 import com.koraextra.app.utily.observeEvent
 import kotlinx.android.synthetic.main.ad_details_fragment.*
@@ -30,7 +31,7 @@ class AdDetailsFragment : Fragment() {
 
     private lateinit var viewModel: AdDetailsViewModel
 
-    private val imageSliderAdapter = AdImageSliderAdapter { position ->
+    private val imageSliderAdapter = ImageSliderAdapter { position ->
         val images = viewModel.ad!!.photos
         if (images.isNotEmpty()) {
             val action =
@@ -88,6 +89,7 @@ class AdDetailsFragment : Fragment() {
         }
 
         adCommentMbtn.setOnClickListener {
+
             if (viewModel.ad?.hasStore == 1) {
                 openWriteCommentFragment()
             } else {

@@ -27,8 +27,8 @@ class AdsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
     private lateinit var viewModel: AdsViewModel
     private val adapterAds = AdapterAds().also {
         it.onItemChildClickListener = this
-        it.setOnLoadMoreListener({ viewModel.getAds(true) }, adsRv)
         it.setEnableLoadMore(true)
+        it.setOnLoadMoreListener({ viewModel.getAds(true) }, adsRv)
         it.setLoadMoreView(CustomLoadMoreView())
     }
 
@@ -101,7 +101,10 @@ class AdsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
             ViewState.LastPage -> {
                 emptyView.visibility = View.GONE
                 loading.visibility = View.GONE
-                adapterAds.loadMoreEnd()
+                try {
+                    adapterAds.loadMoreEnd()
+                } catch (e: Exception) {
+                }
             }
             null -> {
 
@@ -113,7 +116,6 @@ class AdsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
         loading.visibility = View.VISIBLE
         emptyView.visibility = View.GONE
         adsRv.visibility = View.GONE
-
     }
 
     private fun onSuccess() {

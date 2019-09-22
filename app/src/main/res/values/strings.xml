@@ -88,7 +88,7 @@
     <string name="noConnection">No Internet Connection!</string>
     <string name="logOut">LogOut</string>
     <string name="login">Login</string>
-    <string name="NewAccount">New Account</string>
+    <string name="NewAccount">SignUp / SingIn</string>
     <string name="you_must_login">You must login first!</string>
     <string name="logoutSuccess">Logout Completed Successfully</string>
     <string name="fav">Succssfully Added to Favourites.</string>
@@ -130,7 +130,6 @@
     <string name="verify">Verify</string>
     <string name="code">Code</string>
     <string name="send_code">Send Code</string>
-    <string name="enter_phone">please enter your phone number</string>
     <string name="enter_valid_phone">please enter valid phone number</string>
     <string name="invalid_code">This code is invalid</string>
     <string name="enter_code">Please enter verify code</string>
@@ -164,5 +163,6 @@
         <item>Alex</item>
         <item>Cairo</item>
     </string-array>
+    <string name="enter_phone">Enter Phone Number</string>
 
 </resources>

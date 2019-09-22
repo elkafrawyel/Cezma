@@ -69,9 +69,7 @@ class SignUpFragment : Fragment() {
                 loading.visibility = View.GONE
                 dataCl.visibility = View.VISIBLE
                 activity?.toast(viewModel.registerSuccessMessage)
-                val action =
-                    SignUpFragmentDirections.actionSignUpFragmentToVerifyMobileFragment(phone.text.toString())
-                findNavController().navigate(action)
+                findNavController().navigate(R.id.loginFragment)
             }
             is ViewState.Error -> {
                 loading.visibility = View.GONE

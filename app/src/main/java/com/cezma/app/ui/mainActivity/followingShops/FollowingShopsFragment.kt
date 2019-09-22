@@ -68,8 +68,8 @@ class FollowingShopsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickList
                 followingShopsRv.visibility = View.VISIBLE
                 loading.visibility = View.GONE
                 emptyView.visibility = View.GONE
-
-                adapterStores.replaceData(viewModel.storesList)
+                adapterStores.loadMoreComplete()
+                adapterStores.addData(viewModel.storesList)
             }
             ViewState.NoConnection -> {
                 followingShopsRv.visibility = View.GONE
@@ -97,12 +97,16 @@ class FollowingShopsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickList
                 loading.visibility = View.GONE
                 emptyView.visibility = View.GONE
                 activity?.snackBar(it.message, rootView)
+                adapterStores.loadMoreFail()
             }
 
             ViewState.LastPage -> {
                 emptyView.visibility = View.GONE
                 loading.visibility = View.GONE
-                adapterStores.loadMoreEnd()
+                try {
+                    adapterStores.loadMoreEnd()
+                } catch (e: Exception) {
+                }
             }
         }
     }

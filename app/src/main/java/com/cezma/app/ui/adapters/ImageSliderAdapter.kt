@@ -1,4 +1,4 @@
-package com.cezma.app.ui.mainActivity.adDetails
+package com.cezma.app.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import androidx.viewpager.widget.PagerAdapter
 import com.bumptech.glide.Glide
 import com.cezma.app.R
 
-class AdImageSliderAdapter(private val openFullScreenSlider: (Int) -> Unit) : PagerAdapter() {
+class ImageSliderAdapter(private val openFullScreenSlider: (Int) -> Unit) : PagerAdapter() {
 
     private val images = ArrayList<String>()
 

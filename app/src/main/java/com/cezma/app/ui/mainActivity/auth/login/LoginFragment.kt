@@ -12,10 +12,7 @@ import com.blankj.utilcode.util.KeyboardUtils
 import com.cezma.app.R
 import com.cezma.app.data.model.LoginBody
 import com.cezma.app.ui.mainActivity.MainActivity
-import com.cezma.app.utiles.ViewState
-import com.cezma.app.utiles.snackBar
-import com.cezma.app.utiles.snackBarWithAction
-import com.cezma.app.utiles.toast
+import com.cezma.app.utiles.*
 import com.koraextra.app.utily.observeEvent
 import kotlinx.android.synthetic.main.login_fragment.*
 
@@ -38,7 +35,6 @@ class LoginFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         viewModel.uiState.observeEvent(this) { onLoginResponse(it) }
-
 
         singnUpMbtn.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
@@ -96,15 +92,24 @@ class LoginFragment : Fragment() {
         loading.visibility = View.GONE
 
         activity?.toast(getString(R.string.loginSuccess))
-        if (viewModel.phone_verfied) {
+        if (viewModel.phoneVerified) {
             // go to home
-            findNavController().navigate(R.id.mainHomeFragment)
-        } else {
-            if (viewModel.phone_number == null)
-                findNavController().navigate(R.id.receiveNumberFragment)
-            else
+            Injector.getPreferenceHelper().isLoggedIn = true
+            Injector.getPreferenceHelper().token = viewModel.token
+            Injector.getPreferenceHelper().refreshToken = viewModel.refreshToken
 
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToVerifyMobileFragment(viewModel.phone_number!!))
+            activity?.restartApplication()
+        } else {
+//            if (viewModel.phoneNumber == null)
+//                findNavController().navigate(R.id.receiveNumberFragment)
+//            else
+            findNavController().navigate(
+                LoginFragmentDirections.actionLoginFragmentToVerifyMobileFragment(
+                    viewModel.phoneNumber!!,
+                    viewModel.token!!,
+                    viewModel.refreshToken!!
+                )
+            )
         }
     }
 

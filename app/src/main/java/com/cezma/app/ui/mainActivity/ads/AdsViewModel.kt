@@ -24,6 +24,7 @@ class AdsViewModel : AppViewModel() {
         get() = _uiState
 
     var adsList: ArrayList<Ad> = arrayListOf()
+    var allAds: ArrayList<Ad> = arrayListOf()
 
     lateinit var categoryNameApi: String
     lateinit var subCategoryName: String
@@ -51,31 +52,32 @@ class AdsViewModel : AppViewModel() {
                 runOnMainThread { _uiState.value = ViewState.Loading }
             }
             when (val result =
-            Injector.getAdsRepo().getAds(categoryNameApi, subCategoryNameApi,page)) {
-            is DataResource.Success -> {
-                if (result.data.ads.isNotEmpty()) {
-                    lastPage = result.data.pages
-                    if (result.data.ads.isEmpty()) {
-                        _uiState.value = ViewState.Empty
+                Injector.getAdsRepo().getAds(categoryNameApi, subCategoryNameApi, page)) {
+                is DataResource.Success -> {
+                    if (result.data.ads.isNotEmpty()) {
+                        lastPage = result.data.pages
+                        if (result.data.ads.isEmpty()) {
+                            _uiState.value = ViewState.Empty
+                        } else {
+                            adsList.clear()
+                            adsList.addAll(result.data.ads)
+                            allAds.addAll(result.data.ads)
+                        }
+                        runOnMainThread {
+                            _uiState.value = ViewState.Success
+                        }
                     } else {
-//                            adsList.clear()
-                        adsList.addAll(result.data.ads)
+                        runOnMainThread {
+                            _uiState.value = ViewState.Empty
+                        }
                     }
+                }
+                is DataResource.Error -> {
                     runOnMainThread {
-                        _uiState.value = ViewState.Success
-                    }
-                } else {
-                    runOnMainThread {
-                        _uiState.value = ViewState.Empty
+                        _uiState.value = ViewState.Error(result.errorMessage)
                     }
                 }
             }
-            is DataResource.Error -> {
-                runOnMainThread {
-                    _uiState.value = ViewState.Error(result.errorMessage)
-                }
-            }
-        }
         }
     }
 

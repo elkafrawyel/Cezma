@@ -40,12 +40,12 @@ class ReceiveNumberFragment : Fragment() {
                 phoneNumberEt.error = resources.getString(R.string.enter_valid_phone)
             }
 
-            if (b) {
-
-                val action =
-                    ReceiveNumberFragmentDirections.actionVerifyPhoneNumberToReceiveNumberFragment(phoneNumberEt.text.toString())
-                findNavController().navigate(action)
-            }
+//            if (b) {
+//
+//                val action =
+//                    ReceiveNumberFragmentDirections.actionVerifyPhoneNumberToReceiveNumberFragment(phoneNumberEt.text.toString())
+//                findNavController().navigate(action)
+//            }
 
         }
 

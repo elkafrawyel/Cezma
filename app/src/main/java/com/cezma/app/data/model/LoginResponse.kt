@@ -14,7 +14,7 @@ data class LoginResponse(
     val expiresIn: Int?,
     @field:Json(name = "access_token")
     val accessToken: String?,
-    @field:Json(name = "refresh_token")
+    @field:Json(name = "refreshToken")
     val refreshToken: String?
 )
 

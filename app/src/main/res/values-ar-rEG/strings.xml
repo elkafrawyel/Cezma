@@ -93,7 +93,7 @@
         <item>القاهرة</item>
         <item>المحلة</item>
     </string-array>
-    <string name="NewAccount">حساب جديد</string>
+    <string name="NewAccount">تسجيل او أنشاء حساب</string>
     <string name="category">القسم</string>
     <string name="emptyEmail">البريد الالكتروني فارغ</string>
     <string name="emptyList">لا توجد بيانات</string>
@@ -153,8 +153,6 @@
     <string name="please_enter_it_below">من فضلك قم بكتابة الرمز في الاسفل</string>
     <string name="adComment">اضف تعليقك</string>
     <string name="comments">التعليقات</string>
-    <string name="upgrade">ترقيه</string>
-    <string name="upgradeAd">ترقية اعلان</string>
     <string name="featured">المميزة</string>
     <string name="high_price">الاعلي سعرا</string>
     <string name="low_price">الاقل سعرا</string>
@@ -162,6 +160,7 @@
     <string name="used">المستعملة</string>
     <string name="choose_filter">الاختيارات</string>
     <string name="filters">الاختيارات</string>
-
+    <string name="upgrade">ترقيه</string>
+    <string name="upgradeAd">ترقية اعلان</string>
 
 </resources>

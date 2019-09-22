@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() , GraphRequest.GraphJSONObjectCallback{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        changeLanguage()
 
 
         //============================= FaceBook ========================================

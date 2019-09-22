@@ -13,7 +13,9 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
 import com.cezma.app.R
+import com.cezma.app.utiles.Injector
 import com.cezma.app.utiles.ViewState
+import com.cezma.app.utiles.restartApplication
 import com.cezma.app.utiles.toast
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -33,9 +35,11 @@ class VerifyMobileFragment : Fragment() {
     private lateinit var viewModel: VerifyMobileViewModel
     private lateinit var mAuth: FirebaseAuth
     val TAG = "fireAuth"
-    lateinit var phoneNumber :String
+    lateinit var phoneNumber: String
+    lateinit var token: String
+    lateinit var refresh_token: String
     var codeSendFromFirebase = "123456"
-    private  var countDownTimer: CountDownTimer? = null
+    private var countDownTimer: CountDownTimer? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,11 +54,14 @@ class VerifyMobileFragment : Fragment() {
         viewModel.uiState.observe(this, Observer { onResponse(it) })
         mAuth = FirebaseAuth.getInstance()
         arguments?.let {
-            phoneNumber  = "+2"+VerifyMobileFragmentArgs.fromBundle(it).phoneNumber
+            phoneNumber = "+2" + VerifyMobileFragmentArgs.fromBundle(it).phoneNumber
+            token = VerifyMobileFragmentArgs.fromBundle(it).token
+            refresh_token = VerifyMobileFragmentArgs.fromBundle(it).refreshToken
 
             sendVerificationCode(phoneNumber)
 
-            phoneNumberMessage.text = resources.getString(R.string.verification_code_has_been_sent_to_you_on_your_mobile_number)+": $phoneNumber"
+            phoneNumberMessage.text =
+                resources.getString(R.string.verification_code_has_been_sent_to_you_on_your_mobile_number) + ": $phoneNumber"
         }
 
         submitCode.setOnClickListener {
@@ -81,45 +88,51 @@ class VerifyMobileFragment : Fragment() {
         }
 
 
-
     }
 
     private fun onResponse(it: ViewState?) {
-        when(it){
+        when (it) {
             ViewState.Loading -> {
 
             }
             ViewState.Success -> {
-                findNavController().navigate(R.id.mainHomeFragment)
+                Injector.getPreferenceHelper().isLoggedIn = true
+                Injector.getPreferenceHelper().token = token
+                Injector.getPreferenceHelper().refreshToken = refresh_token
+
+                activity?.restartApplication()
             }
-            is ViewState.Error ->  {
+            is ViewState.Error -> {
 
             }
-            ViewState.NoConnection ->  {
+            ViewState.NoConnection -> {
 
             }
-            ViewState.Empty ->  {
+            ViewState.Empty -> {
 
             }
             ViewState.LastPage -> {
 
             }
-            null ->  {
+            null -> {
 
             }
         }
     }
 
-    private fun startTimer(){
+    private fun startTimer() {
 
-        if(countDownTimer!=null) {
+        if (countDownTimer != null) {
             countDownTimer!!.cancel()
         }
         countDownTimer = object : CountDownTimer(59000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
-                resentCode.text = resources.getString(R.string.resend_in) +(millisUntilFinished / 1000).toString()+" "+resources.getString(R.string.second)
-                //here you can have your logic to set text to edittext
+                resentCode.text =
+                    resources.getString(R.string.resend_in) + (millisUntilFinished / 1000).toString() + " " + resources.getString(
+                        R.string.second
+                    )
+                //here you can have your logic to set text to ediText
             }
 
             override fun onFinish() {
@@ -132,7 +145,7 @@ class VerifyMobileFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        if(countDownTimer!=null) {
+        if (countDownTimer != null) {
             countDownTimer!!.cancel()
         }
     }
@@ -161,7 +174,7 @@ class VerifyMobileFragment : Fragment() {
             //     detect the incoming verification SMS and perform verification without
             //     user action.
             Log.e(TAG, "onVerificationCompleted:$credential")
-            val code = credential.getSmsCode()
+            val code = credential.smsCode
             code?.let {
 
                 verifyMobileEt.setText(code)
