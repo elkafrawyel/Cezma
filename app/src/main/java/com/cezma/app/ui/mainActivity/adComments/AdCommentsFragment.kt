@@ -44,8 +44,8 @@ class AdCommentsFragment : Fragment() {
         viewModel.uiState.observe(this, Observer { onCommentsResponse(it) })
 
         arguments?.let {
-            //            viewModel.adId = AdCommentsFragmentArgs.fromBundle(it).adId
-            viewModel.adId = "193687343"
+            viewModel.adId = AdCommentsFragmentArgs.fromBundle(it).adId
+//            viewModel.adId = "193687343"
             viewModel.getComments()
         }
 
@@ -80,7 +80,7 @@ class AdCommentsFragment : Fragment() {
             ViewState.Empty -> {
                 loading.visibility = View.GONE
                 emptyView.visibility = View.VISIBLE
-                emptyView.text = resources.getString(R.string.emptyFavouriteList)
+                emptyView.text = resources.getString(R.string.emptyCommentsList)
             }
 
             is ViewState.Error -> {

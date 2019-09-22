@@ -55,6 +55,7 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:id="@+id/callFL"
                 android:background="@drawable/product_details_call_rounded">
 
                 <ImageView
@@ -194,7 +195,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="start|center"
                         android:textAppearance="?attr/textAppearanceBody1"
-                        android:text="Comments (2)"
+                        tools:text="Comments (2)"
                         android:layout_marginBottom="18dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginStart="18dp"
@@ -484,7 +485,7 @@
                     android:layout_margin="8dp"
                     android:layout_marginTop="12dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/test_user_image"
+                    tools:src="@drawable/test_user_image"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/line1" />
             </androidx.constraintlayout.widget.ConstraintLayout>

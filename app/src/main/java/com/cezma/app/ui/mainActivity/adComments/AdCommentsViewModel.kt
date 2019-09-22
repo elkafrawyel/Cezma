@@ -17,7 +17,6 @@ class AdCommentsViewModel : AppViewModel() {
     var page: Int = 0
     private var lastPage: Int = 1
 
-
     private var _uiState = MutableLiveData<ViewState>()
     val uiState: LiveData<ViewState>
         get() = _uiState
@@ -48,11 +47,16 @@ class AdCommentsViewModel : AppViewModel() {
             when (val result = Injector.getCommentsRepo().getComments(adId!!, page)) {
                 is DataResource.Success -> {
                     lastPage = result.data.pages
-
-                    comments.clear()
-                    comments.addAll(result.data.comments)
-                    runOnMainThread {
-                        _uiState.value = ViewState.Success
+                    if (result.data.comments.isNotEmpty()) {
+                        comments.clear()
+                        comments.addAll(result.data.comments)
+                        runOnMainThread {
+                            _uiState.value = ViewState.Success
+                        }
+                    }else{
+                        runOnMainThread {
+                            _uiState.value = ViewState.Empty
+                        }
                     }
                 }
                 is DataResource.Error -> {

@@ -74,7 +74,7 @@ data class UserModel(
     var country_id: Int?,
     @field:Json(name = "country_name")
     var country_name: String?,
-    @field:Json(name = "phoneVerified")
+    @field:Json(name = "phone_verfied")
     var phone_verfied: Int?
 ):Parcelable {
     constructor(parcel: Parcel) : this(

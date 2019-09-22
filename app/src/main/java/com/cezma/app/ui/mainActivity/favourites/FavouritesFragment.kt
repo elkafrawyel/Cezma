@@ -60,7 +60,14 @@ class FavouritesFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener
             ViewState.Success -> {
                 adsRv.visibility = View.VISIBLE
                 loading.visibility = View.GONE
-                adapterAds.replaceData(viewModel.favouriteAds)
+                if (viewModel.favouriteAds.isNotEmpty())
+                    adapterAds.replaceData(viewModel.favouriteAds)
+                else {
+                    loading.visibility = View.GONE
+                    adsRv.visibility = View.GONE
+                    emptyView.visibility = View.VISIBLE
+                    emptyView.text = resources.getString(R.string.emptyFavouriteList)
+                }
             }
             ViewState.NoConnection -> {
                 adsRv.visibility = View.GONE
@@ -98,7 +105,12 @@ class FavouritesFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener
                 loading.visibility = View.GONE
                 if (favPosition != null) {
                     viewModel.favouriteAds.removeAt(favPosition!!)
+                    adapterAds.data.removeAt(favPosition!!)
                     adapterAds.notifyItemRemoved(favPosition!!)
+                    loading.visibility = View.GONE
+                    adsRv.visibility = View.GONE
+                    emptyView.visibility = View.VISIBLE
+                    emptyView.text = resources.getString(R.string.emptyFavouriteList)
                 }
             }
             ViewState.NoConnection -> {
@@ -131,8 +143,8 @@ class FavouritesFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener
     }
 
     private fun openAdDetails(adId: Long) {
-        val action
-                = FavouritesFragmentDirections.actionFavouritesFragmentToAdDetailsFragment(adId.toString())
+        val action =
+            FavouritesFragmentDirections.actionFavouritesFragmentToAdDetailsFragment(adId.toString())
         findNavController().navigate(action)
     }
 

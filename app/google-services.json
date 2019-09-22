@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "454415543043-g2p4r9fh2uf4k407fds4hub1rob5cl84.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Cezma.store",
+            "certificate_hash": "355a372772116dc96f565bccd10df7ad5ce53539"
+          }
+        },
+        {
           "client_id": "454415543043-lk943qp63a5l8360js3kaeqqj5l74k0g.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

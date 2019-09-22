@@ -100,16 +100,16 @@ class LoginFragment : Fragment() {
 
             activity?.restartApplication()
         } else {
-//            if (viewModel.phoneNumber == null)
-//                findNavController().navigate(R.id.receiveNumberFragment)
-//            else
-            findNavController().navigate(
-                LoginFragmentDirections.actionLoginFragmentToVerifyMobileFragment(
-                    viewModel.phoneNumber!!,
-                    viewModel.token!!,
-                    viewModel.refreshToken!!
+            if (viewModel.phoneNumber == null)
+                findNavController().navigate(R.id.receiveNumberFragment)
+            else
+                findNavController().navigate(
+                    LoginFragmentDirections.actionLoginFragmentToVerifyMobileFragment(
+                        viewModel.phoneNumber!!,
+                        viewModel.token!!,
+                        viewModel.refreshToken!!
+                    )
                 )
-            )
         }
     }
 

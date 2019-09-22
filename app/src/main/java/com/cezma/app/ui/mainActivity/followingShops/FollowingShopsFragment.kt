@@ -62,7 +62,6 @@ class FollowingShopsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickList
                 followingShopsRv.visibility = View.GONE
                 loading.visibility = View.VISIBLE
                 emptyView.visibility = View.GONE
-
             }
             ViewState.Success -> {
                 followingShopsRv.visibility = View.VISIBLE
@@ -79,7 +78,8 @@ class FollowingShopsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickList
                 activity?.snackBarWithAction(
                     getString(R.string.noConnection),
                     getString(R.string.retry),
-                    rootView
+                    rootView,
+                    false
                 ) {
                     viewModel.refresh()
                 }

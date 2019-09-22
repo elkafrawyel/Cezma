@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <ImageView
             android:id="@+id/productImgv"
             android:layout_width="0dp"
@@ -25,18 +24,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/adTitleTv"
+        <ImageView
+            android:id="@+id/featured"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:textAppearance="?attr/textAppearanceBody1"
-            app:layout_constrainedWidth="true"
+            android:layout_margin="8dp"
+            android:padding="4dp"
+            android:src="@drawable/premium"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/productImgv"
-            tools:text="Samsung 7200,core i3,300GB 32G Ram" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/productPriceTv"
@@ -58,12 +55,10 @@
             android:id="@+id/productByWhoTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="18dp"
+            android:layout_marginTop="12dp"
             android:textColor="@android:color/darker_gray"
-            app:layout_constraintBottom_toBottomOf="@id/productPriceTv"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/adTitleTv"
+            app:layout_constraintStart_toStartOf="@id/productPriceTv"
+            app:layout_constraintTop_toBottomOf="@id/productPriceTv"
             tools:text="By Admin" />
 
         <TextView
@@ -79,7 +74,7 @@
             app:layout_constraintEnd_toStartOf="@id/adSubCategoryTv"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/productPriceTv"
+            app:layout_constraintTop_toBottomOf="@id/productByWhoTv"
             tools:text="Elctronics" />
 
         <TextView
@@ -94,29 +89,31 @@
             app:layout_constraintTop_toTopOf="@id/adCategoryTv"
             tools:text="Laptops" />
 
-        <ImageView
+        <TextView
+            android:id="@+id/adTitleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:padding="4dp"
-            android:id="@+id/featured"
-            android:visibility="gone"
-            android:src="@drawable/premium"
+            android:layout_marginStart="8dp"
+            android:textAppearance="?attr/textAppearanceBody1"
+            app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/productImgv"
+            tools:text="Samsung 7200,core i3,300GB 32G Ram" />
 
         <TextView
+            android:id="@+id/upgradeTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:padding="8dp"
-            android:id="@+id/upgradeTv"
-            android:text="@string/upgrade"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:background="#FF634D"
+            android:padding="8dp"
+            android:text="@string/upgrade"
             android:textColor="@android:color/white"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

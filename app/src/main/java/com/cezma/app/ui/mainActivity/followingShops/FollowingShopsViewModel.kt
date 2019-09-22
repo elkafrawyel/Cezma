@@ -23,6 +23,7 @@ class FollowingShopsViewModel : AppViewModel() {
         get() = _uiState
 
     var storesList: ArrayList<StoreModel> = arrayListOf()
+    var allStoresList: ArrayList<StoreModel> = arrayListOf()
 
     init {
         getStores()
@@ -58,7 +59,9 @@ class FollowingShopsViewModel : AppViewModel() {
                         if (result.data.stores.isEmpty()) {
                             _uiState.value = ViewState.Empty
                         } else {
+                            storesList.clear()
                             storesList.addAll(result.data.stores)
+                            allStoresList.addAll(result.data.stores)
                         }
                         runOnMainThread {
                             _uiState.value = ViewState.Success

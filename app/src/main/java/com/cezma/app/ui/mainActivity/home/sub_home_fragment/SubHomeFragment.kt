@@ -21,10 +21,7 @@ import com.cezma.app.ui.adapters.AdapterAds
 import com.cezma.app.ui.adapters.ImageSliderAdapter
 import com.cezma.app.ui.mainActivity.MainActivity
 import com.cezma.app.ui.mainActivity.home.MainHomeFragmentDirections
-import com.cezma.app.utiles.CustomLoadMoreView
-import com.cezma.app.utiles.ViewState
-import com.cezma.app.utiles.snackBar
-import com.cezma.app.utiles.toast
+import com.cezma.app.utiles.*
 import com.chad.library.adapter.base.BaseQuickAdapter
 import kotlinx.android.synthetic.main.sub_home_fragment.*
 import java.util.*
@@ -105,8 +102,8 @@ class SubHomeFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
         val spacesItemDecoration = SpacesItemDecoration(8)
 
         if (viewModel.isList) {
-            listImgv.background = resources.getDrawable(R.drawable.list)
-            gridImgv.background = resources.getDrawable(R.drawable.grid_not_selected)
+            listImgv.setImageDrawable(resources.getDrawable(R.drawable.list))
+            gridImgv.setImageDrawable(resources.getDrawable(R.drawable.grid_not_selected))
             adsRv.layoutManager = GridLayoutManager(
                 requireContext(),
                 1,
@@ -128,8 +125,8 @@ class SubHomeFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
 
         listImgv.setOnClickListener {
             if (!viewModel.isList) {
-                listImgv.background = resources.getDrawable(R.drawable.list)
-                gridImgv.background = resources.getDrawable(R.drawable.grid_not_selected)
+                listImgv.setImageDrawable(resources.getDrawable(R.drawable.list))
+                gridImgv.setImageDrawable(resources.getDrawable(R.drawable.grid_not_selected))
                 adsRv.post {
                     TransitionManager.beginDelayedTransition(adsRv)
                     (adsRv.layoutManager as GridLayoutManager).spanCount = 1
@@ -141,8 +138,8 @@ class SubHomeFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
 
         gridImgv.setOnClickListener {
             if (viewModel.isList) {
-                listImgv.background = resources.getDrawable(R.drawable.list_not_selected)
-                gridImgv.background = resources.getDrawable(R.drawable.grid)
+                listImgv.setImageDrawable(resources.getDrawable(R.drawable.list_not_selected))
+                gridImgv.setImageDrawable(resources.getDrawable(R.drawable.grid))
                 adsRv.post {
                     TransitionManager.beginDelayedTransition(adsRv)
                     (adsRv.layoutManager as GridLayoutManager).spanCount = 2
@@ -166,6 +163,7 @@ class SubHomeFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
                 }
             }
         }
+
         ViewCompat.setNestedScrollingEnabled(adsRv, false)
 
         if (viewModel.categoriesList.isEmpty()) {
@@ -192,86 +190,6 @@ class SubHomeFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
             val action =
                 MainHomeFragmentDirections.actionMainHomeFragmentToCategoryFragment()
             activity?.findNavController(R.id.fragment)!!.navigate(action)
-            val spacesItemDecoration = SpacesItemDecoration(8)
-
-            if (viewModel.isList) {
-                listImgv.background = resources.getDrawable(R.drawable.list)
-                gridImgv.background = resources.getDrawable(R.drawable.grid_not_selected)
-                adsRv.layoutManager = GridLayoutManager(
-                    requireContext(),
-                    1,
-                    RecyclerView.VERTICAL,
-                    false
-                )
-            } else {
-                listImgv.background = resources.getDrawable(R.drawable.list_not_selected)
-                gridImgv.background = resources.getDrawable(R.drawable.grid)
-
-                adsRv.layoutManager = GridLayoutManager(
-                    requireContext(),
-                    2,
-                    RecyclerView.VERTICAL,
-                    false
-                )
-                adsRv.addItemDecoration(spacesItemDecoration)
-            }
-
-            listImgv.setOnClickListener {
-                if (!viewModel.isList) {
-                    listImgv.background = resources.getDrawable(R.drawable.list)
-                    gridImgv.background = resources.getDrawable(R.drawable.grid_not_selected)
-                    adsRv.post {
-                        TransitionManager.beginDelayedTransition(adsRv)
-                        (adsRv.layoutManager as GridLayoutManager).spanCount = 1
-                        adsRv.removeItemDecoration(spacesItemDecoration)
-                    }
-                    viewModel.isList = true
-                }
-            }
-
-            gridImgv.setOnClickListener {
-                if (viewModel.isList) {
-                    listImgv.background = resources.getDrawable(R.drawable.list_not_selected)
-                    gridImgv.background = resources.getDrawable(R.drawable.grid)
-                    adsRv.post {
-                        TransitionManager.beginDelayedTransition(adsRv)
-                        (adsRv.layoutManager as GridLayoutManager).spanCount = 2
-                        adsRv.addItemDecoration(spacesItemDecoration)
-                    }
-                    viewModel.isList = false
-                }
-            }
-
-
-            adsRv.adapter = adsAdapter
-            mScrollView.viewTreeObserver.addOnScrollChangedListener {
-                if (mScrollView != null) {
-                    val view = mScrollView.getChildAt(mScrollView.childCount - 1) as View
-
-                    val diff = view.bottom - (mScrollView.height + mScrollView
-                        .scrollY)
-
-                    if (diff == 0) {
-                        viewModel.getAds(true)
-                    }
-                }
-            }
-            ViewCompat.setNestedScrollingEnabled(adsRv, false)
-
-            if (viewModel.categoriesList.isEmpty()) {
-                viewModel.uiState.observe(this, androidx.lifecycle.Observer { onAdsResponse(it) })
-                viewModel.uiStateCategory.observe(
-                    this,
-                    androidx.lifecycle.Observer { onCategoriesResponse(it) })
-
-                viewModel.getCategories()
-            } else {
-                loading.visibility = View.GONE
-                adsAdapter.replaceData(viewModel.allAds)
-                imageSliderAdapter.submitList(viewModel.slidersList)
-                bannerSliderVp.adapter = imageSliderAdapter
-            }
-
         }
 
         filterTv.setOnClickListener {
@@ -283,10 +201,12 @@ class SubHomeFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
     private fun onCategoriesResponse(it: ViewState?) {
         when (it) {
             ViewState.Loading -> {
+                dataCl.visibility = View.VISIBLE
                 loading.visibility = View.VISIBLE
             }
             ViewState.Success -> {
                 loading.visibility = View.GONE
+                dataCl.visibility = View.VISIBLE
                 imageSliderAdapter.submitList(viewModel.slidersList)
                 bannerSliderVp.adapter = imageSliderAdapter
                 categoriesAdapter.replaceData(viewModel.categoriesList)
@@ -294,10 +214,15 @@ class SubHomeFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
             }
             ViewState.NoConnection -> {
                 loading.visibility = View.GONE
-                activity?.snackBar(
+                dataCl.visibility = View.GONE
+                activity?.snackBarWithAction(
                     getString(R.string.noConnection),
-                    rootView
-                )
+                    getString(R.string.retry),
+                    rootView,
+                    false
+                ) {
+                    viewModel.getCategories()
+                }
             }
             ViewState.Empty -> {
                 loading.visibility = View.GONE
@@ -408,17 +333,24 @@ class SubHomeFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
         when (it) {
             ViewState.Loading -> {
                 loading.visibility = View.VISIBLE
+                dataCl.visibility = View.VISIBLE
             }
             ViewState.Success -> {
                 loading.visibility = View.GONE
+                dataCl.visibility = View.VISIBLE
                 adsAdapter.addData(viewModel.adsList)
             }
             ViewState.NoConnection -> {
                 loading.visibility = View.GONE
-                activity?.snackBar(
+                dataCl.visibility = View.GONE
+                activity?.snackBarWithAction(
                     getString(R.string.noConnection),
-                    rootView
-                )
+                    getString(R.string.retry),
+                    rootView,
+                    false
+                ) {
+                    viewModel.getCategories()
+                }
             }
             ViewState.Empty -> {
                 adsAdapter.loadMoreFail()

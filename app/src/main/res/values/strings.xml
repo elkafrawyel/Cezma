@@ -164,5 +164,6 @@
         <item>Cairo</item>
     </string-array>
     <string name="enter_phone">Enter Phone Number</string>
+    <string name="emptyCommentsList">No comments for this ad.</string>
 
 </resources>

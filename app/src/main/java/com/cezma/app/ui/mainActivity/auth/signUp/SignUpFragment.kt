@@ -22,8 +22,6 @@ import com.cezma.app.utiles.snackBarWithAction
 import com.cezma.app.utiles.toast
 import kotlinx.android.synthetic.main.sign_up_fragment.*
 
-
-
 class SignUpFragment : Fragment() {
 
     companion object {
@@ -36,7 +34,7 @@ class SignUpFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(com.cezma.app.R.layout.sign_up_fragment, container, false)
+        return inflater.inflate(R.layout.sign_up_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -63,21 +61,17 @@ class SignUpFragment : Fragment() {
         when (it) {
             ViewState.Loading -> {
                 loading.visibility = View.VISIBLE
-                dataCl.visibility = View.GONE
             }
             ViewState.Success -> {
                 loading.visibility = View.GONE
-                dataCl.visibility = View.VISIBLE
                 activity?.toast(viewModel.registerSuccessMessage)
                 findNavController().navigate(R.id.loginFragment)
             }
             is ViewState.Error -> {
                 loading.visibility = View.GONE
-                dataCl.visibility = View.VISIBLE
             }
             ViewState.NoConnection -> {
                 loading.visibility = View.GONE
-                dataCl.visibility = View.VISIBLE
                 activity?.snackBarWithAction(
                     getString(com.cezma.app.R.string.noConnection),
                     getString(com.cezma.app.R.string.retry),
@@ -96,20 +90,16 @@ class SignUpFragment : Fragment() {
         when (it) {
             ViewState.Loading -> {
                 loading.visibility = View.VISIBLE
-                dataCl.visibility = View.GONE
             }
             ViewState.Success -> {
                 loading.visibility = View.GONE
-                dataCl.visibility = View.VISIBLE
                 setData()
             }
             is ViewState.Error -> {
                 loading.visibility = View.GONE
-                dataCl.visibility = View.GONE
             }
             ViewState.NoConnection -> {
                 loading.visibility = View.GONE
-                dataCl.visibility = View.GONE
                 activity?.snackBarWithAction(
                     getString(com.cezma.app.R.string.noConnection),
                     getString(com.cezma.app.R.string.retry),

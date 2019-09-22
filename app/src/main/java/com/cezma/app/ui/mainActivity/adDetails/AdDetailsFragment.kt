@@ -17,7 +17,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-
 import com.cezma.app.R
 import com.cezma.app.data.model.AdImagesToSliderModel
 import com.cezma.app.data.model.AdOfferBody
@@ -26,6 +25,7 @@ import com.cezma.app.ui.adapters.ImageSliderAdapter
 import com.cezma.app.utiles.*
 import com.koraextra.app.utily.observeEvent
 import kotlinx.android.synthetic.main.ad_details_fragment.*
+
 
 class AdDetailsFragment : Fragment() {
 
@@ -101,6 +101,13 @@ class AdDetailsFragment : Fragment() {
             val action =
                 AdDetailsFragmentDirections.actionAdDetailsFragmentToAdCommentsFragment(viewModel.adId)
             findNavController().navigate(action)
+        }
+
+        callFL.setOnClickListener {
+            val uri = "tel:" + "01019744661"
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse(uri)
+            activity?.startActivity(intent)
         }
     }
 
@@ -219,6 +226,7 @@ class AdDetailsFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun onSuccess() {
         when (viewModel.lastAction) {
             AdActions.Fav -> {
@@ -241,6 +249,8 @@ class AdDetailsFragment : Fragment() {
                 activity?.toast(viewModel.offerMessage)
             }
             AdActions.COMMENT -> {
+                viewModel.ad!!.commentsCount = viewModel.ad!!.commentsCount!! + 1
+                AdCommentsCount.text = getString(R.string.comments) + " (" + viewModel.ad!!.commentsCount + ")"
                 activity?.toast(viewModel.commentMessage)
             }
 

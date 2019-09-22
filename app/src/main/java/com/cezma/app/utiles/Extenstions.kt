@@ -58,17 +58,24 @@ fun Context.snackBarWithAction(
     message: String,
     actionTitle: String,
     rootView: View,
+    dismiss: Boolean = true,
     action: () -> Unit
 ) {
-    val snackBar = Snackbar.make(rootView, message, Snackbar.LENGTH_LONG)
-    val view = snackBar.view
-    val textView = view.findViewById<View>(R.id.snackbar_text)
-    textView.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
-    snackBar.setAction(actionTitle) {
-        action.invoke()
-        snackBar.dismiss()
+    val snackBar: Snackbar? = if (dismiss)
+        Snackbar.make(rootView, message, Snackbar.LENGTH_LONG)
+    else
+        Snackbar.make(rootView, message, Snackbar.LENGTH_INDEFINITE)
+
+    if (snackBar != null) {
+        val view = snackBar.view
+        val textView = view.findViewById<View>(R.id.snackbar_text)
+        textView.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+        snackBar.setAction(actionTitle) {
+            action.invoke()
+            snackBar.dismiss()
+        }
+        snackBar.show()
     }
-    snackBar.show()
 }
 
 fun Context.snackBar(message: String?, rootView: View) {

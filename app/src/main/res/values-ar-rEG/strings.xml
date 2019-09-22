@@ -19,7 +19,7 @@
     <string name="followingShop">المتاجر</string>
     <string name="login_email">البريد الالكتروني</string>
     <string name="password">كلمة السر</string>
-    <string name="forgot_your_password">نسيت كلممة السر؟</string>
+    <string name="forgot_your_password">نسيت كلمة السر؟</string>
     <string name="or">أو</string>
     <string name="firstName">الاسم الاول</string>
     <string name="lastName">الاسم الاخير</string>
@@ -162,5 +162,6 @@
     <string name="filters">الاختيارات</string>
     <string name="upgrade">ترقيه</string>
     <string name="upgradeAd">ترقية اعلان</string>
+    <string name="emptyCommentsList">لا توجد تعليقات علي هذا المنتج</string>
 
 </resources>

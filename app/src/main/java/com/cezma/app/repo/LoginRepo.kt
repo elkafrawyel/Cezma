@@ -14,20 +14,14 @@ class LoginRepo(private val retrofitApiService: RetrofitApiService) {
         loginBody: LoginBody
     ): DataResource<LoginResponse> {
         return safeApiCall(
-            call = { call(loginBody) },
+            call = {
+                val response = retrofitApiService.getLoginAsync(loginBody).await()
+                 if (response.error != null)
+                     DataResource.Error(response.message!!)
+                else
+                    DataResource.Success(response)
+            },
             errorMessage = Injector.getApplicationContext().getString(R.string.generalError)
         )
     }
-
-    private suspend fun call(
-        loginBody: LoginBody
-    ): DataResource<LoginResponse> {
-        val response = retrofitApiService.getLoginAsync(loginBody).await()
-        return if (response.error != null)
-            DataResource.Error(response.message!!)
-        else
-            DataResource.Success(response)
-    }
-
-
 }

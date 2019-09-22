@@ -78,23 +78,19 @@ class EditProfileFragment : Fragment() {
         when (it) {
             ViewState.Loading -> {
                 loading.visibility = View.VISIBLE
-                dataCl.visibility = View.GONE
             }
             ViewState.Success -> {
                 loading.visibility = View.GONE
-                dataCl.visibility = View.VISIBLE
                 activity?.toast(viewModel.updateMessage!!)
                 findNavController().navigateUp()
                 findNavController().navigateUp()
             }
             is ViewState.Error -> {
                 loading.visibility = View.GONE
-                dataCl.visibility = View.VISIBLE
                 activity?.toast(it.message)
             }
             ViewState.NoConnection -> {
                 loading.visibility = View.GONE
-                dataCl.visibility = View.GONE
                 activity?.snackBarWithAction(
                     getString(R.string.noConnection),
                     getString(R.string.retry),
@@ -113,20 +109,16 @@ class EditProfileFragment : Fragment() {
         when (it) {
             ViewState.Loading -> {
                 loading.visibility = View.VISIBLE
-                dataCl.visibility = View.GONE
             }
             ViewState.Success -> {
                 loading.visibility = View.GONE
-                dataCl.visibility = View.VISIBLE
                 setData()
             }
             is ViewState.Error -> {
                 loading.visibility = View.GONE
-                dataCl.visibility = View.GONE
             }
             ViewState.NoConnection -> {
                 loading.visibility = View.GONE
-                dataCl.visibility = View.GONE
                 activity?.snackBarWithAction(
                     getString(R.string.noConnection),
                     getString(R.string.retry),

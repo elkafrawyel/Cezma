@@ -40,12 +40,13 @@ class LoginViewModel : AppViewModel() {
             when (val result = Injector.getLoginRepo().login(loginBody)) {
                 is DataResource.Success -> {
                     token = result.data.accessToken
+                    Injector.getPreferenceHelper().token = token
                     refreshToken = result.data.refreshToken
+                    Injector.getPreferenceHelper().refreshToken = refreshToken
 
                     when (val profileResult = Injector.getProfileRepo().get()) {
                         is DataResource.Success -> {
-                            this@LoginViewModel.phoneVerified =
-                                profileResult.data.userModel?.phone_verfied == 1
+                            this@LoginViewModel.phoneVerified = profileResult.data.userModel?.phone_verfied == 1
                             if (profileResult.data.userModel?.phone != null) {
                                 this@LoginViewModel.phoneNumber =
                                     profileResult.data.userModel.phone.toString()
