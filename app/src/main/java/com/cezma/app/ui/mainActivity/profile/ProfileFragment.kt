@@ -112,6 +112,7 @@ class ProfileFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
             adapterAds.replaceData(viewModel.ads)
         }
     }
+
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
         val ad = (adapter?.data as List<Ad>)[position]
         when (view?.id) {

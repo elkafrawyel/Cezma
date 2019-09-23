@@ -46,10 +46,11 @@ class LoginViewModel : AppViewModel() {
 
                     when (val profileResult = Injector.getProfileRepo().get()) {
                         is DataResource.Success -> {
-                            this@LoginViewModel.phoneVerified = profileResult.data.userModel?.phone_verfied == 1
-                            if (profileResult.data.userModel?.phone != null) {
-                                this@LoginViewModel.phoneNumber =
-                                    profileResult.data.userModel.phone.toString()
+                            Injector.getPreferenceHelper().id_verified = profileResult.data.userModel!!.idVerified!!
+
+                            phoneVerified = profileResult.data.userModel.phone_verfied == 1
+                            if (profileResult.data.userModel.phone != null) {
+                                phoneNumber = profileResult.data.userModel.phone.toString()
                             }
 
                             runOnMainThread {

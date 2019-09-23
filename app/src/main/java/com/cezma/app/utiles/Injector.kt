@@ -126,4 +126,6 @@ object Injector {
 
     fun getSlidersRepo() = SlidersRepo(getApiService())
 
+    fun getAddShopRepo() = AddShopRepo(getApiService(), getPreferenceHelper())
+
 }

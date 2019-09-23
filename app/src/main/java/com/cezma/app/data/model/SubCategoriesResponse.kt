@@ -4,5 +4,5 @@ import com.squareup.moshi.Json
 
 data class SubCategoriesResponse(
     @field:Json(name = "categories")
-    val subCategories: List<SubCategoryModel>?
+    val subCategories: List<SubCategoryModel>
 )

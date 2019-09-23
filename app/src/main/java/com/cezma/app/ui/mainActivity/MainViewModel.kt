@@ -19,7 +19,7 @@ class MainViewModel:AppViewModel(){
 //    private fun preferencesHelper() = Injector.getPreferenceHelper()
 //
 //    private var _uiState = MutableLiveData<Event<ViewState>>()
-//    val uiState: LiveData<Event<ViewState>>
+//    val uiStateCategories: LiveData<Event<ViewState>>
 //        get() = _uiState
 //
 //    fun socialLogin(body: SocialBody) {

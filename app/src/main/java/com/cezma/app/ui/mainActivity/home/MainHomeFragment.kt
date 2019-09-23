@@ -338,10 +338,38 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
                 }
             }
             R.id.nav_AddProduct -> {
-                findNavController().navigate(R.id.action_mainHomeFragment_to_addProductFragment)
+                if (Injector.getPreferenceHelper().isLoggedIn) {
+                    findNavController().navigate(R.id.action_mainHomeFragment_to_addProductFragment)
+                } else {
+                    activity?.snackBarWithAction(
+                        getString(R.string.you_must_login),
+                        getString(R.string.login),
+                        rootView
+                    ) {
+                        findNavController().navigate(R.id.action_mainHomeFragment_to_loginFragment)
+
+                    }
+                }
             }
             R.id.nav_AddShop -> {
-                findNavController().navigate(R.id.action_mainHomeFragment_to_addShopFragment)
+                if (Injector.getPreferenceHelper().isLoggedIn) {
+
+                    if (Injector.getPreferenceHelper().id_verified == 1){
+                        findNavController().navigate(R.id.action_mainHomeFragment_to_addShopFragment)
+                    }else{
+                        askToUpgradeAccount()
+                    }
+
+                } else {
+                    activity?.snackBarWithAction(
+                        getString(R.string.you_must_login),
+                        getString(R.string.login),
+                        rootView
+                    ) {
+                        findNavController().navigate(R.id.action_mainHomeFragment_to_loginFragment)
+
+                    }
+                }
             }
             R.id.nav_Upgrade -> {
                 findNavController().navigate(R.id.action_mainHomeFragment_to_upgradeAccountFragment)
@@ -393,6 +421,17 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
         }
         rootViewDl.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun askToUpgradeAccount() {
+        activity?.showMessageInDialog(
+            getString(R.string.upgradeAccountToAddShop),
+            {
+                findNavController().navigate(R.id.action_mainHomeFragment_to_upgradeAccountFragment)
+            },{
+
+            }
+        )
     }
 
 }

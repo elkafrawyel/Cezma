@@ -20,4 +20,8 @@ data class SubCategoryModel(
     val createdAt: String?,
     @field:Json(name = "updated_at")
     val updatedAt: String?
-)
+){
+    override fun toString(): String {
+        return categoryName!!
+    }
+}

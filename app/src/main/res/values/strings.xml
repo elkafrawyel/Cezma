@@ -165,5 +165,14 @@
     </string-array>
     <string name="enter_phone">Enter Phone Number</string>
     <string name="emptyCommentsList">No comments for this ad.</string>
+    <string name="shortDesc">Short description</string>
+    <string name="longDesc">Long Description</string>
+    <string name="userName">UserName</string>
+    <string name="no_subcategories">No SubCategory Found</string>
+    <string name="logoImageSelected">Profile Image Selected</string>
+    <string name="coverImageSelected">Cover Image Selected</string>
+    <string name="select_category">Make Sure Yo Choose your Shop Categories</string>
+    <string name="select_shop_images">Make Sure to choose store images</string>
+    <string name="upgradeAccountToAddShop">You have to upgrade your account to create shop.</string>
 
 </resources>

@@ -182,7 +182,7 @@ class EditProfileViewModel : AppViewModel() {
 
     fun getUserImageFile(): File? {
         return if (userImagePath != null)
-            File(userImagePath)
+            File(userImagePath!!)
         else
             null
     }

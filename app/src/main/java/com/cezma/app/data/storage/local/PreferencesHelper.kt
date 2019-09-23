@@ -5,11 +5,13 @@ import android.preference.PreferenceManager
 import com.cezma.app.utiles.Constants
 
 class PreferencesHelper(private val context: Context) {
+
     companion object {
         private const val IS_LOGGED_IN = "isLoggedIn"
         private const val TOKEN = "token"
         private const val REFRESH_TOKEN = "refreshToken"
         private const val ID = "id"
+        private const val ID_VERIFIED = "id_verified"
         private const val NAME = "name"
         private const val EMAIL = "email"
         private const val CITY_NAME = "cityName"
@@ -32,6 +34,9 @@ class PreferencesHelper(private val context: Context) {
 
     var id = preference.getInt(ID, -1)
         set(value) = preference.edit().putInt(ID, value).apply()
+
+    var id_verified = preference.getInt(ID_VERIFIED, 0)
+        set(value) = preference.edit().putInt(ID_VERIFIED, value).apply()
 
     var name = preference.getString(NAME, null)
         set(value) = preference.edit().putString(NAME, value).apply()

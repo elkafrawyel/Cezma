@@ -213,6 +213,19 @@ interface RetrofitApiService {
         @Part avatar: MultipartBody.Part
     ): Deferred<UpdateProfileResponse>
 
+    @Multipart
+    @POST("createstore")
+    fun addShopAsync(
+        @Header("Authorization") token: String,
+        @Part("username") username: RequestBody,
+        @Part("title") title: RequestBody,
+        @Part("short_desc") short_desc: RequestBody,
+        @Part("long_desc") long_desc: RequestBody,
+        @Part("category") category: Int,
+        @Part logo: MultipartBody.Part,
+        @Part cover: MultipartBody.Part
+    ): Deferred<AddShopResponse>
+
     @POST("profile")
     fun updateProfileWithoutImageAsync(
         @Header("Authorization") token: String,

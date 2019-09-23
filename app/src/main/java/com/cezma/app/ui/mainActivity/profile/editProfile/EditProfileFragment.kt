@@ -104,7 +104,6 @@ class EditProfileFragment : Fragment() {
         }
     }
 
-
     private fun onSpinnerDataResponse(it: ViewState?) {
         when (it) {
             ViewState.Loading -> {
@@ -223,7 +222,8 @@ class EditProfileFragment : Fragment() {
         } else
             viewModel.userModel!!.lastName = lastName.text.toString()
 
-        viewModel.userModel!!.lastName = "${firstName.text} ${lastName.text}"
+        viewModel.userModel!!.username = ""
+        viewModel.userModel!!.username = "${firstName.text} ${lastName.text}"
 
         if (email.text.toString().isEmpty()) {
             email.error = resources.getString(R.string.emptyField)

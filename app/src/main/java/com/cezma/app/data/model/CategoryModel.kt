@@ -19,4 +19,8 @@ data class CategoryModel(
     val updatedAt: String?,
     @field:Json(name = "parent_category")
     val parentCategory: Int?
-)
+){
+    override fun toString(): String {
+        return categoryName!!
+    }
+}

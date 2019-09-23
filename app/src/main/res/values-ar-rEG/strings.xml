@@ -163,5 +163,14 @@
     <string name="upgrade">ترقيه</string>
     <string name="upgradeAd">ترقية اعلان</string>
     <string name="emptyCommentsList">لا توجد تعليقات علي هذا المنتج</string>
+    <string name="longDesc">وصف كبير</string>
+    <string name="no_subcategories">لا توجد اقسام فرعية</string>
+    <string name="shortDesc">وصف قصير للمحل</string>
+    <string name="userName">اسم مختصر للمحل</string>
+    <string name="coverImageSelected">تم اختيار صورة لخلفية المحل</string>
+    <string name="logoImageSelected">تم اختيار صورة للمحل</string>
+    <string name="select_category">تأكد من اختيارك لقسم محلك قبل الاضافة</string>
+    <string name="select_shop_images">تأكد من اختيار صور لمحلك</string>
+    <string name="upgradeAccountToAddShop">يجب ترقية حسابك حتي تنشأ محل خاص بك</string>
 
 </resources>
