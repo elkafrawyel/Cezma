@@ -45,7 +45,7 @@ class NotiRepo(
 
     private suspend fun callRead(): DataResource<FavouriteActionResponse> {
 
-        val response = retrofitApiService.readNotisAsync(
+        val response = retrofitApiService.readNotificationsAsync(
             "${Constants.AUTHORIZATION_START} ${helper.token}").await()
         return DataResource.Success(response)
 

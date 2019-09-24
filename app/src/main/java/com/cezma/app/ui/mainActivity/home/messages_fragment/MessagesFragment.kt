@@ -80,6 +80,7 @@ class MessagesFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
                 emptyView.visibility = View.VISIBLE
                 emptyView.text = getString(R.string.emptyList)
                 messagesRv.visibility = View.GONE
+                adapterMessages.loadMoreComplete()
             }
             is ViewState.Error -> {
                 loading.visibility = View.GONE

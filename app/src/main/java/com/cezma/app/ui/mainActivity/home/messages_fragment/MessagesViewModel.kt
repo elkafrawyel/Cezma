@@ -14,7 +14,6 @@ import kotlinx.coroutines.launch
 class MessagesViewModel : AppViewModel() {
 
 
-
     var page: Int = 0
     private var lastPage: Int = 1
 
@@ -60,6 +59,11 @@ class MessagesViewModel : AppViewModel() {
                         messagesList.clear()
                         messagesList.addAll(result.data.messages)
                         allMessages.addAll(result.data.messages)
+
+
+                        if (page == 1)
+                            Injector.getMessagesRepo().readMessages()
+
                         runOnMainThread {
                             _uiState.value = ViewState.Success
                         }
@@ -77,6 +81,7 @@ class MessagesViewModel : AppViewModel() {
             }
         }
     }
+
 
     fun refresh() {
         page = 0

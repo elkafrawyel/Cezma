@@ -134,7 +134,12 @@ interface RetrofitApiService {
     ): Deferred<FavouriteActionResponse>
 
     @GET("setnotfication")
-    fun readNotisAsync(
+    fun readNotificationsAsync(
+        @Header("Authorization") token: String
+    ): Deferred<FavouriteActionResponse>
+
+    @POST("setmessageread")
+    fun readMessageAsync(
         @Header("Authorization") token: String
     ): Deferred<FavouriteActionResponse>
 
@@ -291,7 +296,6 @@ interface RetrofitApiService {
         @Header("Authorization") token: String,
         @Body reportAdBody: ReportAdBody
     ): Deferred<ReportAdResponse>
-
 
     @POST("setoffer")
     fun adOfferAsync(

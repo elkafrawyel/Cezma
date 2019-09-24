@@ -1,10 +1,7 @@
 package com.cezma.app.repo
 
 import com.cezma.app.R
-import com.cezma.app.data.model.BadgeCountResponse
-import com.cezma.app.data.model.ListMessagesResponse
-import com.cezma.app.data.model.SendMessageBody
-import com.cezma.app.data.model.SendMessageResponse
+import com.cezma.app.data.model.*
 import com.cezma.app.data.storage.local.PreferencesHelper
 import com.cezma.app.data.storage.remote.RetrofitApiService
 import com.cezma.app.utiles.Constants
@@ -68,4 +65,19 @@ class MessagesRepo(
         ).await()
         return DataResource.Success(response)
     }
+
+    suspend fun readMessages(): DataResource<FavouriteActionResponse> {
+        return safeApiCall(
+            call = { readMessagesCall() },
+            errorMessage = Injector.getApplicationContext().getString(R.string.generalError)
+        )
+    }
+
+    private suspend fun readMessagesCall(): DataResource<FavouriteActionResponse> {
+        val response = retrofitApiService.readMessageAsync(
+            "${Constants.AUTHORIZATION_START} ${helper.token}"
+        ).await()
+        return DataResource.Success(response)
+    }
+
 }

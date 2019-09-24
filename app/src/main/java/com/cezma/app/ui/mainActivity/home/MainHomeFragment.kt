@@ -114,12 +114,14 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
     private fun onBadgeCountResponse(it: ViewState?) {
         when (it) {
             ViewState.Success -> {
-                if (viewModel.badgeCountResponse.notificationsCount!! != 0)
-                    addBadgeAt(NOTIFICATION_INDEX,viewModel.badgeCountResponse.notificationsCount!!)
+                    if (viewModel.badgeCountResponse.notificationsCount!! != 0)
+                        addBadgeAt(
+                            NOTIFICATION_INDEX,
+                            viewModel.badgeCountResponse.notificationsCount!!
+                        )
 
-                if (viewModel.badgeCountResponse.messagesCount!! != 0)
-                    addBadgeAt(MESSAGE_INDEX,viewModel.badgeCountResponse.messagesCount!!)
-
+                    if (viewModel.badgeCountResponse.messagesCount!! != 0)
+                        addBadgeAt(MESSAGE_INDEX, viewModel.badgeCountResponse.messagesCount!!)
             }
         }
     }
