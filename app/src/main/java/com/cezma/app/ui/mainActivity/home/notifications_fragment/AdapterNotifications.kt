@@ -12,6 +12,7 @@ class AdapterNotifications : BaseQuickAdapter<NotificationModel, BaseViewHolder>
 
         helper.setText(R.id.userNameNotificationItem, item.adTitle)
         helper.setText(R.id.notificationTextNotificationItem, item.message)
+        helper.setText(R.id.timeNotificationItem, item.createdAt)
 
 
         Glide.with(mContext).load(item.adImg).into(helper.getView(R.id.imageNotificationItem))

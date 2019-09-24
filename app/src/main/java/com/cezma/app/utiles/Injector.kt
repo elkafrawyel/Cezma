@@ -132,4 +132,6 @@ object Injector {
 
     fun getMyStoreRepo() = MyStoreRepo(getApiService(), getPreferenceHelper())
 
+    fun getMessagesRepo() = MessagesRepo(getApiService(), getPreferenceHelper())
+
 }

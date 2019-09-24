@@ -130,7 +130,7 @@ interface RetrofitApiService {
     @GET("checkout/upgradead/{id}")
     fun upgradeAdAsync(
         @Header("Authorization") token: String,
-        @Path("id")id:String
+        @Path("id") id: String
     ): Deferred<FavouriteActionResponse>
 
     @GET("setnotfication")
@@ -257,7 +257,6 @@ interface RetrofitApiService {
         @Part cover: MultipartBody.Part
     ): Deferred<AddShopResponse>
 
-
     @Multipart
     @POST("storeupdate")
     fun editShopWithLogoAsync(
@@ -270,7 +269,6 @@ interface RetrofitApiService {
         @Part logo: MultipartBody.Part
     ): Deferred<AddShopResponse>
 
-
     @Multipart
     @POST("storeupdate")
     fun editShopAsync(
@@ -281,11 +279,6 @@ interface RetrofitApiService {
         @Part("long_desc") long_desc: RequestBody,
         @Part("category") category: Int
     ): Deferred<AddShopResponse>
-
-
-
-
-
 
     @POST("profile")
     fun updateProfileWithoutImageAsync(
@@ -311,6 +304,24 @@ interface RetrofitApiService {
         @Header("Authorization") token: String,
         @Body offersActionBody: OffersActionBody
     ): Deferred<OffersActionResponse>
+
+    @POST("sendmessage/{adId}")
+    fun sendMessageAsync(
+        @Header("Authorization") token: String,
+        @Path("adId") adId: String,
+        @Body sendMessageBody: SendMessageBody
+    ): Deferred<SendMessageResponse>
+
+    @GET("listmessages")
+    fun getListMessagesAsync(
+        @Header("Authorization") token: String,
+        @Query("page") page: Int
+    ): Deferred<ListMessagesResponse>
+
+    @GET("getallcount")
+    fun getBadgeNumbersAsync(
+        @Header("Authorization") token: String
+    ): Deferred<BadgeCountResponse>
 
     //===================== Static Pages ==================================
     @GET("page/aboutcezma")

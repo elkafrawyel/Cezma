@@ -57,7 +57,7 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainHomeFragmentViewModel::class.java)
         viewModel.uiStateLogOut.observeEvent(this) { onLogOut(it) }
-        viewModel.uiStateNotification.observe(this, Observer { onNotificationResponse(it) })
+        viewModel.uiStateBadge.observe(this, Observer { onBadgeCountResponse(it) })
         navigationView.setNavigationItemSelectedListener(this)
 
         bottom_navigation.enableAnimation(false)
@@ -111,27 +111,14 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
 //        addBadgeAt(NOTIFICATION_INDEX, 10)
     }
 
-    private fun onNotificationResponse(it: ViewState?) {
+    private fun onBadgeCountResponse(it: ViewState?) {
         when (it) {
-            ViewState.Loading -> {
-
-            }
             ViewState.Success -> {
-                addBadgeAt(NOTIFICATION_INDEX, viewModel.unreadNotisCount)
-            }
-            is ViewState.Error -> {
+                if (viewModel.badgeCountResponse.notificationsCount!! != 0)
+                    addBadgeAt(NOTIFICATION_INDEX,viewModel.badgeCountResponse.notificationsCount!!)
 
-            }
-            ViewState.NoConnection -> {
-
-            }
-            ViewState.Empty -> {
-
-            }
-            ViewState.LastPage -> {
-
-            }
-            null -> {
+                if (viewModel.badgeCountResponse.messagesCount!! != 0)
+                    addBadgeAt(MESSAGE_INDEX,viewModel.badgeCountResponse.messagesCount!!)
 
             }
         }
@@ -261,7 +248,8 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
     private fun setAuthState() {
         val preferencesHelper = Injector.getPreferenceHelper()
         if (preferencesHelper.isLoggedIn) {
-            navigationView.menu.getItem(authIndex).title = context?.resources?.getString(R.string.logOut)
+            navigationView.menu.getItem(authIndex).title =
+                context?.resources?.getString(R.string.logOut)
         } else {
             navigationView.menu.getItem(authIndex).title =
                 context?.resources?.getString(R.string.NewAccount)
@@ -355,9 +343,9 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
             R.id.nav_AddShop -> {
                 if (Injector.getPreferenceHelper().isLoggedIn) {
 
-                    if (Injector.getPreferenceHelper().id_verified == 1){
+                    if (Injector.getPreferenceHelper().id_verified == 1) {
                         findNavController().navigate(R.id.action_mainHomeFragment_to_addShopFragment)
-                    }else{
+                    } else {
                         askToUpgradeAccount()
                     }
                 } else {
@@ -373,7 +361,7 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
 
             R.id.nav_editShop -> {
                 if (Injector.getPreferenceHelper().isLoggedIn) {
-                        findNavController().navigate(R.id.action_mainHomeFragment_to_editShopFragment)
+                    findNavController().navigate(R.id.action_mainHomeFragment_to_editShopFragment)
                 } else {
                     activity?.snackBarWithAction(
                         getString(R.string.you_must_login),
@@ -441,7 +429,7 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
             getString(R.string.upgradeAccountToAddShop),
             {
                 findNavController().navigate(R.id.action_mainHomeFragment_to_upgradeAccountFragment)
-            },{
+            }, {
 
             }
         )

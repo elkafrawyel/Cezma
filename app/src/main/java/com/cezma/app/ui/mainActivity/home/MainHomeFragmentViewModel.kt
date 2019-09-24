@@ -3,6 +3,7 @@ package com.cezma.app.ui.mainActivity.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.blankj.utilcode.util.NetworkUtils
+import com.cezma.app.data.model.BadgeCountResponse
 import com.cezma.app.data.model.NotificationModel
 import com.cezma.app.ui.AppViewModel
 import com.cezma.app.utiles.DataResource
@@ -26,7 +27,7 @@ class MainHomeFragmentViewModel : AppViewModel() {
     init {
         if (Injector.getPreferenceHelper().isLoggedIn) {
             refreshToken()
-            getNotis()
+            getBadgeCount()
         }
     }
 
@@ -94,40 +95,37 @@ class MainHomeFragmentViewModel : AppViewModel() {
     }
 
     //================================ Notifications ==================================
-    var unreadNotisCount: Int = 0
+    var badgeCountResponse = BadgeCountResponse(0, 0)
 
-    private var jobNotifications: Job? = null
+    private var jobBadge: Job? = null
 
-    private var _uiStateNotifications = MutableLiveData<ViewState>()
-    val uiStateNotification: LiveData<ViewState>
-        get() = _uiStateNotifications
+    private var _uiStateBadge = MutableLiveData<ViewState>()
+    val uiStateBadge: LiveData<ViewState>
+        get() = _uiStateBadge
 
-    private fun getNotis() {
+    private fun getBadgeCount() {
         if (NetworkUtils.isConnected()) {
-            if (jobNotifications?.isActive == true)
+            if (jobBadge?.isActive == true)
                 return
-            jobNotifications = launchNotificationJob()
+            jobBadge = launchBadgeCount()
 
         } else {
-            _uiStateNotifications.value = ViewState.NoConnection
+            _uiStateBadge.value = ViewState.NoConnection
         }
     }
 
-    private fun launchNotificationJob(): Job {
+    private fun launchBadgeCount(): Job {
         return scope.launch(dispatcherProvider.io) {
             when (val result =
-                Injector.getNotisRepo().getNotis(1)) {
+                Injector.getMessagesRepo().getBadgeCount()) {
                 is DataResource.Success -> {
-                    //  Notifications not read count
-                    unreadNotisCount = result.data.unreadcount
+                    badgeCountResponse = result.data
                     runOnMainThread {
-                        _uiStateNotifications.value = ViewState.Success
+                        _uiStateBadge.value = ViewState.Success
                     }
                 }
                 is DataResource.Error -> {
-                    runOnMainThread {
-                        _uiStateNotifications.value = ViewState.Error(result.errorMessage)
-                    }
+
                 }
             }
         }

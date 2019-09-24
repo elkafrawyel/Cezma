@@ -134,7 +134,10 @@
         android:label="chat_room_fragment"
         tools:layout="@layout/chat_room_fragment" >
         <argument
-            android:name="userId"
+            android:name="adId"
+            app:argType="string" />
+        <argument
+            android:name="adTitle"
             app:argType="string" />
     </fragment>
     <fragment

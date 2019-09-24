@@ -82,6 +82,8 @@ class AdsViewModel : AppViewModel() {
     }
 
     fun refresh() {
+        page = 0
+        lastPage = 1
         getAds()
     }
 }

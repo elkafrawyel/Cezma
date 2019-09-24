@@ -72,7 +72,10 @@ class AdDetailsFragment : Fragment() {
 
         messageFL.setOnClickListener {
             val action =
-                AdDetailsFragmentDirections.actionAdDetailsFragmentToChatRoomFragment("test")
+                AdDetailsFragmentDirections.actionAdDetailsFragmentToChatRoomFragment(
+                    viewModel.ad!!.adId.toString(),
+                    viewModel.ad!!.title!!
+                )
             findNavController().navigate(action)
         }
 
@@ -250,7 +253,8 @@ class AdDetailsFragment : Fragment() {
             }
             AdActions.COMMENT -> {
                 viewModel.ad!!.commentsCount = viewModel.ad!!.commentsCount!! + 1
-                AdCommentsCount.text = getString(R.string.comments) + " (" + viewModel.ad!!.commentsCount + ")"
+                AdCommentsCount.text =
+                    getString(R.string.comments) + " (" + viewModel.ad!!.commentsCount + ")"
                 activity?.toast(viewModel.commentMessage)
             }
 

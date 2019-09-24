@@ -77,10 +77,16 @@ class AdsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
     private fun onAdsResponse(it: ViewState?) {
         when (it) {
             ViewState.Loading -> {
-                onLoading()
+                loading.visibility = View.VISIBLE
+                emptyView.visibility = View.GONE
+                adsRv.visibility = View.GONE
             }
             ViewState.Success -> {
-                onSuccess()
+                loading.visibility = View.GONE
+                emptyView.visibility = View.GONE
+                adsRv.visibility = View.VISIBLE
+                adapterAds.addData(viewModel.adsList)
+                adapterAds.loadMoreComplete()
             }
             ViewState.NoConnection -> {
                 loading.visibility = View.GONE
@@ -93,10 +99,19 @@ class AdsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
                 }
             }
             ViewState.Empty -> {
-                onEmpty()
+                loading.visibility = View.GONE
+                emptyView.visibility = View.VISIBLE
+                emptyView.text = getString(R.string.emptyList)
+                adsRv.visibility = View.GONE
             }
             is ViewState.Error -> {
-                onError(it.message)
+                loading.visibility = View.GONE
+                emptyView.visibility = View.GONE
+                adsRv.visibility = View.GONE
+                adapterAds.loadMoreFail()
+                activity?.snackBarWithAction(it.message, getString(R.string.retry), rootView) {
+                    viewModel.refresh()
+                }
             }
             ViewState.LastPage -> {
                 emptyView.visibility = View.GONE
@@ -110,37 +125,6 @@ class AdsFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
 
             }
         }
-    }
-
-    private fun onLoading() {
-        loading.visibility = View.VISIBLE
-        emptyView.visibility = View.GONE
-        adsRv.visibility = View.GONE
-    }
-
-    private fun onSuccess() {
-        loading.visibility = View.GONE
-        emptyView.visibility = View.GONE
-        adsRv.visibility = View.VISIBLE
-        adapterAds.addData(viewModel.adsList)
-        adapterAds.loadMoreComplete()
-    }
-
-    private fun onError(message: String) {
-        loading.visibility = View.GONE
-        emptyView.visibility = View.GONE
-        adsRv.visibility = View.GONE
-        adapterAds.loadMoreFail()
-        activity?.snackBarWithAction(message, getString(R.string.retry), rootView) {
-            viewModel.refresh()
-        }
-    }
-
-    private fun onEmpty() {
-        loading.visibility = View.GONE
-        emptyView.visibility = View.VISIBLE
-        emptyView.text = getString(R.string.emptyList)
-        adsRv.visibility = View.GONE
     }
 
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
