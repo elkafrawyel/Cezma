@@ -27,6 +27,11 @@
         android:title="@string/add_shop" />
 
     <item
+        android:id="@+id/nav_editShop"
+        android:icon="@drawable/ic_edit_white_24dp"
+        android:title="@string/editMyShop" />
+
+    <item
         android:id="@+id/nav_Upgrade"
         android:icon="@drawable/upgrade"
         android:title="@string/upgradeAccount" />

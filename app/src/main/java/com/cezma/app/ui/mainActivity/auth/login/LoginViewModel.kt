@@ -47,6 +47,7 @@ class LoginViewModel : AppViewModel() {
                     when (val profileResult = Injector.getProfileRepo().get()) {
                         is DataResource.Success -> {
                             Injector.getPreferenceHelper().id_verified = profileResult.data.userModel!!.idVerified!!
+                            Injector.getPreferenceHelper().id = profileResult.data.userModel.id!!
 
                             phoneVerified = profileResult.data.userModel.phone_verfied == 1
                             if (profileResult.data.userModel.phone != null) {

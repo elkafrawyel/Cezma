@@ -174,5 +174,8 @@
     <string name="select_category">Make Sure Yo Choose your Shop Categories</string>
     <string name="select_shop_images">Make Sure to choose store images</string>
     <string name="upgradeAccountToAddShop">You have to upgrade your account to create shop.</string>
+    <string name="editShop">Edit Shop</string>
+    <string name="saveShop">Save Shop</string>
+    <string name="editMyShop">Edit My Shop</string>
 
 </resources>

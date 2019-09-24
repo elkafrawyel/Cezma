@@ -128,4 +128,8 @@ object Injector {
 
     fun getAddShopRepo() = AddShopRepo(getApiService(), getPreferenceHelper())
 
+    fun getEditStoreRepo() = EditShopRepo(getApiService(), getPreferenceHelper())
+
+    fun getMyStoreRepo() = MyStoreRepo(getApiService(), getPreferenceHelper())
+
 }

@@ -154,6 +154,12 @@ interface RetrofitApiService {
         @Path("ownerId") ownerId: String
     ): Deferred<AdsByOwnerResponse>
 
+    @GET("storeuser/{userId}")
+    fun getMyStoreAsync(
+        @Header("Authorization") token: String,
+        @Path("userId") userId: String
+    ): Deferred<MyStoreResponse>
+
     @GET("showadsbyow/{ownerId}")
     fun getAdsByOwnerAsync(
         @Path("ownerId") ownerId: String
@@ -225,6 +231,61 @@ interface RetrofitApiService {
         @Part logo: MultipartBody.Part,
         @Part cover: MultipartBody.Part
     ): Deferred<AddShopResponse>
+
+    @Multipart
+    @POST("storeupdate")
+    fun editShopAsync(
+        @Header("Authorization") token: String,
+        @Part("username") username: RequestBody,
+        @Part("title") title: RequestBody,
+        @Part("short_desc") short_desc: RequestBody,
+        @Part("long_desc") long_desc: RequestBody,
+        @Part("category") category: Int,
+        @Part logo: MultipartBody.Part,
+        @Part cover: MultipartBody.Part
+    ): Deferred<AddShopResponse>
+
+    @Multipart
+    @POST("storeupdate")
+    fun editShopWithCoverAsync(
+        @Header("Authorization") token: String,
+        @Part("username") username: RequestBody,
+        @Part("title") title: RequestBody,
+        @Part("short_desc") short_desc: RequestBody,
+        @Part("long_desc") long_desc: RequestBody,
+        @Part("category") category: Int,
+        @Part cover: MultipartBody.Part
+    ): Deferred<AddShopResponse>
+
+
+    @Multipart
+    @POST("storeupdate")
+    fun editShopWithLogoAsync(
+        @Header("Authorization") token: String,
+        @Part("username") username: RequestBody,
+        @Part("title") title: RequestBody,
+        @Part("short_desc") short_desc: RequestBody,
+        @Part("long_desc") long_desc: RequestBody,
+        @Part("category") category: Int,
+        @Part logo: MultipartBody.Part
+    ): Deferred<AddShopResponse>
+
+
+    @Multipart
+    @POST("storeupdate")
+    fun editShopAsync(
+        @Header("Authorization") token: String,
+        @Part("username") username: RequestBody,
+        @Part("title") title: RequestBody,
+        @Part("short_desc") short_desc: RequestBody,
+        @Part("long_desc") long_desc: RequestBody,
+        @Part("category") category: Int
+    ): Deferred<AddShopResponse>
+
+
+
+
+
 
     @POST("profile")
     fun updateProfileWithoutImageAsync(

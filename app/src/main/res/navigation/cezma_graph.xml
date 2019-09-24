@@ -69,6 +69,9 @@
         <action
             android:id="@+id/action_mainHomeFragment_to_fullScreenSliderFragment"
             app:destination="@id/fullScreenSliderFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_editShopFragment"
+            app:destination="@id/editShopFragment" />
     </fragment>
 
     <fragment
@@ -384,5 +387,10 @@
             android:name="adId"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/editShopFragment"
+        android:name="com.cezma.app.ui.mainActivity.editShop.EditShopFragment"
+        android:label="edit_shop_fragment"
+        tools:layout="@layout/edit_shop_fragment" />
 
 </navigation>

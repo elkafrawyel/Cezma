@@ -35,6 +35,11 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
         private const val HOME_INDEX = 0
         private const val MESSAGE_INDEX = 1
         private const val NOTIFICATION_INDEX = 2
+
+        const val socialItemId = 17
+        const val languageItemId = 18
+        const val authIndex = 16
+
     }
 
     private var messagesBadge: Badge? = null
@@ -214,7 +219,6 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun handleSocialClicks() {
-        val socialItemId = 16
         val viewClicked = navigationView.menu.getItem(socialItemId).actionView
         viewClicked.findViewById<ImageView>(R.id.facebook).setOnClickListener {
         }
@@ -227,7 +231,6 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun handleLanguageView() {
-        val languageItemId = 17
         val viewClicked2 = navigationView.menu.getItem(languageItemId).actionView
 
         when (Injector.getPreferenceHelper().language) {
@@ -258,9 +261,9 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
     private fun setAuthState() {
         val preferencesHelper = Injector.getPreferenceHelper()
         if (preferencesHelper.isLoggedIn) {
-            navigationView.menu.getItem(15).title = context?.resources?.getString(R.string.logOut)
+            navigationView.menu.getItem(authIndex).title = context?.resources?.getString(R.string.logOut)
         } else {
-            navigationView.menu.getItem(15).title =
+            navigationView.menu.getItem(authIndex).title =
                 context?.resources?.getString(R.string.NewAccount)
         }
     }
@@ -333,7 +336,6 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
                         rootView
                     ) {
                         findNavController().navigate(R.id.action_mainHomeFragment_to_loginFragment)
-
                     }
                 }
             }
@@ -347,7 +349,6 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
                         rootView
                     ) {
                         findNavController().navigate(R.id.action_mainHomeFragment_to_loginFragment)
-
                     }
                 }
             }
@@ -359,7 +360,6 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
                     }else{
                         askToUpgradeAccount()
                     }
-
                 } else {
                     activity?.snackBarWithAction(
                         getString(R.string.you_must_login),
@@ -367,7 +367,20 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
                         rootView
                     ) {
                         findNavController().navigate(R.id.action_mainHomeFragment_to_loginFragment)
+                    }
+                }
+            }
 
+            R.id.nav_editShop -> {
+                if (Injector.getPreferenceHelper().isLoggedIn) {
+                        findNavController().navigate(R.id.action_mainHomeFragment_to_editShopFragment)
+                } else {
+                    activity?.snackBarWithAction(
+                        getString(R.string.you_must_login),
+                        getString(R.string.login),
+                        rootView
+                    ) {
+                        findNavController().navigate(R.id.action_mainHomeFragment_to_loginFragment)
                     }
                 }
             }

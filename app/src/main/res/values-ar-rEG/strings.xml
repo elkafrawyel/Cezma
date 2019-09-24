@@ -172,5 +172,8 @@
     <string name="select_category">تأكد من اختيارك لقسم محلك قبل الاضافة</string>
     <string name="select_shop_images">تأكد من اختيار صور لمحلك</string>
     <string name="upgradeAccountToAddShop">يجب ترقية حسابك حتي تنشأ محل خاص بك</string>
+    <string name="editMyShop">تعديل متجري</string>
+    <string name="editShop">تعديل المتجر</string>
+    <string name="saveShop">حفظ المتجر</string>
 
 </resources>
