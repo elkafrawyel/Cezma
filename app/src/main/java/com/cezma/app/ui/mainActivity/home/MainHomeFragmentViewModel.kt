@@ -27,7 +27,6 @@ class MainHomeFragmentViewModel : AppViewModel() {
     init {
         if (Injector.getPreferenceHelper().isLoggedIn) {
             refreshToken()
-            getBadgeCount()
         }
     }
 
@@ -51,6 +50,8 @@ class MainHomeFragmentViewModel : AppViewModel() {
                     helper.isLoggedIn = true
                     helper.token = result.data.accessToken
                     helper.refreshToken = result.data.refreshToken
+                    getBadgeCount()
+
                 }
                 is DataResource.Error -> {
 

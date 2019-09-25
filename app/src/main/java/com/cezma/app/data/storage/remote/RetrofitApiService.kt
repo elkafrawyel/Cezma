@@ -322,6 +322,14 @@ interface RetrofitApiService {
         @Query("page") page: Int
     ): Deferred<ListMessagesResponse>
 
+    @GET("getsinglemessage/{adId}")
+    fun getChatRoomMessagesAsync(
+        @Header("Authorization") token: String,
+        @Path("adId") adId: String,
+        @Query("page") page: Int,
+        @Query("usersend")userName: String
+    ): Deferred<ChatRoomResponse>
+
     @GET("getallcount")
     fun getBadgeNumbersAsync(
         @Header("Authorization") token: String

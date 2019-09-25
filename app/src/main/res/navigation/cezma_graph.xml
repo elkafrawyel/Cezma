@@ -139,6 +139,9 @@
         <argument
             android:name="adTitle"
             app:argType="string" />
+        <argument
+            android:name="userName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/contactUsFragment"

@@ -36,7 +36,6 @@ class MessagesRepo(
         return DataResource.Success(response)
     }
 
-
     suspend fun getListMessages(page: Int): DataResource<ListMessagesResponse> {
         return safeApiCall(
             call = { listMessagesCall(page) },
@@ -80,4 +79,27 @@ class MessagesRepo(
         return DataResource.Success(response)
     }
 
+    suspend fun getChatRoom(
+        page: Int,
+        adId: String,
+        userName: String
+    ): DataResource<ChatRoomResponse> {
+        return safeApiCall(
+            call = { chatRoomCall(page, adId, userName) },
+            errorMessage = Injector.getApplicationContext().getString(R.string.generalError)
+        )
+    }
+
+    private suspend fun chatRoomCall(
+        page: Int,
+        adId: String,
+        userName: String): DataResource<ChatRoomResponse> {
+        val response = retrofitApiService.getChatRoomMessagesAsync(
+            "${Constants.AUTHORIZATION_START} ${helper.token}",
+            adId,
+            page,
+            userName
+        ).await()
+        return DataResource.Success(response)
+    }
 }

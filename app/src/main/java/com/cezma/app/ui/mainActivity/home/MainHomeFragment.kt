@@ -122,6 +122,8 @@ class MainHomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedList
 
                     if (viewModel.badgeCountResponse.messagesCount!! != 0)
                         addBadgeAt(MESSAGE_INDEX, viewModel.badgeCountResponse.messagesCount!!)
+
+
             }
         }
     }

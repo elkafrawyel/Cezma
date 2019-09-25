@@ -11,17 +11,21 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
 import com.cezma.app.R
+import com.cezma.app.utiles.CustomLoadMoreView
 import com.cezma.app.utiles.ViewState
+import com.cezma.app.utiles.snackBarWithAction
 import com.cezma.app.utiles.toast
 import kotlinx.android.synthetic.main.chat_room_fragment.*
 
 class ChatRoomFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ChatRoomFragment()
-    }
-
     private lateinit var viewModel: ChatRoomViewModel
+
+    private var adapter = AdapterChatRoom(arrayListOf()).also {
+        it.setEnableLoadMore(true)
+        it.setOnLoadMoreListener({ viewModel.getMessages(true) }, messagesRv)
+        it.setLoadMoreView(CustomLoadMoreView())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,12 +38,18 @@ class ChatRoomFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ChatRoomViewModel::class.java)
         viewModel.uiState.observe(this, Observer { onSendMessageResponse(it) })
-
+        viewModel.uiStateMessages.observe(this, Observer { onMessagesResponse(it) })
         arguments?.let {
             val adId = ChatRoomFragmentArgs.fromBundle(it).adId
+            viewModel.adId = adId
+
             val adTitle = ChatRoomFragmentArgs.fromBundle(it).adTitle
             chatRoomAdTitleTv.text = adTitle
-            viewModel.adId = adId
+
+            val userName = ChatRoomFragmentArgs.fromBundle(it).userName
+            viewModel.userName = userName
+
+            viewModel.getMessages()
         }
 
         backImgv.setOnClickListener {
@@ -51,6 +61,64 @@ class ChatRoomFragment : Fragment() {
                 return@setOnClickListener
             else {
                 viewModel.sendMessage(writeMessageEt.text.toString().trim())
+            }
+        }
+
+        adapter.setEnableLoadMore(true)
+        messagesRv.adapter = adapter
+        messagesRv.setHasFixedSize(true)
+    }
+
+    private fun onMessagesResponse(it: ViewState?) {
+        when (it) {
+            ViewState.Loading -> {
+                loading.visibility = View.VISIBLE
+                emptyView.visibility = View.GONE
+                messagesRv.visibility = View.GONE
+            }
+            ViewState.Success -> {
+                loading.visibility = View.GONE
+                emptyView.visibility = View.GONE
+                messagesRv.visibility = View.VISIBLE
+                adapter.addData(viewModel.messagesList)
+                adapter.loadMoreComplete()
+            }
+
+            ViewState.NoConnection -> {
+                loading.visibility = View.GONE
+                activity?.snackBarWithAction(
+                    getString(R.string.noConnection),
+                    getString(R.string.retry),
+                    rootView
+                ) {
+                    viewModel.refresh()
+                }
+            }
+            ViewState.Empty -> {
+                loading.visibility = View.GONE
+                emptyView.visibility = View.VISIBLE
+                emptyView.text = getString(R.string.emptyList)
+                messagesRv.visibility = View.GONE
+            }
+            is ViewState.Error -> {
+                loading.visibility = View.GONE
+                emptyView.visibility = View.GONE
+                messagesRv.visibility = View.GONE
+                adapter.loadMoreFail()
+                activity?.snackBarWithAction(it.message, getString(R.string.retry), rootView) {
+                    viewModel.refresh()
+                }
+            }
+            ViewState.LastPage -> {
+                emptyView.visibility = View.GONE
+                loading.visibility = View.GONE
+                try {
+                    adapter.loadMoreEnd()
+                } catch (e: Exception) {
+                }
+            }
+            null -> {
+
             }
         }
     }
@@ -69,4 +137,5 @@ class ChatRoomFragment : Fragment() {
             }
         }
     }
+
 }

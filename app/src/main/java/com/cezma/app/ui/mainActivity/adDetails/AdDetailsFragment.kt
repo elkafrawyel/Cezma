@@ -74,7 +74,8 @@ class AdDetailsFragment : Fragment() {
             val action =
                 AdDetailsFragmentDirections.actionAdDetailsFragmentToChatRoomFragment(
                     viewModel.ad!!.adId.toString(),
-                    viewModel.ad!!.title!!
+                    viewModel.ad!!.title!!,
+                    viewModel.ad!!.username!!
                 )
             findNavController().navigate(action)
         }

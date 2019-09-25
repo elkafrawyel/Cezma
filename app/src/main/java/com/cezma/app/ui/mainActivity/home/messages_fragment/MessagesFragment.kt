@@ -8,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 
 import com.cezma.app.R
 import com.cezma.app.data.model.MessageModel
 import com.cezma.app.ui.mainActivity.MainActivity
 import com.cezma.app.ui.mainActivity.home.MainHomeFragmentDirections
 import com.cezma.app.utiles.CustomLoadMoreView
+import com.cezma.app.utiles.Injector
 import com.cezma.app.utiles.ViewState
 import com.cezma.app.utiles.snackBarWithAction
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -107,16 +109,24 @@ class MessagesFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
 
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
 
-        when(view?.id){
-            R.id.messageItem ->{
+        when (view?.id) {
+            R.id.messageItem -> {
                 val message = (adapter!!.data as List<MessageModel>)[position]
+
+                val userName: String
+                userName = if (message.user_to == Injector.getPreferenceHelper().id) {
+                    message.msgFrom!!
+                } else {
+                    message.msgTo!!
+                }
 
                 val action =
                     MainHomeFragmentDirections.actionMainHomeFragmentToChatRoomFragment(
                         message.adId!!,
-                        message.ad!!.title!!
-                    )
-                Navigation.findNavController(activity as MainActivity, R.id.fragment).navigate(action)
+                        message.ad!!.title!!,
+                        userName
+                        )
+                activity?.findNavController(R.id.fragment)!!.navigate(action)
             }
         }
 
