@@ -20,6 +20,10 @@ import com.cezma.app.utiles.ViewState
 import com.cezma.app.utiles.snackBarWithAction
 import com.chad.library.adapter.base.BaseQuickAdapter
 import kotlinx.android.synthetic.main.messages_fragment.*
+import kotlinx.android.synthetic.main.messages_fragment.emptyView
+import kotlinx.android.synthetic.main.messages_fragment.loading
+import kotlinx.android.synthetic.main.messages_fragment.rootView
+import kotlinx.android.synthetic.main.notifications_fragment.*
 
 class MessagesFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
 
@@ -50,6 +54,19 @@ class MessagesFragment : Fragment(), BaseQuickAdapter.OnItemChildClickListener {
         adapterMessages.setEnableLoadMore(true)
         messagesRv.adapter = adapterMessages
         messagesRv.setHasFixedSize(true)
+
+
+        if (Injector.getPreferenceHelper().isLoggedIn) {
+            viewModel.getMessagesList()
+        } else {
+            activity?.snackBarWithAction(
+                getString(R.string.you_must_login),
+                getString(R.string.login),
+                rootView
+            ) {
+                activity?.findNavController(R.id.fragment)!!.navigate(R.id.action_mainHomeFragment_to_loginFragment)
+            }
+        }
 
     }
 

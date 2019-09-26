@@ -66,18 +66,28 @@ class SignUpViewModel : AppViewModel() {
     private suspend fun onCountriesSuccess(countries: List<CountryModel>) {
         this.countries.clear()
         this.countries.addAll(countries)
-        userCountry = countries[0]
-        val statesResult =
-            Injector.getStatesRepo().get(userCountry!!.id.toString())
+        if (countries.isNotEmpty()) {
 
-        when (statesResult) {
-            is DataResource.Success -> {
-                onStatesSuccess(statesResult.data.states)
-            }
-            is DataResource.Error -> {
-                runOnMainThread {
-                    _uiState.value = ViewState.Error(statesResult.errorMessage)
+            if (userCountry == null)
+                userCountry = countries[0]
+
+            val statesResult =
+                Injector.getStatesRepo().get(userCountry!!.id.toString())
+
+            when (statesResult) {
+                is DataResource.Success -> {
+                    onStatesSuccess(statesResult.data.states)
                 }
+                is DataResource.Error -> {
+                    runOnMainThread {
+                        _uiState.value = ViewState.Error(statesResult.errorMessage)
+                    }
+                }
+            }
+        } else {
+            runOnMainThread {
+                _uiState.value =
+                    ViewState.Error(Injector.getApplicationContext().getString(R.string.generalError))
             }
         }
     }

@@ -177,5 +177,7 @@
     <string name="editShop">Edit Shop</string>
     <string name="saveShop">Save Shop</string>
     <string name="editMyShop">Edit My Shop</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
 
 </resources>

@@ -6,6 +6,7 @@
       <w>coroutines</w>
       <w>currentpage</w>
       <w>favoritesaction</w>
+      <w>firebase</w>
       <w>gethome</w>
       <w>governorate</w>
       <w>imgv</w>
@@ -14,6 +15,7 @@
       <w>phonecode</w>
       <w>pricelevel</w>
       <w>recyclerview</w>
+      <w>seekbar</w>
       <w>totalcount</w>
     </words>
   </dictionary>

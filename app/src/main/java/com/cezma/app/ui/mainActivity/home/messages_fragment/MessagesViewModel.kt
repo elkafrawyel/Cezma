@@ -26,10 +26,6 @@ class MessagesViewModel : AppViewModel() {
     var messagesList: ArrayList<MessageModel> = arrayListOf()
     var allMessages: ArrayList<MessageModel> = arrayListOf()
 
-    init {
-        getMessagesList()
-    }
-
     fun getMessagesList(loadMore: Boolean = false) {
         if (NetworkUtils.isConnected()) {
             if (job?.isActive == true)

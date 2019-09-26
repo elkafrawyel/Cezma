@@ -175,5 +175,7 @@
     <string name="editMyShop">تعديل متجري</string>
     <string name="editShop">تعديل المتجر</string>
     <string name="saveShop">حفظ المتجر</string>
+    <string name="from">من</string>
+    <string name="to">الي</string>
 
 </resources>

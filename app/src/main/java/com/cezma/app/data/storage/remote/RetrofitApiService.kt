@@ -59,11 +59,9 @@ interface RetrofitApiService {
         @Path("adId") adId: String
     ): Deferred<AdResponse>
 
-
     @GET("getsliders")
     fun getSlidersAsync(
     ): Deferred<SlidersResponse>
-
 
     @POST("logout")
     fun logOutAsync(
