@@ -19,7 +19,6 @@ class VerifyMobileViewModel : AppViewModel() {
 
     var message:String = ""
 
-
     fun active() {
         if (NetworkUtils.isConnected()) {
             if (job?.isActive == true)
